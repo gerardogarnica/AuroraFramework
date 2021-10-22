@@ -1,0 +1,1341 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aurora.Framework.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Aurora.Framework.AuroraBaseResponse">
+            <summary>
+            Clase base para respuestas de ejecución de operaciones.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.AuroraBaseResponse.IsSuccess">
+            <summary>
+            Indica si la ejecución de la operación resulta exitosa o no.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.AuroraBaseResponse.ResponseCode">
+            <summary>
+            Código de respuesta de la operación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.AuroraBaseResponse.ResponseMessage">
+            <summary>
+            Mensaje de respuesta de la operación.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.AuroraBaseResponse.#ctor(System.Boolean,System.String,System.String)">
+            <summary>
+            Inicializa una instancia de la clase AuroraBaseResponse.
+            </summary>
+            <param name="success">Indica si la ejecución de la operación resulta exitosa o no.</param>
+            <param name="code">Código de respuesta de la operación.</param>
+            <param name="message">Mensaje de respuesta de la operación.</param>
+        </member>
+        <member name="T:Aurora.Framework.AuroraHttpClientBase">
+            <summary>
+            Clase base para la configuración de clientes HTTP.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.AuroraHttpClientBase.AuroraHttpClient">
+            <summary>
+            Cliente HTTP para enviar requerimientos y recibir respuestas de un recurso identificado por una URI.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.AuroraHttpClientBase.#ctor(System.Net.Http.HttpClient,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Inicializa una nueva instancia de la clase AuroraHttpClientBase.
+            </summary>
+            <param name="httpClient">Clase base para envío de requerimientos y recepción de respuestas HTTP.</param>
+            <param name="httpContextAccessor">Acceso a contextos HTTP.</param>
+        </member>
+        <member name="T:Aurora.Framework.Collections.PagedCollection`1">
+            <summary>
+            Representa una colección de registros en formato paginado.
+            </summary>
+            <typeparam name="T">Entidad de transferencia de datos.</typeparam>
+        </member>
+        <member name="P:Aurora.Framework.Collections.PagedCollection`1.Items">
+            <summary>
+            Elementos de la colección de registros de tipo de entidad de transferencia de datos.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Collections.PagedCollection`1.CurrentPage">
+            <summary>
+            Número de página actual de la colección de registros.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Collections.PagedCollection`1.TotalRecords">
+            <summary>
+            Número del total de registros
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Collections.PagedCollection`1.TotalPages">
+            <summary>
+            Número del total de páginas.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Collections.PagedCollection`1.HasItems">
+            <summary>
+            Determina si la colección contiene registros.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Collections.PagedCollection`1.ToString">
+            <summary>
+            Devuelve una cadena de texto con la información que representa al objeto actual.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Aurora.Framework.Collections.PagedViewRequest">
+            <summary>
+            Representa un requerimiento para obtener elementos de una colección en formato paginado.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Collections.PagedViewRequest.PageIndex">
+            <summary>
+            Número de página de los elementos a retornar.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Collections.PagedViewRequest.PageSize">
+            <summary>
+            Número de elementos a retornar.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Connections.SqlConnectionStringHelper">
+            <summary>
+            Representa la información de una cadena de conexión a una base de datos SQL Server.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Connections.SqlConnectionStringHelper.SqlServer">
+            <summary>
+            Nombre del servidor de bases de datos de SQL Server.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Connections.SqlConnectionStringHelper.SqlDatabase">
+            <summary>
+            Nombre de la base de datos de SQL Server.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Connections.SqlConnectionStringHelper.AuthenticationType">
+            <summary>
+            Tipo de autenticación de SQL Server.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Connections.SqlConnectionStringHelper.SqlUsername">
+            <summary>
+            Nombre de usuario para la autenticación de SQL Server.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Connections.SqlConnectionStringHelper.SqlPassword">
+            <summary>
+            Contraseña de usuario para la autenticación de SQL Server.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Connections.SqlConnectionStringHelper.ConnectionString">
+            <summary>
+            Cadena de conexión a una base de datos de SQL Server.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Connections.SqlConnectionStringHelper.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase SqlConnectionStringHelper.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Connections.SqlConnectionStringHelper.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase SqlConnectionStringHelper
+            con la cadena de conexión especificada.
+            </summary>
+            <param name="connectionString">Cadena de conexión a una base de datos de SQL Server.</param>
+        </member>
+        <member name="M:Aurora.Framework.Connections.SqlConnectionStringHelper.#ctor(System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase SqlConnectionStringHelper
+            con el nombre de servidor y nombre de base de datos especificados.
+            </summary>
+            <param name="serverName">Nombre del servidor de bases de datos.</param>
+            <param name="databaseName">Nombre de la base de datos.</param>
+        </member>
+        <member name="M:Aurora.Framework.Connections.SqlConnectionStringHelper.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase SqlConnectionStringHelper
+            con el nombre de servidor, nombre de base de datos, nombre de usuario
+            y contraseña especificados.
+            </summary>
+            <param name="serverName">Nombre del servidor de bases de datos.</param>
+            <param name="databaseName">Nombre de la base de datos.</param>
+            <param name="userName">Nombre de usuario para la autenticación de SQL.</param>
+            <param name="password">Contraseña de usuario para la autenticación de SQL.</param>
+        </member>
+        <member name="T:Aurora.Framework.Cryptography.EncryptionProvider">
+            <summary>
+            Proveedor de cifrado y descifrado seguro de datos utilizando cadenas de texto.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Cryptography.EncryptionProvider.Protect(System.String)">
+            <summary>
+            Protege el contenido de una cadena de texto y devuelve una cadena con el contenido cifrado.
+            </summary>
+            <param name="content">Contenido a ser cifrado.</param>
+        </member>
+        <member name="M:Aurora.Framework.Cryptography.EncryptionProvider.Protect(System.String,System.String@)">
+            <summary>
+            Protege el contenido de una cadena de texto y devuelve una cadena con el contenido cifrado
+            y los datos de control de la cadena cifrada.
+            </summary>
+            <param name="content">Contenido a ser cifrado.</param>
+            <param name="controlData">Datos de control para cifrar el contenido.</param>
+        </member>
+        <member name="M:Aurora.Framework.Cryptography.EncryptionProvider.Protect(System.Byte[])">
+            <summary>
+            Devuelve un arreglo de bytes con el contenido cifrado.
+            </summary>
+            <param name="rawContent">Contenido a ser cifrado.</param>
+        </member>
+        <member name="M:Aurora.Framework.Cryptography.EncryptionProvider.Unprotect(System.String)">
+            <summary>
+            Desprotege el contenido cifrado de una cadena de texto y devuelve una cadena con el contenido original descifrado.
+            </summary>
+            <param name="content">Contenido a ser descifrado.</param>
+        </member>
+        <member name="M:Aurora.Framework.Cryptography.EncryptionProvider.Unprotect(System.String,System.String)">
+            <summary>
+            Desprotege el contenido cifrado de una cadena de texto a partir de los datos de control
+            y devuelve una cadena con el contenido original descifrado.
+            </summary>
+            <param name="content">Contenido a ser descifrado.</param>
+            <param name="controlData">Datos de control para descifrar el contenido.</param>
+        </member>
+        <member name="M:Aurora.Framework.Cryptography.EncryptionProvider.Unprotect(System.Byte[])">
+            <summary>
+            Devuelve un arreglo de bytes con el contenido descifrado.
+            </summary>
+            <param name="rawContent">Contenido a ser descifrado.</param>
+        </member>
+        <member name="T:Aurora.Framework.Cryptography.SymmetricCryptography">
+            <summary>
+            Proporciona los métodos de cifrado y descifrado simétrico mediante
+            el algoritmo del estándar de cifrado avanzado (AES).
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Cryptography.SymmetricKey">
+            <summary>
+            Contiene las propiedades y métodos de la llave simétrica para cifrado y descifrado.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.AuroraDataType">
+            <summary>
+            Define las opciones de tipo de dato para configuración de atributos y parámetros.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.AuroraDataType.Boolean">
+            <summary>
+            Tipo de dato binario.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.AuroraDataType.Catalog">
+            <summary>
+            Tipo de dato catálogo.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.AuroraDataType.Integer">
+            <summary>
+            Tipo de dato entero.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.AuroraDataType.Money">
+            <summary>
+            Tipo de dato moneda.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.AuroraDataType.Numeric">
+            <summary>
+            Tipo de datos numérico o decimal.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.AuroraDataType.Text">
+            <summary>
+            Tipo de datos texto.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.BusinessActions">
+            <summary>
+            Define diferentes acciones de lógica de negocios.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.BusinessActions.AddDetail">
+            <summary>
+            Agrega un detalle de un elemento de un objeto.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.BusinessActions.RemoveDetail">
+            <summary>
+            Elimina un detalle de un elemento de un objeto.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.DateFormat">
+            <summary>
+            Define las opciones de formato de fecha para un objeto System.DateTime.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DateFormat.DayMonth">
+            <summary>
+            Formato día-mes.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DateFormat.DayMonthYear">
+            <summary>
+            Formato día-mes-año.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DateFormat.MonthDayYear">
+            <summary>
+            Formato mes-día-año.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DateFormat.MonthYear">
+            <summary>
+            Formato mes-año.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DateFormat.YearDayMonth">
+            <summary>
+            Formato año-día-mes.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DateFormat.YearMonth">
+            <summary>
+            Formato año-mes.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DateFormat.YearMonthDay">
+            <summary>
+            Formato año-mes-día.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.DecimalsQuantity">
+            <summary>
+            Define las opciones de formato de números decimales para un objeto System.Decimal.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DecimalsQuantity.One">
+            <summary>
+            Un decimal.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DecimalsQuantity.Two">
+            <summary>
+            Dos decimales.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DecimalsQuantity.Four">
+            <summary>
+            Cuatro decimales.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DecimalsQuantity.Six">
+            <summary>
+            Seis decimales.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.DecimalsQuantity.Eigth">
+            <summary>
+            Ocho decimales.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.SqlAuthenticationType">
+            <summary>
+            Tipo de autenticación a una base de datos SQL Server.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.SqlAuthenticationType.SqlAuthentication">
+            <summary>
+            Autenticación de tipo SQL.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.SqlAuthenticationType.WindowsAuthentication">
+            <summary>
+            Autenticación de tipo Windows.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.TimeFormat">
+            <summary>
+            Define las opciones de formato de hora para un objeto System.TimeSpan.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.TimeFormat.HourMinute">
+            <summary>
+            Formato hora-minuto.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.TimeFormat.HourMinuteSecond">
+            <summary>
+            Formato hora-minuto-segundo.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.TimeFormat.HourMinuteMillisecond">
+            <summary>
+            Formato hora-minuto-milisegundos.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Exceptions.BusinessException">
+            <summary>
+            Representa los errores de lógica de negocios que se producen en una aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Exceptions.BusinessException.ErrorCategory">
+            <summary>
+            Categoría o tipo de la excepción.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Exceptions.BusinessException.ErrorKeyName">
+            <summary>
+            Código identificativo de la excepción.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Exceptions.BusinessException.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase BusinessException.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Exceptions.BusinessException.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase BusinessException con el mensaje de error especificado.
+            </summary>
+            <param name="message">Mensaje de error que explica la razón de la excepción.</param>
+            <param name="category">Categoría o tipo de la excepción.</param>
+            <param name="keyName">Código identificativo de la excepción.</param>
+        </member>
+        <member name="M:Aurora.Framework.Exceptions.BusinessException.#ctor(System.String,System.String,System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase BusinessException con el mensaje de error especificado
+            y una referencia a la excepción interna que representa la causa de la excepción.
+            </summary>
+            <param name="message">Mensaje de error que explica la razón de la excepción.</param>
+            <param name="category">Categoría o tipo de la excepción.</param>
+            <param name="keyName">Código identificativo de la excepción.</param>
+            <param name="innerException">Excepción que ha provocado que se produzca esta excepción.</param>
+        </member>
+        <member name="T:Aurora.Framework.Exceptions.PlatformException">
+            <summary>
+            Representa los errores de plataforma Aurora que se producen en una aplicación.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Exceptions.PlatformException.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase PlatformException.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Exceptions.PlatformException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase PlatformException con el mensaje de error especificado.
+            </summary>
+            <param name="message">Mensaje de error que explica la razón de la excepción.</param>
+        </member>
+        <member name="M:Aurora.Framework.Exceptions.PlatformException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase PlatformException con el mensaje de error especificado
+            y una referencia a la excepción interna que representa la causa de la excepción.
+            </summary>
+            <param name="message">Mensaje de error que explica la razón de la excepción.</param>
+            <param name="innerException">Excepción que ha provocado que se produzca esta excepción.</param>
+        </member>
+        <member name="T:Aurora.Framework.DateTimeExtensions">
+            <summary>
+            Clase con métodos de extensión para objetos de tipo DateTime.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.DateTimeExtensions.GetWeekOfYear(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Devuelve el número de semana del año del objeto System.DateTime actual.
+            </summary>
+            <param name="date">Objeto System.DateTime del cual se obtendrá el número de semana.</param>
+            <param name="firstDayOfWeek">Valor de System.DayOfWeek que representa el primer día de la semana.</param>
+        </member>
+        <member name="M:Aurora.Framework.DateTimeExtensions.IsIntoInterval(System.DateTime,System.DateTime,System.DateTime)">
+            <summary>
+            Determina si el valor del objeto System.DateTime se encuentra dentro de un intervalo de fechas.
+            </summary>
+            <param name="date">Objeto System.DateTime a evaluar.</param>
+            <param name="beginDate">Fecha inicial del intervalo a comparar.</param>
+            <param name="endDate">Fecha final del intervalo a comparar.</param>
+        </member>
+        <member name="M:Aurora.Framework.DateTimeExtensions.IsIntoTimeInterval(System.DateTime,System.DateTime,System.DateTime)">
+            <summary>
+            Determina si el valor del objeto System.DateTime se encuentra dentro de un intervalo de fechas con hora.
+            </summary>
+            <param name="date">Objeto System.DateTime a evaluar.</param>
+            <param name="beginDate">Fecha inicial del intervalo a comparar.</param>
+            <param name="endDate">Fecha final del intervalo a comparar.</param>
+        </member>
+        <member name="M:Aurora.Framework.DateTimeExtensions.ToInt32(System.DateTime,Aurora.Framework.DateFormat)">
+            <summary>
+            Convierte el valor del objeto System.DateTime actual en un entero
+            de 32 bits equivalente utilizando el formato especificado.
+            </summary>
+            <param name="date">Objeto System.DateTime que se convertirá al formato especificado.</param>
+            <param name="format">Formato de fecha de tipo entero.</param>
+        </member>
+        <member name="M:Aurora.Framework.DateTimeExtensions.ToString(System.DateTime,Aurora.Framework.DateFormat)">
+            <summary>
+            Convierte el valor del objeto System.DateTime actual en su representación
+            de cadena equivalente utilizando el formato especificado.
+            </summary>
+            <param name="date">Objeto System.DateTime que se convertirá al formato especificado.</param>
+            <param name="format">Formato de fecha en el que se devolverá la cadena.</param>
+        </member>
+        <member name="M:Aurora.Framework.DateTimeExtensions.ToString(System.DateTime,Aurora.Framework.DateFormat,System.String)">
+            <summary>
+            Convierte el valor del objeto System.DateTime actual en su representación
+            de cadena equivalente utilizando el formato especificado.
+            </summary>
+            <param name="date">Objeto System.DateTime que se convertirá al formato especificado.</param>
+            <param name="format">Formato de fecha en el que se devolverá la cadena.</param>
+            <param name="separator">Cadena de separación de los valores de la fecha a devolver.</param>
+        </member>
+        <member name="M:Aurora.Framework.DateTimeExtensions.ToString(System.Nullable{System.DateTime},Aurora.Framework.DateFormat)">
+            <summary>
+            Convierte el valor del objeto System.DateTime actual en su representación
+            de cadena equivalente utilizando el formato especificado.
+            Si el objeto no tiene valor se devolverá una cadena nula.
+            </summary>
+            <param name="date">Objeto System.DateTime que se convertirá al formato especificado.</param>
+            <param name="format">Formato de fecha de tipo entero.</param>
+        </member>
+        <member name="M:Aurora.Framework.DateTimeExtensions.ToString(System.Nullable{System.DateTime},Aurora.Framework.DateFormat,System.String)">
+            <summary>
+            Convierte el valor del objeto System.DateTime actual en su representación
+            de cadena equivalente utilizando el formato especificado.
+            Si el objeto no tiene valor se devolverá una cadena nula.
+            </summary>
+            <param name="date">Objeto System.DateTime que se convertirá al formato especificado.</param>
+            <param name="format">Formato de fecha de tipo entero.</param>
+            <param name="separator">Cadena de separación de los valores de la fecha a devolver.</param>
+        </member>
+        <member name="T:Aurora.Framework.DecimalExtensions">
+            <summary>
+            Clase con métodos de extensión para objetos de tipo Decimal.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.DecimalExtensions.IsIntoInterval(System.Decimal,System.Decimal,System.Decimal)">
+            <summary>
+            Indica si el valor de la instancia se encuentra dentro de un rango de valores.
+            </summary>
+            <param name="value">Instancia que se validará un rango de valores.</param>
+            <param name="minValue">Valor mínimo de validación del rango.</param>
+            <param name="maxValue">Valor máximo de validación del rango.</param>
+            <exception cref="T:Aurora.Framework.Exceptions.PlatformException">Se devuelve una excepción en caso de que
+            el valor máximo sea inferior al valor mínimo del rango a comparar.</exception>
+        </member>
+        <member name="M:Aurora.Framework.DecimalExtensions.Round(System.Decimal,Aurora.Framework.DecimalsQuantity)">
+            <summary>
+            Redondea un valor decimal a un número específico de dígitos fraccionarios.
+            </summary>
+            <param name="value">Valor decimal que se va a redondear.</param>
+            <param name="decimals">Cantidad de dígitos fraccionarios. El valor por defecto es dos.</param>
+        </member>
+        <member name="M:Aurora.Framework.DecimalExtensions.ToCurrency(System.Decimal,Aurora.Framework.DecimalsQuantity)">
+            <summary>
+            Convierte un valor decimal a una cadena de texto en formato de moneda.
+            </summary>
+            <param name="value">Valor decimal que se va a convertir a cadena de texto.</param>
+            <param name="decimals">Cantidad de dígitos fraccionarios.</param>
+        </member>
+        <member name="T:Aurora.Framework.IntegerExtensions">
+            <summary>
+            Clase con métodos de extensión para objetos de tipo Integer.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.IntegerExtensions.IsIntoInterval(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Indica si el valor de la instancia se encuentra dentro de un rango de valores.
+            </summary>
+            <param name="value">Instancia que se validará un rango de valores.</param>
+            <param name="minValue">Valor mínimo de validación del rango.</param>
+            <param name="maxValue">Valor máximo de validación del rango.</param>
+            <exception cref="T:Aurora.Framework.Exceptions.PlatformException">Se devuelve una excepción en caso de que
+            el valor máximo sea inferior al valor mínimo del rango a comparar.</exception>
+        </member>
+        <member name="M:Aurora.Framework.IntegerExtensions.PadZero(System.Int32,System.Int32)">
+            <summary>
+            Devuelve una nueva cadena que alinea a la derecha los caracteres de la instancia
+            e inserta a la izquierda el carácter '0' hasta alcanzar la longitud especificada.
+            </summary>
+            <param name="value">Instancia a la que se agregarán caracteres.</param>
+            <param name="length">Número de caracteres de la cadena resultante.</param>
+        </member>
+        <member name="T:Aurora.Framework.StringExtensions">
+            <summary>
+            Clase con métodos de extensión para objetos de tipo String.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.StringExtensions.GetLastSplit(System.String,System.String)">
+            <summary>
+            Obtiene el último elemento de una matriz de cadenas del objeto System.String actual
+            delimitadas por un texto separador.
+            </summary>
+            <param name="value">Instancia de la que se obtendrá el último elemento de la matriz.</param>
+            <param name="separator">Texto separador que delimita las subcadenas de la cadena de texto principal.</param>
+        </member>
+        <member name="M:Aurora.Framework.StringExtensions.PadZero(System.String,System.Int32)">
+            <summary>
+            Devuelve una nueva cadena que alinea a la derecha los caracteres de la instancia
+            e inserta a la izquierda el carácter '0' hasta alcanzar la longitud especificada.
+            </summary>
+            <param name="value">Instancia a la que se agregarán caracteres.</param>
+            <param name="length">Número de caracteres de la cadena resultante.</param>
+        </member>
+        <member name="M:Aurora.Framework.StringExtensions.ToBoolean(System.String)">
+            <summary>
+            Convierte el valor del objeto System.String actual en un objeto System.Boolean.
+            </summary>
+            <param name="value">Cadena que se convertirá a System.Boolean.</param>
+            <returns>True si la cadena es igual a "S", "SI", "V", "VERDADERO", "Y", "YES", "T", "TRUE", "1".
+            False si la cadena es igual a "N", "NO", "F", "FALSE", "F", "FALSE", "0".
+            Nulo en cualquier otro caso</returns>
+        </member>
+        <member name="M:Aurora.Framework.StringExtensions.ToDateTime(System.String,System.String)">
+            <summary>
+            Convierte el valor del objeto System.String actual en un objeto System.DateTime.
+            </summary>
+            <param name="value">Cadena que se convertirá a System.DateTime.</param>
+            <param name="format">Formato requerido para la conversión de la cadena.</param>
+            <returns>Un objeto System.DateTime en caso de que se pueda realizar la conversión
+            en el formato requerido. En caso contrario se devuelve nulo.</returns>
+        </member>
+        <member name="T:Aurora.Framework.TimeSpanExtensions">
+            <summary>
+            Clase con métodos de extensión para objetos de tipo TimeSpan.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.TimeSpanExtensions.IsIntoInterval(System.TimeSpan,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Determina si el valor del objeto System.TimeSpan se encuentra dentro de un intervalo de horas.
+            </summary>
+            <param name="span">Objeto System.TimeSpan a evaluar.</param>
+            <param name="beginSpan">Hora inicial del intervalo a comparar.</param>
+            <param name="endSpan">Hora final del intervalo a comparar.</param>
+        </member>
+        <member name="M:Aurora.Framework.TimeSpanExtensions.ToInt32(System.TimeSpan,Aurora.Framework.TimeFormat)">
+            <summary>
+            Convierte el valor del objeto System.TimeSpan actual en un entero
+            de 32 bits equivalente utilizando el formato especificado.
+            </summary>
+            <param name="span">Objeto System.TimeSpan que se convertirá al formato especificado.</param>
+            <param name="format">Formato de tiempo.</param>
+        </member>
+        <member name="M:Aurora.Framework.TimeSpanExtensions.ToString(System.TimeSpan,Aurora.Framework.TimeFormat)">
+            <summary>
+            Convierte el valor del objeto System.TimeSpan actual en su representación
+            de cadena equivalente utilizando el formato especificado.
+            </summary>
+            <param name="span">Objeto System.TimeSpan que se convertirá al formato especificado.</param>
+            <param name="format">Formato de tiempo.</param>
+        </member>
+        <member name="M:Aurora.Framework.TimeSpanExtensions.ToString(System.TimeSpan,Aurora.Framework.TimeFormat,System.String)">
+            <summary>
+            Convierte el valor del objeto System.TimeSpan actual en su representación
+            de cadena equivalente utilizando el formato especificado.
+            </summary>
+            <param name="span">Objeto System.TimeSpan que se convertirá al formato especificado.</param>
+            <param name="format">Formato de tiempo.</param>
+            <param name="separator">Cadena de separación de los valores de la hora a devolver.</param>
+        </member>
+        <member name="T:Aurora.Framework.Proxies.AuroraProxy">
+            <summary>
+            Implementación de procesos de comunicación a servicios Aurora.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.AuroraProxy.#ctor(System.Net.Http.HttpClient,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Inicializa una nueva instancia de la clase AuroraProxy.
+            </summary>
+            <param name="httpClient">Clase base para envío de requerimientos HTTP y recepción de respuestas HTTP.</param>
+            <param name="httpContextAccessor">Acceso a contextos HTTP.</param>
+        </member>
+        <member name="T:Aurora.Framework.Proxies.IAuroraProxy">
+            <summary>
+            Interface de comunicación a servicios Aurora.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.IAuroraProxy.GetProxyRequestUri(System.String,System.String)">
+            <summary>
+            Obtiene la Uri del servicio a invocar en el formato definido por el proxy de Aurora.
+            </summary>
+            <param name="serverName">Nombre del servidor proxy, por ejemplo www.contoso.com.</param>
+            <param name="apiRoute">Ruta del API donde se enviarán los requerimientos.</param>
+            <returns>Uri del servicio a invocar en el formato definido por el proxy de Aurora,
+            por ejemplo http://<paramref name="serverName"/>/<paramref name="apiRoute"/>.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.IAuroraProxy.PerformRequest(System.String,Aurora.Framework.Proxies.RestOperationType)">
+            <summary>
+            Ejecuta la invocación de un servicio sin esperar una respuesta del mismo.
+            </summary>
+            <param name="requestUri">Uri del servicio a invocar.</param>
+            <param name="operationType">Tipo de operación REST del servicio a invocar.</param>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.IAuroraProxy.PerformRequest``1(System.String,Aurora.Framework.Proxies.RestOperationType,``0)">
+            <summary>
+            Ejecuta la invocación de un servicio con un conjunto de parámetros de tipo <typeparamref name="TParams"/>
+            sin esperar una respuesta del mismo.
+            </summary>
+            <typeparam name="TParams">El tipo de objeto que contiene los parámetros del servicio a invocar.</typeparam>
+            <param name="requestUri">Uri del servicio a invocar.</param>
+            <param name="operationType">Tipo de operación REST del servicio a invocar.</param>
+            <param name="parameters">Parámetros del servicio invocado.</param>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.IAuroraProxy.PerformRequest``1(System.String,Aurora.Framework.Proxies.RestOperationType)">
+            <summary>
+            Ejecuta la invocación de un servicio y devuelve la respuesta del servicio en una instancia de tipo <typeparamref name="T"/> especificada.
+            </summary>
+            <typeparam name="T">El tipo de objeto que se requiere deserializar en la respuesta del servicio.</typeparam>
+            <param name="requestUri">Uri del servicio a invocar.</param>
+            <param name="operationType">Tipo de operación REST del servicio a invocar.</param>
+            <returns>Instancia de tipo <typeparamref name="T"/> especificada</returns>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.IAuroraProxy.PerformRequest``2(System.String,Aurora.Framework.Proxies.RestOperationType,``1)">
+            <summary>
+            Ejecuta la invocación de un servicio con un conjunto de parámetros de tipo <typeparamref name="TParams"/>
+            y devuelve la respuesta del servicio en una instancia de tipo <typeparamref name="T"/> especificada.
+            </summary>
+            <typeparam name="T">El tipo de objeto que se requiere deserializar en la respuesta del servicio.</typeparam>
+            <typeparam name="TParams">El tipo de objeto que contiene los parámetros del servicio a invocar.</typeparam>
+            <param name="requestUri">Uri del servicio a invocar.</param>
+            <param name="operationType">Tipo de operación REST que se ejecutará.</param>
+            <param name="parameters">Parámetros del servicio invocado.</param>
+            <returns>Instancia de tipo <typeparamref name="T"/> especificada</returns>
+        </member>
+        <member name="T:Aurora.Framework.Proxies.RestOperationType">
+            <summary>
+            Tipo de operación REST de ejecución de un servicio.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.Proxies.RestOperationType.Delete">
+            <summary>
+            Identifica una acción que soporta el método HTTP DELETE.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.Proxies.RestOperationType.Get">
+            <summary>
+            Identifica una acción que soporta el método HTTP GET.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.Proxies.RestOperationType.Patch">
+            <summary>
+            Identifica una acción que soporta el método HTTP PATCH.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.Proxies.RestOperationType.Post">
+            <summary>
+            Identifica una acción que soporta el método HTTP POST.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.Proxies.RestOperationType.Put">
+            <summary>
+            Identifica una acción que soporta el método HTTP PUT.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Proxies.UriRequestBuilder">
+            <summary>
+            Clase que construye la codificación de parámetros para la invocación de un servicio en formato Uri.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Proxies.UriRequestBuilder.ParametersUri">
+            <summary>
+            Formato Uri de parámetros para la invocación de un servicio.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.UriRequestBuilder.GetBuilder">
+            <summary>
+            Obtiene una instancia de la clase <c>UriRequestBuilder</c>.
+            </summary>
+            <returns>Devuelve una instancia de la clase <c>UriRequestBuilder</c>.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.UriRequestBuilder.GetBuilder(System.String)">
+            <summary>
+            Obtiene una instancia de la clase <c>UriRequestBuilder</c>.
+            </summary>
+            <param name="parameters">Parámetros codificados en formato Uri.</param>
+            <returns>Devuelve una instancia de la clase <c>UriRequestBuilder</c>.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.UriRequestBuilder.AddBoolean(System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Agrega un parámetro de tipo bool.
+            </summary>
+            <param name="name">Nombre del parámetro.</param>
+            <param name="value">Valor del parámetro de tipo bool. Si este valor es nulo, el parámetro se ignora.</param>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.UriRequestBuilder.AddInteger(System.String,System.Nullable{System.Int32})">
+            <summary>
+            Agrega un parámetro de tipo entero.
+            </summary>
+            <param name="name">Nombre del parámetro.</param>
+            <param name="value">Valor del parámetro de tipo entero. Si este valor es nulo, el parámetro se ignora.</param>
+        </member>
+        <member name="M:Aurora.Framework.Proxies.UriRequestBuilder.AddString(System.String,System.String)">
+            <summary>
+            Agrega un parámetro de tipo texto.
+            </summary>
+            <param name="name">Nombre del parámetro.</param>
+            <param name="value">Valor del parámetro de tipo texto. Si este valor es nulo, el parámetro se ignora.</param>
+        </member>
+        <member name="T:Aurora.Framework.ProxyConfiguration">
+            <summary>
+            Clase con métodos de extensión para la configuración de invocación de requerimientos HTTP del servicio.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.ProxyConfiguration.AddProxyServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Agrega la configuración de invocación de requerimientos HTTP del servicio para una interface IServiceCollection especificada.
+            </summary>
+            <param name="services">Especifa la interface Microsoft.Extensions.DependencyInjection.IServiceCollection
+            donde se agregará la configuración de invocación de requerimientos HTTP del servicio.</param>
+        </member>
+        <member name="T:Aurora.Framework.Sessions.AuroraSession">
+            <summary>
+            Implementación de procesos de administración de sesiones de usuario de Aurora.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Sessions.AuroraSession.#ctor(System.Net.Http.HttpClient,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Inicializa una nueva instancia de la clase AuroraSession.
+            </summary>
+            <param name="httpClient">Clase base para envío de requerimientos HTTP y recepción de respuestas HTTP.</param>
+            <param name="httpContextAccessor">Acceso a contextos HTTP.</param>
+        </member>
+        <member name="T:Aurora.Framework.Sessions.AuroraSessionInfo">
+            <summary>
+            Representa una clase que contiene información de sesión de un usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Sessions.AuroraSessionInfo.UserId">
+            <summary>
+            Identificador único del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Sessions.AuroraSessionInfo.UserLoginName">
+            <summary>
+            Nombre de inicio de sesión del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Sessions.AuroraSessionInfo.UserDescription">
+            <summary>
+            Nombre descriptivo del usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Sessions.IAuroraSession">
+            <summary>
+            Interface de administración de sesiones de usuario de Aurora.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Sessions.IAuroraSession.GetSessionInfo">
+            <summary>
+            Obtiene la información de sesión de un usuario en caso de que se haya iniciado sesión.
+            </summary>
+            <returns>Información de sesión de un usuario.</returns>
+        </member>
+        <member name="T:Aurora.Framework.Settings.AuroraAttributeSetting">
+            <summary>
+            Clase base para una entidad de configuración de atributos de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeSetting.DataType">
+            <summary>
+            Tipo de dato AuroraDataType de la configuración del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeSetting.BooleanSetting">
+            <summary>
+            Configuración de tipo Boolean de la configuración del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeSetting.CatalogSetting">
+            <summary>
+            Configuración de tipo Catalog de la configuración del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeSetting.IntegerSetting">
+            <summary>
+            Configuración de tipo Integer de la configuración del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeSetting.MoneySetting">
+            <summary>
+            Configuración de tipo Money de la configuración del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeSetting.NumericSetting">
+            <summary>
+            Configuración de tipo Numeric de la configuración del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeSetting.TextSetting">
+            <summary>
+            Configuración de tipo Text de la configuración del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.AuroraAttributeSetting.GetConfigurationSetting">
+            <summary>
+            Genera el valor en formato XML de la configuración del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Settings.AuroraAttributeValue">
+            <summary>
+            Clase base para una entidad de valores de atributos de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeValue.BooleanValue">
+            <summary>
+            Configuración de tipo Boolean del valor del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeValue.CatalogValue">
+            <summary>
+            Configuración de tipo Catalog del valor del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeValue.IntegerValue">
+            <summary>
+            Configuración de tipo Integer del valor del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeValue.MoneyValue">
+            <summary>
+            Configuración de tipo Money del valor del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeValue.NumericValue">
+            <summary>
+            Configuración de tipo Numeric del valor del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.AuroraAttributeValue.TextValue">
+            <summary>
+            Configuración de tipo Text del valor del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.AuroraAttributeValue.GetConfigurationSetting(Aurora.Framework.Settings.AuroraAttributeSetting)">
+            <summary>
+            Genera el valor en formato XML del valor del atributo de parametrización.
+            </summary>
+            <param name="setting"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Aurora.Framework.Settings.BooleanAttributeSetting">
+            <summary>
+            Representa una clase que contiene la información de configuración del atributo de parametrización tipo Boolean.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.BooleanAttributeSetting.DefaultValue">
+            <summary>
+            Valor por defecto.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.BooleanAttributeSetting.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase BooleanAttributeSetting.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.BooleanAttributeSetting.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase BooleanAttributeSetting con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML de la configuración del atributo de parametrización.</param>
+        </member>
+        <member name="T:Aurora.Framework.Settings.BooleanAttributeValue">
+            <summary>
+            Representa una clase que contiene la información de valores del atributo de parametrización tipo Boolean.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.BooleanAttributeValue.Value">
+            <summary>
+            Valor boolean del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.BooleanAttributeValue.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase BooleanAttributeValue.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.BooleanAttributeValue.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase BooleanAttributeValue con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML del valor del atributo de parametrización.</param>
+        </member>
+        <member name="M:Aurora.Framework.Settings.BooleanAttributeValue.GetValueWrapper">
+            <summary>
+            Obtiene el valor en formato XML del atributo de parametrización tipo Boolean.
+            </summary>
+            <returns>Valor en formato XML del atributo de parametrización tipo Boolean.</returns>
+        </member>
+        <member name="T:Aurora.Framework.Settings.CatalogAttributeSetting">
+            <summary>
+            Representa una clase que contiene la información de configuración del atributo de parametrización tipo Catalog.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.CatalogAttributeSetting.Code">
+            <summary>
+            Código del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.CatalogAttributeSetting.AllowMultipleValues">
+            <summary>
+            Indica si el atributo de parametrización permite la selección de varios valores.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.CatalogAttributeSetting.MaxSelectedItems">
+            <summary>
+            Número máximo de valores seleccionables en caso de que la propiedad AllowMultipleValues sea True.
+            Si el valor es cero (0) no existe un límite.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.CatalogAttributeSetting.DefaultItemCodes">
+            <summary>
+            Códigos de elementos seleccionados por defecto.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.CatalogAttributeSetting.ShowInactiveItems">
+            <summary>
+            Indica si se presentan los elementos del catálogo inactivos.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.CatalogAttributeSetting.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase CatalogAttributeSetting.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.CatalogAttributeSetting.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase CatalogAttributeSetting con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML de la configuración del atributo de parametrización.</param>
+        </member>
+        <member name="T:Aurora.Framework.Settings.CatalogAttributeValue">
+            <summary>
+            Representa una clase que contiene la información de valores del atributo de parametrización tipo Catalog.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.CatalogAttributeValue.ItemCodes">
+            <summary>
+            Códigos de elementos seleccionados del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.CatalogAttributeValue.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase CatalogAttributeValue.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.CatalogAttributeValue.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase CatalogAttributeValue con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML del valor del atributo de parametrización.</param>
+        </member>
+        <member name="M:Aurora.Framework.Settings.CatalogAttributeValue.GetValueWrapper(Aurora.Framework.Settings.CatalogAttributeSetting)">
+            <summary>
+            Obtiene el valor en formato XML del atributo de parametrización tipo Catalog.
+            </summary>
+            <param name="setting">Clase de configuración de atributo de parametrización tipo Catalog.</param>
+            <returns>Valor en formato XML del atributo de parametrización tipo Catalog.</returns>
+        </member>
+        <member name="T:Aurora.Framework.Settings.IntegerAttributeSetting">
+            <summary>
+            Representa una clase que contiene la información de configuración del atributo de parametrización tipo Integer.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.IntegerAttributeSetting.MinValue">
+            <summary>
+            Valor mínimo permitido.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.IntegerAttributeSetting.MaxValue">
+            <summary>
+            Valor máximo permitido.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.IntegerAttributeSetting.DefaultValue">
+            <summary>
+            Valor por defecto.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.IntegerAttributeSetting.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase IntegerAttributeSetting.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.IntegerAttributeSetting.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase IntegerAttributeSetting con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML de la configuración del atributo de parametrización.</param>
+        </member>
+        <member name="T:Aurora.Framework.Settings.IntegerAttributeValue">
+            <summary>
+            Representa una clase que contiene la información de valores del atributo de parametrización tipo Integer.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.IntegerAttributeValue.Value">
+            <summary>
+            Valor entero del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.IntegerAttributeValue.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase IntegerAttributeValue.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.IntegerAttributeValue.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase IntegerAttributeValue con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML del valor del atributo de parametrización.</param>
+        </member>
+        <member name="M:Aurora.Framework.Settings.IntegerAttributeValue.GetValueWrapper(Aurora.Framework.Settings.IntegerAttributeSetting)">
+            <summary>
+            Obtiene el valor en formato XML del atributo de parametrización tipo Integer.
+            </summary>
+            <param name="setting">Clase de configuración de atributo de parametrización tipo Integer.</param>
+            <returns>Valor en formato XML del atributo de parametrización tipo Integer.</returns>
+        </member>
+        <member name="T:Aurora.Framework.Settings.MoneyAttributeSetting">
+            <summary>
+            Representa una clase que contiene la información de configuración del atributo de parametrización tipo Money.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.MoneyAttributeSetting.MinValue">
+            <summary>
+            Valor mínimo permitido.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.MoneyAttributeSetting.MaxValue">
+            <summary>
+            Valor máximo permitido.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.MoneyAttributeSetting.DefaultValue">
+            <summary>
+            Valor por defecto.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.MoneyAttributeSetting.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase MoneyAttributeSetting.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.MoneyAttributeSetting.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase MoneyAttributeSetting con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML de la configuración del atributo de parametrización.</param>
+        </member>
+        <member name="T:Aurora.Framework.Settings.MoneyAttributeValue">
+            <summary>
+            Representa una clase que contiene la información de valores del atributo de parametrización tipo Money.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.MoneyAttributeValue.Value">
+            <summary>
+            Valor monetario del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.MoneyAttributeValue.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase MoneyAttributeValue.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.MoneyAttributeValue.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase MoneyAttributeValue con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML del valor del atributo de parametrización.</param>
+        </member>
+        <member name="M:Aurora.Framework.Settings.MoneyAttributeValue.GetValueWrapper(Aurora.Framework.Settings.MoneyAttributeSetting)">
+            <summary>
+            Obtiene el valor en formato XML del atributo de parametrización tipo Money.
+            </summary>
+            <param name="setting">Clase de configuración de atributo de parametrización tipo Money.</param>
+            <returns>Valor en formato XML del atributo de parametrización tipo Money.</returns>
+        </member>
+        <member name="T:Aurora.Framework.Settings.NumericAttributeSetting">
+            <summary>
+            Representa una clase que contiene la información de configuración del atributo de parametrización tipo Numeric.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.NumericAttributeSetting.MinValue">
+            <summary>
+            Valor mínimo permitido.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.NumericAttributeSetting.MaxValue">
+            <summary>
+            Valor máximo permitido.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.NumericAttributeSetting.DefaultValue">
+            <summary>
+            Valor por defecto.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.NumericAttributeSetting.DecimalsQuantity">
+            <summary>
+            Cantidad de decimales que acepta el valor.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.NumericAttributeSetting.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase NumericAttributeSetting.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.NumericAttributeSetting.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase NumericAttributeSetting con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML de la configuración del atributo de parametrización.</param>
+        </member>
+        <member name="T:Aurora.Framework.Settings.NumericAttributeValue">
+            <summary>
+            Representa una clase que contiene la información de valores del atributo de parametrización tipo Numeric.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.NumericAttributeValue.Value">
+            <summary>
+            Valor decimal del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.NumericAttributeValue.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase NumericAttributeValue.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.NumericAttributeValue.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase NumericAttributeValue con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML del valor del atributo de parametrización.</param>
+        </member>
+        <member name="M:Aurora.Framework.Settings.NumericAttributeValue.GetValueWrapper(Aurora.Framework.Settings.NumericAttributeSetting)">
+            <summary>
+            Obtiene el valor en formato XML del atributo de parametrización tipo Numeric.
+            </summary>
+            <param name="setting">Clase de configuración de atributo de parametrización tipo Numeric.</param>
+            <returns>Valor en formato XML del atributo de parametrización tipo Numeric.</returns>
+        </member>
+        <member name="T:Aurora.Framework.Settings.TextAttributeSetting">
+            <summary>
+            Representa una clase que contiene la información de configuración del atributo de parametrización tipo Text.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.TextAttributeSetting.MinLength">
+            <summary>
+            Longitud mínima del texto.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.TextAttributeSetting.MaxLength">
+            <summary>
+            Longitud máxima del texto.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.TextAttributeSetting.DefaultValue">
+            <summary>
+            Valor por defecto. Puede ser nulo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.TextAttributeSetting.Pattern">
+            <summary>
+            Patrón Regex del texto. Puede ser nulo.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.TextAttributeSetting.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase TextAttributeSetting.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.TextAttributeSetting.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase TextAttributeSetting con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML de la configuración del atributo de parametrización.</param>
+        </member>
+        <member name="T:Aurora.Framework.Settings.TextAttributeValue">
+            <summary>
+            Representa una clase que contiene la información de valores del atributo de parametrización tipo Text.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Settings.TextAttributeValue.Value">
+            <summary>
+            Valor texto del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.TextAttributeValue.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase TextAttributeValue.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Settings.TextAttributeValue.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase TextAttributeValue con el valor
+            en formato XML de la configuración del atributo de parametrización.
+            </summary>
+            <param name="xmlConfiguration">Valor en formato XML del valor del atributo de parametrización.</param>
+        </member>
+        <member name="M:Aurora.Framework.Settings.TextAttributeValue.GetValueWrapper(Aurora.Framework.Settings.TextAttributeSetting)">
+            <summary>
+            Obtiene el valor en formato XML del atributo de parametrización tipo Text.
+            </summary>
+            <param name="setting">Clase de configuración de atributo de parametrización tipo Text.</param>
+            <returns>Valor en formato XML del atributo de parametrización tipo Text.</returns>
+        </member>
+        <member name="T:Aurora.Framework.CommonUtils">
+            <summary>
+            Clase que contiene métodos de utilidades para uso de aplicaciones.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.CommonUtils.GetBoolean(System.Nullable{System.Boolean})">
+            <summary>
+            Devuelve el valor del booleano nulo en un valor booleano.
+            </summary>
+            <param name="value">Valor booleano que se va a convertir.</param>
+        </member>
+        <member name="M:Aurora.Framework.CommonUtils.GetInt16(System.Nullable{System.Int16})">
+            <summary>
+            Devuelve el valor del entero nulo en un entero de 16 bits.
+            </summary>
+            <param name="value">Entero de 16 bits que se va a convertir.</param>
+        </member>
+        <member name="M:Aurora.Framework.CommonUtils.GetInt32(System.Nullable{System.Int32})">
+            <summary>
+            Devuelve el valor del entero nulo en un entero de 32 bits.
+            </summary>
+            <param name="value">Entero de 32 bits que se va a convertir.</param>
+        </member>
+        <member name="M:Aurora.Framework.CommonUtils.GetInt64(System.Nullable{System.Int64})">
+            <summary>
+            Devuelve el valor del entero nulo en un entero de 64 bits.
+            </summary>
+            <param name="value">Entero de 64 bits que se va a convertir.</param>
+        </member>
+        <member name="M:Aurora.Framework.CommonUtils.GetAssemblyDirectory(System.Reflection.Assembly)">
+            <summary>
+            Devuelve la ruta completa del directorio donde se encuentra el ensamblado indicado.
+            </summary>
+            <param name="assembly">Ensamblado del cual se quiere obtener la ruta completa del directorio.</param>
+        </member>
+        <member name="M:Aurora.Framework.CommonUtils.GetLocalIpAddress">
+            <summary>
+            Obtiene la dirección IP versión 4 del equipo local.
+            </summary>
+        </member>
+    </members>
+</doc>
