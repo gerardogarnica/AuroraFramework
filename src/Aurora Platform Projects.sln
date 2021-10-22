@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Framework", "1. Framework", "{64C4508E-1039-4B0B-A0E3-62C97865BA04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Clients", "2. Clients", "{85C48B1F-44BF-4A80-BD80-0A28E4BD8DA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Gateways", "3. Gateways", "{187D297E-6145-466B-A83F-ECB27562E1F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Services", "4. Services", "{813CC20A-EC6B-471C-8262-B434F73AEB7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1. Identity Services", "4.1. Identity Services", "{FA7FBEB9-6484-46EE-BE5C-981D86E9ECED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2. Platform Services", "4.2. Platform Services", "{A3C387AD-50A7-4C3C-88FC-D5BE73FBA4E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3. Common Services", "4.3. Common Services", "{CDC08281-B820-4370-ABBD-71AD35B93EA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {188DFC42-24F9-48C8-86D3-88AD5EFD2284}
+	EndGlobalSection
+EndGlobal
