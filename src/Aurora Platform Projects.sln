@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3. Common Services", "4.3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Framework.Common", "Framework\Aurora.Framework.Common\Aurora.Framework.Common.csproj", "{4B140073-554A-448A-977F-7DF57F9B910E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Framework.Logic", "Framework\Aurora.Framework.Logic\Aurora.Framework.Logic.csproj", "{BE68AE20-36E6-47D9-BCA5-4064CE14AE79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{4B140073-554A-448A-977F-7DF57F9B910E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B140073-554A-448A-977F-7DF57F9B910E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B140073-554A-448A-977F-7DF57F9B910E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE68AE20-36E6-47D9-BCA5-4064CE14AE79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE68AE20-36E6-47D9-BCA5-4064CE14AE79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE68AE20-36E6-47D9-BCA5-4064CE14AE79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE68AE20-36E6-47D9-BCA5-4064CE14AE79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +44,7 @@ Global
 		{A3C387AD-50A7-4C3C-88FC-D5BE73FBA4E7} = {813CC20A-EC6B-471C-8262-B434F73AEB7B}
 		{CDC08281-B820-4370-ABBD-71AD35B93EA1} = {813CC20A-EC6B-471C-8262-B434F73AEB7B}
 		{4B140073-554A-448A-977F-7DF57F9B910E} = {64C4508E-1039-4B0B-A0E3-62C97865BA04}
+		{BE68AE20-36E6-47D9-BCA5-4064CE14AE79} = {64C4508E-1039-4B0B-A0E3-62C97865BA04}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {188DFC42-24F9-48C8-86D3-88AD5EFD2284}

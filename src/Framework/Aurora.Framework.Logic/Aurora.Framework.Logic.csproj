@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Authors>Aurora Soft</Authors>
+    <Company>Aurora Soft</Company>
+    <Product>Aurora Framework</Product>
+    <Description>Librería de componentes de lógica de negocios y repositorios de datos de la plataforma Framework para productos de Aurora Soft.</Description>
+    <Copyright>Copyright © 2021</Copyright>
+    <PackageTags>Aurora Soft Framework</PackageTags>
+    <PackageReleaseNotes>Versión inicial de Aurora.Framework.Logic.</PackageReleaseNotes>
+    <Version>1.1.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <DocumentationFile>C:\SourcesGGB\AuroraFramework\src\Framework\Aurora.Framework.Logic\Aurora.Framework.Logic.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <DocumentationFile>C:\SourcesGGB\AuroraFramework\src\Framework\Aurora.Framework.Logic\Aurora.Framework.Logic.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aurora.Framework.Common\Aurora.Framework.Common.csproj" />
+  </ItemGroup>
+
+</Project>

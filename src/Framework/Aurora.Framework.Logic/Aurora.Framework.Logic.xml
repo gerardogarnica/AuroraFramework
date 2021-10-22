@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aurora.Framework.Logic</name>
+    </assembly>
+    <members>
+        <member name="T:Aurora.Framework.Logic.BinaryExpressions">
+            <summary>
+            Clase para el manejo de expresiones binarias de consultas en repositorios de datos.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Logic.BinaryExpressions.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Crea una expresión binaria para agregar un filtro de tipo AND en una expresión existente.
+            </summary>
+            <typeparam name="T">Tipo de parámetro del método que encapsula el delegado.</typeparam>
+            <param name="filter">Filtro de expresión al cual se va a agregar la nueva expresión.</param>
+            <param name="expressionToAdd">Filtro de expresión a añadir de tipo AND.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Aurora.Framework.Logic.Data.AuditableDataEntity">
+            <summary>
+            Clase base de entidad auditable de modelo de datos.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Logic.Data.AuditableDataEntity.CreatedBy">
+            <summary>
+            Nombre de usuario que crea el registro.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Logic.Data.AuditableDataEntity.CreatedDate">
+            <summary>
+            Fecha de creación del registro.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Logic.Data.AuditableDataEntity.LastUpdatedBy">
+            <summary>
+            Nombre de usuario que generó la última actualización del registro.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Logic.Data.AuditableDataEntity.LastUpdatedDate">
+            <summary>
+            Fecha de última actualización del registro.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Logic.Data.AuditableDataEntityExtensions">
+            <summary>
+            Métodos de extensión para la clase AuditableDataEntity.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Data.AuditableDataEntityExtensions.AddCreated(Aurora.Framework.Logic.Data.AuditableDataEntity,System.String)">
+            <summary>
+            Agrega la información de creación de la entidad del modelo de datos.
+            </summary>
+            <param name="dataEntity">Entidad auditable del modelo de datos.</param>
+            <param name="userName">Nombre de usuario.</param>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Data.AuditableDataEntityExtensions.AddLastUpdated(Aurora.Framework.Logic.Data.AuditableDataEntity,System.String)">
+            <summary>
+            Agrega la información de última actualización de la entidad del modelo de datos.
+            </summary>
+            <param name="dataEntity">Entidad auditable del modelo de datos.</param>
+            <param name="userName">Nombre de usuario.</param>
+        </member>
+        <member name="T:Aurora.Framework.Logic.Data.IDataEntity">
+            <summary>
+            Interface de entidad de modelo de datos.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Logic.PagingExtensions">
+            <summary>
+            Clase con métodos de extensión para obtención de una colección de registros en formato paginado.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Logic.PagingExtensions.ToPagedCollectionAsync``1(System.Linq.IQueryable{``0},System.Int32,System.Int32)">
+            <summary>
+            Asíncronamente crea una colección de registros en formato paginado PagedCollection<typeparamref name="T"/>
+            desde una lista IQueryable<typeparamref name="T"/> para enumerarlo asíncronamente.
+            </summary>
+            <typeparam name="T">Entidad de transferencia de datos.</typeparam>
+            <param name="query">Lista IQueryable desde la cual se creará una colección de registros en formato paginado PagedCollection.</param>
+            <param name="pageIndex">Número de página de la colección de registros a retornar. El índice de la primera página es 0.</param>
+            <param name="pageSize">Número de elementos de la página de la colección de registros a retornar.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Aurora.Framework.Logic.Repositories.DataRepository`1">
+            <summary>
+            Clase base de implementación de interfaces de consultas y ejecución de operaciones en repositorios de datos.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Repositories.DataRepository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            Inicializa una nueva instancia de la clase DataRepository.
+            </summary>
+            <param name="context">Instancia que representa una sesión de acceso a datos.</param>
+        </member>
+        <member name="T:Aurora.Framework.Logic.Repositories.IQueryableRepository`1">
+            <summary>
+            Interface de consultas en repositorios de datos.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Repositories.IQueryableRepository`1.GetAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Obtiene un registro de tipo <typeparamref name="T"/> de acuerdo a un criterio de consulta.
+            </summary>
+            <param name="filter">Criterio de consulta del registro.</param>
+            <returns>Devuelve el primer registro de tipo <typeparamref name="T"/> que satisface el criterio de consulta.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Repositories.IQueryableRepository`1.GetAllAsync">
+            <summary>
+            Obtiene todos los registros de tipo <typeparamref name="T"/>.
+            </summary>
+            <returns>Devuelve todos los registros de tipo <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Repositories.IQueryableRepository`1.GetListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Obtiene los registros de tipo <typeparamref name="T"/> de acuerdo a un criterio de consulta.
+            </summary>
+            <param name="filter">Criterio de consulta de los registros.</param>
+            <returns>Devuelve los registros de tipo <typeparamref name="T"/> que satisfacen el criterio de consulta.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Repositories.IQueryableRepository`1.GetListAsync``1(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Obtiene los registros de tipo <typeparamref name="T"/> en formato ordenado de acuerdo a un criterio de consulta.
+            </summary>
+            <typeparam name="TS"></typeparam>
+            <param name="filter">Criterio de consulta de los registros.</param>
+            <param name="orderByExpression">Expresión de ordenamiento.</param>
+            <param name="descendingOrder">Indica si los registros se obtienen en orden descendente.</param>
+            <returns>Devuelve los registros de tipo <typeparamref name="T"/>
+            en formato ordenado que satisfacen el criterio de consulta.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Repositories.IQueryableRepository`1.GetPagedCollectionAsync(Aurora.Framework.Collections.PagedViewRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Obtiene los registros de tipo <typeparamref name="T"/> en formato paginado
+            de acuerdo a un criterio de consulta.
+            </summary>
+            <param name="pagedRequest">Requerimiento para obtener registros en formato paginado.</param>
+            <param name="filter">Criterio de consulta de los registros.</param>
+            <returns>Devuelve los registros de tipo <typeparamref name="T"/> en formato paginado que satisfacen el criterio de consulta.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Repositories.IQueryableRepository`1.GetPagedCollectionAsync``1(Aurora.Framework.Collections.PagedViewRequest,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Obtiene los registros de tipo <typeparamref name="T"/> en formato paginado
+            y ordenado de acuerdo a un criterio de consulta.
+            </summary>
+            <typeparam name="TS"></typeparam>
+            <param name="pagedRequest">Requerimiento para obtener registros en formato paginado.</param>
+            <param name="filter">Criterio de consulta de los registros.</param>
+            <param name="orderByExpression">Expresión de ordenamiento.</param>
+            <param name="descendingOrder">Indica si los registros se obtienen en orden descendente.</param>
+            <returns>Devuelve los registros de tipo <typeparamref name="T"/>
+            en formato paginado y ordenado que satisfacen el criterio de consulta.</returns>
+        </member>
+        <member name="T:Aurora.Framework.Logic.Repositories.IRemovableRepository`1">
+            <summary>
+            Interface de ejecución de operaciones de eliminación en repositorios de datos.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Repositories.IRemovableRepository`1.DeleteAsync(`0)">
+            <summary>
+            Elimina un registro de tipo <typeparamref name="T"/> en el repositorio de datos.
+            </summary>
+            <param name="entity">Registro a ser eliminado en el repositorio.</param>
+        </member>
+        <member name="T:Aurora.Framework.Logic.Repositories.IWriteableRepository`1">
+            <summary>
+            Interface de ejecución de operaciones de escritura en repositorios de datos.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Repositories.IWriteableRepository`1.InsertAsync(`0)">
+            <summary>
+            Crea un registro de tipo <typeparamref name="T"/> en el repositorio de datos.
+            </summary>
+            <param name="entity">Registro a ser creado en el repositorio.</param>
+            <returns>Registro creado en el repositorio.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Repositories.IWriteableRepository`1.UpdateAsync(`0)">
+            <summary>
+            Actualiza un registro de tipo <typeparamref name="T"/> en el repositorio de datos.
+            </summary>
+            <param name="entity">Registro a ser actualizado en el repositorio.</param>
+            <returns>Registro actualizado en el repositorio.</returns>
+        </member>
+    </members>
+</doc>
