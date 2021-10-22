@@ -65,9 +65,9 @@ namespace Aurora.Framework.Settings
 
             var document = new XDocument(
                 new XElement("moneySetting",
-                    new XElement("minValue", MinValue.ToCurrency(DecimalsQuantity.Two)),
-                    new XElement("maxValue", MaxValue.ToCurrency(DecimalsQuantity.Two)),
-                    new XElement("defaultValue", DefaultValue.ToCurrency(DecimalsQuantity.Two))));
+                    new XElement("minValue", MinValue.ToCurrency()),
+                    new XElement("maxValue", MaxValue.ToCurrency()),
+                    new XElement("defaultValue", DefaultValue.ToCurrency())));
 
             return document.ToString();
         }

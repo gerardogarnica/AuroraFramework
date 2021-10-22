@@ -72,9 +72,9 @@ namespace Aurora.Framework.Settings
 
             var document = new XDocument(
                 new XElement("numericSetting",
-                    new XElement("minValue", MinValue.ToCurrency(DecimalsQuantity)),
-                    new XElement("maxValue", MaxValue.ToCurrency(DecimalsQuantity)),
-                    new XElement("defaultValue", DefaultValue.ToCurrency(DecimalsQuantity)),
+                    new XElement("minValue", MinValue.Round(DecimalsQuantity)),
+                    new XElement("maxValue", MaxValue.Round(DecimalsQuantity)),
+                    new XElement("defaultValue", DefaultValue.Round(DecimalsQuantity)),
                     new XElement("decimalsQuantity", (int)DecimalsQuantity)));
 
             return document.ToString();

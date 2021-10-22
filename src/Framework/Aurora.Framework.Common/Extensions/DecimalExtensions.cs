@@ -39,10 +39,9 @@ namespace Aurora.Framework
         /// Convierte un valor decimal a una cadena de texto en formato de moneda.
         /// </summary>
         /// <param name="value">Valor decimal que se va a convertir a cadena de texto.</param>
-        /// <param name="decimals">Cantidad de dígitos fraccionarios.</param>
-        public static string ToCurrency(this decimal value, DecimalsQuantity decimals)
+        public static string ToCurrency(this decimal value)
         {
-            value = value.Round(decimals);
+            value = value.Round(DecimalsQuantity.Two);
 
             return string.Format("$ {0}", value);
         }
