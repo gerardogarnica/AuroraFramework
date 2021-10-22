@@ -1,0 +1,1771 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aurora.Framework.Platform</name>
+    </assembly>
+    <members>
+        <member name="T:Aurora.Framework.Platform.Applications.ApplicationInfo">
+            <summary>
+            Representa una clase que contiene la información de una aplicación en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.ApplicationId">
+            <summary>
+            Identificador único de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.Code">
+            <summary>
+            Código único de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.Name">
+            <summary>
+            Nombre de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.Description">
+            <summary>
+            Descripción general de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.Components">
+            <summary>
+            Lista de componentes de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.Repositories">
+            <summary>
+            Lista de repositorios configurados para la aplicación.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Applications.ApplicationInfo.CreateRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de una aplicación en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.CreateRequest.Code">
+            <summary>
+            Código único de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.CreateRequest.Name">
+            <summary>
+            Nombre de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.CreateRequest.Description">
+            <summary>
+            Descripción general de la aplicación.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Applications.ApplicationInfo.Response">
+            <summary>
+            Representa una clase que contiene la información de respuesta de operaciones de aplicaciones de Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.Response.ApplicationId">
+            <summary>
+            Identificador único de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.Response.Code">
+            <summary>
+            Código único de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ApplicationInfo.Response.Name">
+            <summary>
+            Nombre de la aplicación.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Applications.ComponentInfo">
+            <summary>
+            Representa una clase que contiene la información de un componente de aplicaciones en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ComponentInfo.ComponentId">
+            <summary>
+            Identificador único del componente.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ComponentInfo.ApplicationId">
+            <summary>
+            Identificador único de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ComponentInfo.Code">
+            <summary>
+            Código único del componente.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ComponentInfo.Description">
+            <summary>
+            Descripción general del componente.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Applications.ComponentInfo.CreateRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de un componente de aplicaciones en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ComponentInfo.CreateRequest.ApplicationId">
+            <summary>
+            Identificador único de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ComponentInfo.CreateRequest.Code">
+            <summary>
+            Código único del componente.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ComponentInfo.CreateRequest.Description">
+            <summary>
+            Descripción general del componente.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Applications.ComponentInfo.Response">
+            <summary>
+            Representa una clase que contiene la información de respuesta de operaciones de componentes de aplicaciones de Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ComponentInfo.Response.ComponentId">
+            <summary>
+            Identificador único del componente.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.ComponentInfo.Response.Description">
+            <summary>
+            Descripción general del componente.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Applications.RepositoryInfo">
+            <summary>
+            Representa una clase que contiene la información de un repositorio de aplicaciones en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.RepositoryId">
+            <summary>
+            Identificador único del repositorio.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.ApplicationId">
+            <summary>
+            Identificador único de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.Code">
+            <summary>
+            Código único del repositorio.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.Description">
+            <summary>
+            Descripción general del repositorio.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Applications.RepositoryInfo.CreateRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de un repositorio de aplicaciones en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.CreateRequest.ApplicationId">
+            <summary>
+            Identificador único de la aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.CreateRequest.Description">
+            <summary>
+            Descripción general del repositorio.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Applications.RepositoryInfo.DetailCreateRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de un detalle de un repositorio en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.DetailCreateRequest.RepositoryId">
+            <summary>
+            Identificador único del repositorio.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.DetailCreateRequest.ComponentId">
+            <summary>
+            Identificador único del componente.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.DetailCreateRequest.ServerName">
+            <summary>
+            Nombre del servidor del repositorio.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.DetailCreateRequest.DatabaseName">
+            <summary>
+            Nombre de la base de datos del repositorio.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.DetailCreateRequest.AuthenticationType">
+            <summary>
+            Tipo de autenticación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.DetailCreateRequest.UserName">
+            <summary>
+            Nombre de usuario de inicio de sesión del repositorio, esta propiedad es opcional.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.DetailCreateRequest.UserPassword">
+            <summary>
+            Contraseña de usuario de inicio de sesión del repositorio, esta propiedad es opcional.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Applications.RepositoryInfo.Response">
+            <summary>
+            Representa una clase que contiene la información de respuesta de operaciones de repositorios de aplicaciones de Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.Response.RepositoryId">
+            <summary>
+            Identificador único del repositorio.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.Response.Code">
+            <summary>
+            Código único del repositorio.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Applications.RepositoryInfo.Response.Description">
+            <summary>
+            Descripción general del repositorio.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Catalogs.Catalog">
+            <summary>
+            Representa una clase que contiene la información de un catálogo en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CatalogId">
+            <summary>
+            Identificador único del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.Code">
+            <summary>
+            Código único del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.Name">
+            <summary>
+            Nombre descriptivo del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.Description">
+            <summary>
+            Descripción detallada del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.IsVisible">
+            <summary>
+            Indica si el catálogo está visible para operaciones del lado cliente.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.IsEditable">
+            <summary>
+            Indica si los datos del catálogo pueden ser modificados.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.Items">
+            <summary>
+            Lista de elementos del catálogo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de un catálogo con sus elementos.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.Code">
+            <summary>
+            Código del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.Name">
+            <summary>
+            Nombre descriptivo del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.Description">
+            <summary>
+            Descripción detallada del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.IsVisible">
+            <summary>
+            Indica si el catálogo estará disponible para la visualización en aplicaciones clientes.
+            En caso de ser falso, este catálogo es de uso interno de una aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.IsEditable">
+            <summary>
+            Indica si el catálogo puede ser modificado.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.Items">
+            <summary>
+            Lista de elementos del catálogo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.CatalogItem">
+            <summary>
+            Representa una clase que contiene la información para la creación de elemento de un catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.CatalogItem.Code">
+            <summary>
+            Código del elemento de catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.CatalogItem.Description">
+            <summary>
+            Descripción completa del elemento de catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.CatalogItem.IsEditable">
+            <summary>
+            Indica si el elemento de catálogo puede ser modificado.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest.CatalogItem.IsActive">
+            <summary>
+            Indica si el elemento de catálogo se encuentra activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Catalogs.Catalog.UpdateRequest">
+            <summary>
+            Representa una clase que contiene la información para la modificación de un catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.UpdateRequest.Code">
+            <summary>
+            Código del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.UpdateRequest.Name">
+            <summary>
+            Nombre descriptivo del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.UpdateRequest.Description">
+            <summary>
+            Descripción detallada del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.UpdateRequest.IsVisible">
+            <summary>
+            Indica si el catálogo estará disponible para la visualización en aplicaciones clientes.
+            En caso de ser falso, este catálogo es de uso interno de una aplicación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.UpdateRequest.IsEditable">
+            <summary>
+            Indica si el catálogo puede ser modificado.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Catalogs.Catalog.Response">
+            <summary>
+            Representa una clase que contiene la información de respuesta de operaciones de catálogos.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.Response.CatalogId">
+            <summary>
+            Identificador único del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.Response.Code">
+            <summary>
+            Código único del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.Catalog.Response.Name">
+            <summary>
+            Nombre descriptivo del catálogo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Catalogs.CatalogItem">
+            <summary>
+            Representa una clase que contiene la información de elementos de un catálogo en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.CatalogItem.CatalogItemId">
+            <summary>
+            Identificador único del elemento del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.CatalogItem.Code">
+            <summary>
+            Código único del elemento del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.CatalogItem.Description">
+            <summary>
+            Descripción detallada del elemento del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.CatalogItem.IsEditable">
+            <summary>
+            Indica si los datos del elemento de catálogo pueden ser modificados.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.CatalogItem.IsActive">
+            <summary>
+            Indica si el elemento de catálogo se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Catalogs.CatalogItem.SaveRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación o modificación de un elemento de un catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.CatalogItem.SaveRequest.CatalogCode">
+            <summary>
+            Código del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.CatalogItem.SaveRequest.ItemCode">
+            <summary>
+            Código del elemento del catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.CatalogItem.SaveRequest.Description">
+            <summary>
+            Descripción completa del elemento de catálogo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.CatalogItem.SaveRequest.IsEditable">
+            <summary>
+            Indica si el elemento de catálogo puede ser modificado.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Catalogs.CatalogItem.SaveRequest.IsActive">
+            <summary>
+            Indica si el elemento de catálogo se encuentra activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.AttributeValueExtensions">
+            <summary>
+            Clase con métodos de extensión para objetos de tipo Aurora.Framework.Platform.Settings.AttributeValue.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.AttributeValueExtensions.GetValue(System.Collections.Generic.IEnumerable{Aurora.Framework.Platform.Settings.AttributeValue},System.String)">
+            <summary>
+            Devuelve un elemento de una lista de atributos de parametrización de acuerdo al código del atributo.
+            </summary>
+            <param name="values">Objeto AttributeValue del cual se obtendrá el elemento.</param>
+            <param name="code">Código del atributo de parametrización.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Identity.IdentityAccess">
+            <summary>
+            Representa una clase que contiene la información de respuesta de inicio de sesión en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Identity.IdentityAccess.AccessToken">
+            <summary>
+            Token de acceso del proceso de inicio de sesión en Aurora Platform.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Identity.UserCredentials">
+            <summary>
+            Representa una clase que contiene la información de credenciales para inicio de sesión en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Identity.UserCredentials.LoginName">
+            <summary>
+            Nombre de inicio de sesión de usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Identity.UserCredentials.Password">
+            <summary>
+            Contraseña del usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Identity.UserPasswordChangeRequest">
+            <summary>
+            Representa una clase que contiene la información para la modificación de contraseña de un usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Identity.UserPasswordChangeRequest.CurrentPassword">
+            <summary>
+            Contraseña actual del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Identity.UserPasswordChangeRequest.NewPassword">
+            <summary>
+            Nueva contraseña del usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Identity.UserPasswordChangeResponse">
+            <summary>
+            Representa una clase que contiene la información de respuesta de modificación de contraseña de un usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.Country">
+            <summary>
+            Representa una clase que contiene la información de un país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CountryId">
+            <summary>
+            Identificador único del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.Name">
+            <summary>
+            Nombre del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.OfficialName">
+            <summary>
+            Nombre oficial completo del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.TwoLettersCode">
+            <summary>
+            Código ISO 3166-1 de 2 letras.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.ThreeLettersCode">
+            <summary>
+            Código ISO 3166-1 de 3 letras.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.ThreeDigitsCode">
+            <summary>
+            Código ISO 3166-1 numérico de 3 dígitos.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.InternetPrefix">
+            <summary>
+            Código de prefijo de internet.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.IsActive">
+            <summary>
+            Indicador si el país se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.Divisions">
+            <summary>
+            Divisiones administrativas del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.Locations">
+            <summary>
+            Lista de localidades del país.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.Country.CreateRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de un país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.Name">
+            <summary>
+            Nombre del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.OfficialName">
+            <summary>
+            Nombre oficial completo del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.TwoLettersCode">
+            <summary>
+            Código ISO 3166-1 de 2 letras.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.ThreeLettersCode">
+            <summary>
+            Código ISO 3166-1 de 3 letras.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.ThreeDigitsCode">
+            <summary>
+            Código ISO 3166-1 numérico de 3 dígitos.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.InternetPrefix">
+            <summary>
+            Código de prefijo de internet.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.IsActive">
+            <summary>
+            Indicador si el país se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.Divisions">
+            <summary>
+            Divisiones administrativas del país.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.Country.CreateRequest.CountryDivision">
+            <summary>
+            Representa una clase que contiene la información para la creación de la división administrativa de un país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.CountryDivision.Name">
+            <summary>
+            Nombre de la división administrativa.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.CountryDivision.LevelNumber">
+            <summary>
+            Número de nivel en la organización administrativa del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.CountryDivision.IsCityLevel">
+            <summary>
+            Indicador si es un nivel que corresponde a una ciudad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.CreateRequest.CountryDivision.IsActive">
+            <summary>
+            Indicador si la división administrativa se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.Country.UpdateRequest">
+            <summary>
+            Representa una clase que contiene la información para la modificación de datos de un país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.UpdateRequest.CountryId">
+            <summary>
+            Identificador único del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.UpdateRequest.Name">
+            <summary>
+            Nombre del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.UpdateRequest.OfficialName">
+            <summary>
+            Nombre oficial completo del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.UpdateRequest.IsActive">
+            <summary>
+            Indicador si el país se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.Country.Response">
+            <summary>
+            Representa una clase que contiene la información de respuesta de operaciones de países.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.Response.CountryId">
+            <summary>
+            Identificador único del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.Response.Code">
+            <summary>
+            Código ISO 3166-1 de 3 letras.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Country.Response.Name">
+            <summary>
+            Nombre del país.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.CountryDivision">
+            <summary>
+            Representa una clase que contiene la información de la división administrativa de un país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.DivisionId">
+            <summary>
+            Identificador único de la división administrativa.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.CountryId">
+            <summary>
+            Identificador único del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.Name">
+            <summary>
+            Nombre de la división administrativa.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.LevelNumber">
+            <summary>
+            Número de nivel en la organización administrativa del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.IsCityLevel">
+            <summary>
+            Indicador si es un nivel que corresponde a una ciudad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.IsActive">
+            <summary>
+            Indicador si la división administrativa se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.CountryDivision.SaveRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de una división administrativa de un país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.SaveRequest.CountryId">
+            <summary>
+            Identificador único del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.SaveRequest.DivisionId">
+            <summary>
+            Identificador único de la división administrativa.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.SaveRequest.Name">
+            <summary>
+            Nombre de la división administrativa.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.SaveRequest.LevelNumber">
+            <summary>
+            Número de nivel en la organización administrativa del país.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.SaveRequest.IsCityLevel">
+            <summary>
+            Indicador si es un nivel que corresponde a una ciudad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.CountryDivision.SaveRequest.IsActive">
+            <summary>
+            Indicador si la división administrativa se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.Location">
+            <summary>
+            Representa una clase que contiene la información de una localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.LocationId">
+            <summary>
+            Identificador único de la localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.DivisionId">
+            <summary>
+            Identificador único de la división administrativa.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.ParentLocationId">
+            <summary>
+            Identificador único de la localidad padre.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.Code">
+            <summary>
+            Código principal de la localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.AlternativeCode">
+            <summary>
+            Código alterno de la localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.Name">
+            <summary>
+            Nombre de la localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.IsActive">
+            <summary>
+            Indicador si la localidad se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.Locations">
+            <summary>
+            Lista de localidades hijas.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.Location.CreateRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de una localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.CreateRequest.DivisionId">
+            <summary>
+            Identificador único de división administrativa.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.CreateRequest.ParentLocationId">
+            <summary>
+            Identificador único de la localidad padre.
+            Si este valor es 0, se indica que no posee localidad padre.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.CreateRequest.Name">
+            <summary>
+            Nombre de la localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.CreateRequest.Code">
+            <summary>
+            Código principal de la localidad, esta propiedad es opcional.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.CreateRequest.AlternativeCode">
+            <summary>
+            Código alterno de la localidad, esta propiedad es opcional.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.CreateRequest.IsActive">
+            <summary>
+            Indicador si la localidad se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.Location.UpdateRequest">
+            <summary>
+            Representa una clase que contiene la información para la modificación de datos de una localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.UpdateRequest.LocationId">
+            <summary>
+            Identificador único de la localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.UpdateRequest.Name">
+            <summary>
+            Nombre de la localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.UpdateRequest.Code">
+            <summary>
+            Código principal de la localidad, esta propiedad es opcional.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.UpdateRequest.AlternativeCode">
+            <summary>
+            Código alterno de la localidad, esta propiedad es opcional.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.UpdateRequest.IsActive">
+            <summary>
+            Indicador si la localidad se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Locations.Location.Response">
+            <summary>
+            Representa una clase que contiene la información de respuesta de operaciones de localidades.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.Response.LocationId">
+            <summary>
+            Identificador único de la localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.Response.Name">
+            <summary>
+            Nombre de la localidad.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Locations.Location.Response.Code">
+            <summary>
+            Código principal de la localidad.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.PlatformBaseResponse">
+            <summary>
+            Clase base para respuestas de invocación de servicios.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.PlatformBaseResponse.IsSuccess">
+            <summary>
+            Indica si la ejecución de la operación resulta exitosa o no.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.PlatformBaseResponse.ResponseCode">
+            <summary>
+            Código de respuesta de la operación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.PlatformBaseResponse.ResponseMessage">
+            <summary>
+            Mensaje de respuesta de la operación.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.PlatformConfiguration">
+            <summary>
+            Clase con métodos de extensión para la configuración de acceso a servicios comunes de Aurora Platform.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.PlatformConfiguration.AddPlatformConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Agrega la configuración de acceso a servicios comunes de Aurora Platform para una interface IServiceCollection especificada.
+            </summary>
+            <param name="services">Especifa la interface Microsoft.Extensions.DependencyInjection.IServiceCollection
+            donde se agregará la configuración de acceso a servicios comunes de Aurora Platform.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Security.RoleInfo">
+            <summary>
+            Representa una clase que contiene la información de un rol de usuarios en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.RoleId">
+            <summary>
+            Identificador único del rol.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.RepositoryId">
+            <summary>
+            Identificador del repositorio.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.Name">
+            <summary>
+            Nombre único del rol.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.Description">
+            <summary>
+            Descripción general del rol.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.IsDefaultRole">
+            <summary>
+            Indica si es un rol por defecto de la plataforma.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.IsActive">
+            <summary>
+            Indica si el registro de rol se encuentra activo en la plataforma.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Security.RoleInfo.CreateRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de un rol de usuario en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.CreateRequest.RepositoryId">
+            <summary>
+            Identificador único del repositorio.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.CreateRequest.Name">
+            <summary>
+            Nombre descriptivo del rol de usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.CreateRequest.Description">
+            <summary>
+            Descripción completa del rol de usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Security.RoleInfo.UpdateRequest">
+            <summary>
+            Representa una clase que contiene la información para la actualización de un rol de usuario en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.UpdateRequest.RoleId">
+            <summary>
+            Identificador único del rol de usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.UpdateRequest.Description">
+            <summary>
+            Descripción completa del rol de usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Security.RoleInfo.SaveUsersRequest">
+            <summary>
+            Representa una clase que contiene la información para agregar o eliminar usuarios de un rol registrado en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.SaveUsersRequest.RoleId">
+            <summary>
+            Identificador único del rol de usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.SaveUsersRequest.UsersToAdd">
+            <summary>
+            Lista de identificadores únicos de usuarios a agregar al rol.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.SaveUsersRequest.UsersToRemove">
+            <summary>
+            Lista de identificadores únicos de usuarios a eliminar del rol.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Security.RoleInfo.Response">
+            <summary>
+            Representa una clase que contiene la información de respuesta de operaciones de roles de usuarios de Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.Response.RoleId">
+            <summary>
+            Identificador único del rol de usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.RoleInfo.Response.Name">
+            <summary>
+            Nombre descriptivo del rol de usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Security.UserInfo">
+            <summary>
+            Representa una clase que contiene la información de un usuario registrado en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.UserId">
+            <summary>
+            Identificador único del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.LoginName">
+            <summary>
+            Nombre de inicio de sesión único del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.Description">
+            <summary>
+            Descripción completa del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.Email">
+            <summary>
+            Dirección de correo electrónico del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.PasswordMustChange">
+            <summary>
+            Indica si la contraseña del usuario debe ser modificado.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.PasswordExpirationDate">
+            <summary>
+            Fecha de expiración de la contraseña, en caso de aplicar.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.IsDefaultUser">
+            <summary>
+            Indica si es un usuario por defecto de la plataforma.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.IsActive">
+            <summary>
+            Indica si el registro de usuario se encuentra activo en la plataforma.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.Roles">
+            <summary>
+            Lista de roles a los que pertenece el usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Security.UserInfo.CreateRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de un usuario registrado en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.CreateRequest.LoginName">
+            <summary>
+            Nombre de inicio de sesión único del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.CreateRequest.Description">
+            <summary>
+            Descripción completa del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.CreateRequest.Email">
+            <summary>
+            Dirección de correo electrónico del usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Security.UserInfo.SaveRolesRequest">
+            <summary>
+            Representa una clase que contiene la información para agregar o eliminar roles de un usuario registrado en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.SaveRolesRequest.LoginName">
+            <summary>
+            Nombre de inicio de sesión único del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.SaveRolesRequest.RolesToAdd">
+            <summary>
+            Lista de identificadores únicos de roles a agregar al usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.SaveRolesRequest.RolesToRemove">
+            <summary>
+            Lista de identificadores únicos de roles a eliminar del usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Security.UserInfo.Response">
+            <summary>
+            Representa una clase que contiene la información de respuesta de operaciones de usuario de Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.Response.UserId">
+            <summary>
+            Identificador único del usuario.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Security.UserInfo.Response.LoginName">
+            <summary>
+            Nombre de inicio de sesión único del usuario.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.IApplicationsServices">
+            <summary>
+            Administrador de servicios de aplicaciones de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IApplicationsServices.GetApplication(System.String)">
+            <summary>
+            Obtiene una aplicación de la plataforma de acuerdo a su código.
+            </summary>
+            <param name="code">Código de la aplicación de la plataforma.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IApplicationsServices.GetApplications">
+            <summary>
+            Obtiene la lista de aplicaciones de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IApplicationsServices.CreateApplication(Aurora.Framework.Platform.Applications.ApplicationInfo.CreateRequest)">
+            <summary>
+            Crea un nuevo registro de aplicación de la plataforma.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación de una nueva aplicación.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.ApplicationsServices">
+            <summary>
+            Implementación de servicios de aplicaciones de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ApplicationsServices.#ctor(Aurora.Framework.Proxies.IAuroraProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase ApplicationsServices.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.ICatalogsServices">
+            <summary>
+            Administrador de servicios de catálogos de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ICatalogsServices.GetCatalog(System.String,System.Boolean)">
+            <summary>
+            Obtiene un catálogo con sus elementos de acuerdo a su código.
+            </summary>
+            <param name="code">Código de catálogo.</param>
+            <param name="onlyGetActiveItems">Indica si solo se obtienen los elementos activos del catálogo.</param>
+            <returns>Registro de catálogo con sus elementos.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ICatalogsServices.GetCatalogs(Aurora.Framework.Collections.PagedViewRequest,System.Boolean,System.Boolean)">
+            <summary>
+            Obtiene la lista de catálogos en formato paginado.
+            </summary>
+            <param name="viewRequest">Entidad con la información de números de página y elementos de la consulta.</param>
+            <param name="onlyGetVisibles">Indica si solo se obtienen los catálogos en estado visible.</param>
+            <param name="onlyGetEditables">Indica si solo se obtienen los catálogos que son editables.</param>
+            <returns>Lista de catálogos en formato paginado.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ICatalogsServices.CreateCatalog(Aurora.Framework.Platform.Catalogs.Catalog.CreateRequest)">
+            <summary>
+            Crea un nuevo registro de catálogo con sus elementos.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación del nuevo catálogo.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ICatalogsServices.UpdateCatalog(Aurora.Framework.Platform.Catalogs.Catalog.UpdateRequest)">
+            <summary>
+            Actualiza un registro de catálogo.
+            </summary>
+            <param name="request">Clase con la información requerida para la actualización de un catálogo existente.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ICatalogsServices.SaveItem(Aurora.Framework.Platform.Catalogs.CatalogItem.SaveRequest)">
+            <summary>
+            Crea o actualiza un registro de elemento de catálogo.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación o actualización de un elemento de catálogo.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.CatalogsServices">
+            <summary>
+            Implementación de servicios de catálogos de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.CatalogsServices.#ctor(Aurora.Framework.Proxies.IAuroraProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase CatalogsServices.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.IComponentsServices">
+            <summary>
+            Administrador de servicios de componentes de aplicaciones de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IComponentsServices.GetComponent(System.Int16,System.String)">
+            <summary>
+            Obtiene un registro de componente de la plataforma de acuerdo a su código.
+            </summary>
+            <param name="applicationId">Identificador único de la aplicación de la plataforma.</param>
+            <param name="code">Código del componente de la aplicación.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IComponentsServices.GetComponents(System.Int16)">
+            <summary>
+            Obtiene la lista de componentes de una aplicación de la plataforma.
+            </summary>
+            <param name="applicationId">Identificador único de la aplicación de la plataforma.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IComponentsServices.CreateComponent(Aurora.Framework.Platform.Applications.ComponentInfo.CreateRequest)">
+            <summary>
+            Crea un nuevo registro de componente de una aplicación de la plataforma.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación de un nuevo componente.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.ComponentsServices">
+            <summary>
+            Implementación de servicios de componentes de aplicaciones de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ComponentsServices.#ctor(Aurora.Framework.Proxies.IAuroraProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase ComponentsServices.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.ICountriesServices">
+            <summary>
+            Administrador de servicios de países de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ICountriesServices.GetCountry(System.Int16)">
+            <summary>
+            Obtiene un registro de país con una lista de sus divisiones.
+            </summary>
+            <param name="countryId">Identificador único de país.</param>
+            <returns>Registro de país con sus divisiones administrativas.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ICountriesServices.GetCountries(Aurora.Framework.Collections.PagedViewRequest,System.Boolean)">
+            <summary>
+            Obtiene la lista de países en formato paginado.
+            </summary>
+            <param name="viewRequest">Entidad con la información de números de página y elementos de la consulta.</param>
+            <param name="onlyGetActives">Indica si solo se obtienen los países en estado activo.</param>
+            <returns>Lista de países en formato paginado.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ICountriesServices.CreateCountry(Aurora.Framework.Platform.Locations.Country.CreateRequest)">
+            <summary>
+            Crea un nuevo registro de país con sus divisiones administrativas.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación del nuevo país.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ICountriesServices.Update(Aurora.Framework.Platform.Locations.Country.UpdateRequest)">
+            <summary>
+            Actualiza los datos de un registro de país.
+            </summary>
+            <param name="request">Clase con la información requerida para la actualización de un país existente.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ICountriesServices.SaveDivision(Aurora.Framework.Platform.Locations.CountryDivision.SaveRequest)">
+            <summary>
+            Crea o actualiza un registro de división administrativa de país.
+            </summary>
+            <param name="request">Clase con la información requerida para la
+            creación o actualización de una división administrativa de país.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.CountriesServices">
+            <summary>
+            Implementación de servicios de países de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.CountriesServices.#ctor(Aurora.Framework.Proxies.IAuroraProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase CountriesServices.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.IIdentityServices">
+            <summary>
+            Administrador de servicios de autenticación y manejo de sesión de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IIdentityServices.Login(Aurora.Framework.Platform.Identity.UserCredentials)">
+            <summary>
+            Inicia una sesión de usuario en la plataforma.
+            </summary>
+            <param name="credentials">Credenciales para inicio de sesión de usuario.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IIdentityServices.ChangePassword(Aurora.Framework.Platform.Identity.UserPasswordChangeRequest)">
+            <summary>
+            Registra la modificación de la contraseña de un usuario.
+            </summary>
+            <param name="request">Clase con la información requerida para la modificación de la contraseña de un usuario.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.IdentityServices">
+            <summary>
+            Implementación de servicios de autenticación y manejo de sesión de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IdentityServices.#ctor(Aurora.Framework.Proxies.IAuroraProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase IdentityServices.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.ILocationsServices">
+            <summary>
+            Administrador de servicios de localidades de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ILocationsServices.GetLocation(System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Obtiene un registro de localidad con sus subdivisiones en caso de requerirlo.
+            </summary>
+            <param name="locationId">Identificador único de localidad.</param>
+            <param name="getNextLevel">Indica si se obtienen las subdivisiones administrativas del siguiente nivel.</param>
+            <param name="onlyGetActivesChilds">Indica si solo se obtienen las subdivisiones administrativas en estado activo.</param>
+            <returns>Registro de localidad con sus subdivisiones.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ILocationsServices.GetLocations(System.Int32,System.Boolean)">
+            <summary>
+            Obtiene la lista de localidades de una división administrativa.
+            </summary>
+            <param name="parentId">ID de la división administrativa de la que se van a obtener las localidades.</param>
+            <param name="onlyGetActives">Indica si solo se obtienen las localidades en estado activo.</param>
+            <returns>Lista de localidades de una división administrativa.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ILocationsServices.CreateLocation(Aurora.Framework.Platform.Locations.Location.CreateRequest)">
+            <summary>
+            Crea un nuevo registro de localidad.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación de la nueva localidad.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ILocationsServices.UpdateLocation(Aurora.Framework.Platform.Locations.Location.UpdateRequest)">
+            <summary>
+            Actualiza un registro de localidad.
+            </summary>
+            <param name="request">Clase con la información requerida para la actualización de una localidad existente.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.LocationsServices">
+            <summary>
+            Implementación de servicios de localidades de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.LocationsServices.#ctor(Aurora.Framework.Proxies.IAuroraProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase LocationsServices.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.PlatformServicesBase">
+            <summary>
+            Clase base para la implementación de acceso a servicios de Aurora Platform.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.PlatformServicesBase.#ctor(Aurora.Framework.Proxies.IAuroraProxy,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase PlatformServicesBase.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+            <param name="apiRoute">Ruta del API donde se enviarán los requerimientos.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.IRepositoriesServices">
+            <summary>
+            Administrador de servicios de repositorios de aplicaciones de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRepositoriesServices.GetRepository(System.Int16,System.String)">
+            <summary>
+            Obtiene un registro de repositorio de la plataforma de acuerdo a su código.
+            </summary>
+            <param name="applicationId">Identificador único de la aplicación de la plataforma.</param>
+            <param name="code">Código del repositorio de la aplicación.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRepositoriesServices.GetRepositories(System.Int16)">
+            <summary>
+            Obtiene la lista de repositorios de una aplicación de la plataforma.
+            </summary>
+            <param name="applicationId">Identificador único de la aplicación de la plataforma.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRepositoriesServices.CreateRepository(Aurora.Framework.Platform.Applications.RepositoryInfo.CreateRequest)">
+            <summary>
+            Crea un nuevo registro de repositorio de la plataforma.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación de un nuevo repositorio.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRepositoriesServices.SaveDetail(Aurora.Framework.Platform.Applications.RepositoryInfo.DetailCreateRequest)">
+            <summary>
+            Almacena un registro de detalle de conexión de un repositorio.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación de un nuevo detalle de conexión.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.RepositoriesServices">
+            <summary>
+            Implementación de servicios de repositorios de aplicaciones de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.RepositoriesServices.#ctor(Aurora.Framework.Proxies.IAuroraProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase RepositoriesServices.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.IRolesServices">
+            <summary>
+            Administrador de servicios de roles de usuarios de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRolesServices.GetRole(System.Int32)">
+            <summary>
+            Obtiene un rol de usuarios de acuerdo a su identificador único.
+            </summary>
+            <param name="roleId">Identificador único del rol de usuarios.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRolesServices.GetRoles(Aurora.Framework.Collections.PagedViewRequest,System.Int32,System.Boolean)">
+            <summary>
+            Obtiene la lista de roles de usuarios.
+            </summary>
+            <param name="viewRequest">Elemento con la información para obtener la lista en formato paginado.</param>
+            <param name="repositoryId">Identificador único del repositorio.</param>
+            <param name="onlyActives">Indica si solo se obtienen los roles de usuarios activos.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRolesServices.CreateRole(Aurora.Framework.Platform.Security.RoleInfo.CreateRequest)">
+            <summary>
+            Crea un nuevo registro de rol de usuarios.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación del nuevo rol de usuarios.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRolesServices.UpdateRole(Aurora.Framework.Platform.Security.RoleInfo.UpdateRequest)">
+            <summary>
+            Actualiza un registro de rol de usuarios.
+            </summary>
+            <param name="request">Clase con la información requerida para la actualización del rol de usuarios.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRolesServices.ActivateRole(System.Int32)">
+            <summary>
+            Activa un registro de rol de usuarios existente.
+            </summary>
+            <param name="roleId">Identificador único del rol de usuarios.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRolesServices.DeactivateRole(System.Int32)">
+            <summary>
+            Desactiva un registro de rol de usuarios existente.
+            </summary>
+            <param name="roleId">Identificador único del rol de usuarios.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IRolesServices.SaveUsers(Aurora.Framework.Platform.Security.RoleInfo.SaveUsersRequest)">
+            <summary>
+            Agrega o elimina un conjunto de usuarios a un rol.
+            </summary>
+            <param name="request">Clase con la información requerida para la asignación o eliminación de usuarios del rol.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.RolesServices">
+            <summary>
+            Implementación de servicios de roles de usuarios de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.RolesServices.#ctor(Aurora.Framework.Proxies.IAuroraProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase RolesServices.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.ISettingsServices">
+            <summary>
+            Administrador de servicios de configuraciones comunes de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ISettingsServices.GetSetting(System.String)">
+            <summary>
+            Obtiene un registro de configuración de atributos de parametrización.
+            </summary>
+            <param name="code">Código de la configuración de atributo de parametrización.</param>
+            <returns>Registro de configuración de atributo de parametrización.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ISettingsServices.GetSettings(Aurora.Framework.Collections.PagedViewRequest,System.String,System.Boolean)">
+            <summary>
+            Obtiene la lista de configuraciones de atributos de parametrización en formato paginado.
+            </summary>
+            <param name="viewRequest">Entidad con la información de números de página y elementos de la consulta.</param>
+            <param name="scopeType">Tipo de configuración de atributos de parametrización.</param>
+            <param name="onlyGetActives">Indica si solo se obtienen las configuraciones de atributos de parametrización en estado activo.</param>
+            <returns>Lista de configuraciones de atributos de parametrización en formato paginado.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ISettingsServices.CreateSetting(Aurora.Framework.Platform.Settings.AttributeSetting.CreateRequest)">
+            <summary>
+            Crea un nuevo registro de configuración de atributo de parametrización.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación
+            de la nueva configuración de atributo de parametrización.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ISettingsServices.GetValue(System.String)">
+            <summary>
+            Obtiene un registro de valor de atributo de parametrización.
+            </summary>
+            <param name="code">Código del de atributo de parametrización.</param>
+            <returns>Registro de valor de atributo de parametrización.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ISettingsServices.GetValue(System.String,System.Int32)">
+            <summary>
+            Obtiene un registro de valor de atributo de parametrización.
+            </summary>
+            <param name="code">Código del de atributo de parametrización.</param>
+            <param name="relationshipId">Identificador del registro de relación.</param>
+            <returns>Registro de valor de atributo de parametrización.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ISettingsServices.GetValues(System.String)">
+            <summary>
+            Obtiene la lista de valores de atributos de parametrización de un tipo de configuración determinados.
+            </summary>
+            <param name="scopeType">Tipo de configuración de atributos de parametrización.</param>
+            <returns>Lista de valores de atributos de parametrización de un tipo de configuración y un registro de relación.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ISettingsServices.GetValues(System.String,System.Int32)">
+            <summary>
+            Obtiene la lista de valores de atributos de parametrización de un tipo de configuración y un registro de relación determinados.
+            </summary>
+            <param name="scopeType">Tipo de configuración de atributos de parametrización.</param>
+            <param name="relationshipId">Identificador del registro de relación.</param>
+            <returns>Lista de valores de atributos de parametrización de un tipo de configuración y un registro de relación.</returns>
+        </member>
+        <member name="M:Aurora.Framework.Platform.ISettingsServices.SaveValue(Aurora.Framework.Platform.Settings.AttributeValue.SaveRequest)">
+            <summary>
+            Almacena un registro de valor de atributo de parametrización.
+            </summary>
+            <param name="request">Clase con la información requerida para el almacenamiento
+            del valor de atributo de parametrización.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.SettingsServices">
+            <summary>
+            Implementación de servicios de configuraciones comunes de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.SettingsServices.#ctor(Aurora.Framework.Proxies.IAuroraProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase SettingsServices.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.IUsersServices">
+            <summary>
+            Administrador de servicios de usuarios de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IUsersServices.GetUser(System.String)">
+            <summary>
+            Obtiene un usuario de acuerdo a su nombre de inicio de sesión.
+            </summary>
+            <param name="loginName">Nombre de inicio de sesión de usuario.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IUsersServices.GetUsers(Aurora.Framework.Collections.PagedViewRequest,System.Boolean)">
+            <summary>
+            Obtiene una lista de usuarios registrados.
+            </summary>
+            <param name="viewRequest">Elemento con la información para obtener la lista en formato paginado.</param>
+            <param name="onlyActives">Indica si solo se obtienen los usuarios activos.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IUsersServices.CreateUser(Aurora.Framework.Platform.Security.UserInfo.CreateRequest)">
+            <summary>
+            Crea un nuevo registro de usuario.
+            </summary>
+            <param name="request">Clase con la información requerida para la creación del nuevo usuario.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IUsersServices.ActivateUser(System.String)">
+            <summary>
+            Activa un registro de usuario existente.
+            </summary>
+            <param name="loginName">Nombre de inicio de sesión de usuario.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IUsersServices.DeactivateUser(System.String)">
+            <summary>
+            Desactiva un registro de usuario existente.
+            </summary>
+            <param name="loginName">Nombre de inicio de sesión de usuario.</param>
+        </member>
+        <member name="M:Aurora.Framework.Platform.IUsersServices.SaveRoles(Aurora.Framework.Platform.Security.UserInfo.SaveRolesRequest)">
+            <summary>
+            Agrega o elimina un conjunto de roles a un usuario.
+            </summary>
+            <param name="request">Clase con la información requerida para la asignación o eliminación de roles del usuario.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.UsersServices">
+            <summary>
+            Implementación de servicios de usuarios de la plataforma.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Platform.UsersServices.#ctor(Aurora.Framework.Proxies.IAuroraProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase UsersServices.
+            </summary>
+            <param name="auroraProxy">Instancia de la interface de comunicación a servicios Aurora.</param>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Settings.AttributeSetting">
+            <summary>
+            Representa una clase que contiene la información de una configuración de atributos de parametrización en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.AttributeId">
+            <summary>
+            Identificador único del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.Code">
+            <summary>
+            Código único del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.Name">
+            <summary>
+            Nombre descriptivo del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.Description">
+            <summary>
+            Descripción detallada del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.ScopeType">
+            <summary>
+            Tipo de ámbito o alcance del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.IsVisible">
+            <summary>
+            Indica si el atributo de parametrización está visible para operaciones del lado cliente.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.IsEditable">
+            <summary>
+            Indica si los datos del atributo de parametrización pueden ser modificados.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.IsActive">
+            <summary>
+            Indica si el atributo de parametrización se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Settings.AttributeSetting.CreateRequest">
+            <summary>
+            Representa una clase que contiene la información para la creación de una configuración de atributos de parametrización en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.CreateRequest.Code">
+            <summary>
+            Código único del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.CreateRequest.Name">
+            <summary>
+            Nombre descriptivo del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.CreateRequest.Description">
+            <summary>
+            Descripción detallada del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.CreateRequest.ScopeType">
+            <summary>
+            Tipo de ámbito o alcance del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.CreateRequest.IsVisible">
+            <summary>
+            Indica si el atributo de parametrización está visible para operaciones del lado cliente.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.CreateRequest.IsEditable">
+            <summary>
+            Indica si los datos del atributo de parametrización pueden ser modificados.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.CreateRequest.IsActive">
+            <summary>
+            Indica si el atributo de parametrización se encuentra en estado activo.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Settings.AttributeSetting.Response">
+            <summary>
+            Representa una clase que contiene la información de respuesta de la
+            creación de una configuración de atributos de parametrización en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.Response.AttributeId">
+            <summary>
+            Identificador único del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.Response.SettingCode">
+            <summary>
+            Código único del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeSetting.Response.Name">
+            <summary>
+            Nombre descriptivo del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Settings.AttributeValue">
+            <summary>
+            Representa una clase que contiene la información del valor de un atributo de parametrización en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeValue.AttributeId">
+            <summary>
+            Identificador único del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeValue.RelationshipId">
+            <summary>
+            Identificador del registro de relación. Si no existe, es cero (0).
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeValue.Code">
+            <summary>
+            Código del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeValue.DataType">
+            <summary>
+            Tipo de dato AuroraDataType del valor del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Settings.AttributeValue.SaveRequest">
+            <summary>
+            Representa una clase que contiene la información para almacenar el valor de un atributo de parametrización en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeValue.SaveRequest.Code">
+            <summary>
+            Código único del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeValue.SaveRequest.RelationshipId">
+            <summary>
+            Identificador del registro de relación. Si no existe, es cero (0).
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Platform.Settings.AttributeValue.Response">
+            <summary>
+            Representa una clase que contiene la información de respuesta de la
+            operaciones de valores de atributos de parametrización en Aurora Platform.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeValue.Response.AttributeId">
+            <summary>
+            Identificador único del atributo de parametrización.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Platform.Settings.AttributeValue.Response.RelationshipId">
+            <summary>
+            Identificador del registro de relación. Si no existe, es cero (0).
+            </summary>
+        </member>
+    </members>
+</doc>
