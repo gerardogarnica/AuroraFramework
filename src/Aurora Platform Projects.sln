@@ -17,13 +17,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2. Platform Services", "4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3. Common Services", "4.3. Common Services", "{CDC08281-B820-4370-ABBD-71AD35B93EA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Framework.Common", "Framework\Aurora.Framework.Common\Aurora.Framework.Common.csproj", "{4B140073-554A-448A-977F-7DF57F9B910E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aurora.Framework.Common", "Framework\Aurora.Framework.Common\Aurora.Framework.Common.csproj", "{4B140073-554A-448A-977F-7DF57F9B910E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Framework.Logic", "Framework\Aurora.Framework.Logic\Aurora.Framework.Logic.csproj", "{BE68AE20-36E6-47D9-BCA5-4064CE14AE79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aurora.Framework.Logic", "Framework\Aurora.Framework.Logic\Aurora.Framework.Logic.csproj", "{BE68AE20-36E6-47D9-BCA5-4064CE14AE79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Framework.Platform", "Framework\Aurora.Framework.Platform\Aurora.Framework.Platform.csproj", "{143A4B49-25AF-4E43-AB52-9C02B236A1FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aurora.Framework.Platform", "Framework\Aurora.Framework.Platform\Aurora.Framework.Platform.csproj", "{143A4B49-25AF-4E43-AB52-9C02B236A1FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Framework.Services", "Framework\Aurora.Framework.Services\Aurora.Framework.Services.csproj", "{08C35FFB-FD2D-4389-91F1-5DF4A0ED8EAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aurora.Framework.Services", "Framework\Aurora.Framework.Services\Aurora.Framework.Services.csproj", "{08C35FFB-FD2D-4389-91F1-5DF4A0ED8EAC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aurora.Platform.Domain", "Services\Platform\Aurora.Platform.Domain\Aurora.Platform.Domain.csproj", "{3A74E266-768A-4B54-99A9-16EEE3A62659}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aurora.Platform.Repositories", "Services\Platform\Aurora.Platform.Repositories\Aurora.Platform.Repositories.csproj", "{09DDFDCF-40D7-44A2-8A1D-F4C7E445CEC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aurora.Platform.Services", "Services\Platform\Aurora.Platform.Services\Aurora.Platform.Services.csproj", "{380B237C-5DB6-442C-8B42-A233173E461E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aurora.Platform.API", "Services\Platform\Aurora.Platform.API\Aurora.Platform.API.csproj", "{0B40425A-9E06-4D9B-B73E-9A7C9F52E4B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Identity.API", "Services\Identity\Aurora.Identity.API\Aurora.Identity.API.csproj", "{D91445E4-7DC5-420B-ABE6-865A0E56AF7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +57,26 @@ Global
 		{08C35FFB-FD2D-4389-91F1-5DF4A0ED8EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08C35FFB-FD2D-4389-91F1-5DF4A0ED8EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08C35FFB-FD2D-4389-91F1-5DF4A0ED8EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A74E266-768A-4B54-99A9-16EEE3A62659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A74E266-768A-4B54-99A9-16EEE3A62659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A74E266-768A-4B54-99A9-16EEE3A62659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A74E266-768A-4B54-99A9-16EEE3A62659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09DDFDCF-40D7-44A2-8A1D-F4C7E445CEC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09DDFDCF-40D7-44A2-8A1D-F4C7E445CEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09DDFDCF-40D7-44A2-8A1D-F4C7E445CEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09DDFDCF-40D7-44A2-8A1D-F4C7E445CEC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{380B237C-5DB6-442C-8B42-A233173E461E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{380B237C-5DB6-442C-8B42-A233173E461E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{380B237C-5DB6-442C-8B42-A233173E461E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{380B237C-5DB6-442C-8B42-A233173E461E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B40425A-9E06-4D9B-B73E-9A7C9F52E4B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B40425A-9E06-4D9B-B73E-9A7C9F52E4B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B40425A-9E06-4D9B-B73E-9A7C9F52E4B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B40425A-9E06-4D9B-B73E-9A7C9F52E4B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D91445E4-7DC5-420B-ABE6-865A0E56AF7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D91445E4-7DC5-420B-ABE6-865A0E56AF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D91445E4-7DC5-420B-ABE6-865A0E56AF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D91445E4-7DC5-420B-ABE6-865A0E56AF7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +89,11 @@ Global
 		{BE68AE20-36E6-47D9-BCA5-4064CE14AE79} = {64C4508E-1039-4B0B-A0E3-62C97865BA04}
 		{143A4B49-25AF-4E43-AB52-9C02B236A1FA} = {64C4508E-1039-4B0B-A0E3-62C97865BA04}
 		{08C35FFB-FD2D-4389-91F1-5DF4A0ED8EAC} = {64C4508E-1039-4B0B-A0E3-62C97865BA04}
+		{3A74E266-768A-4B54-99A9-16EEE3A62659} = {A3C387AD-50A7-4C3C-88FC-D5BE73FBA4E7}
+		{09DDFDCF-40D7-44A2-8A1D-F4C7E445CEC9} = {A3C387AD-50A7-4C3C-88FC-D5BE73FBA4E7}
+		{380B237C-5DB6-442C-8B42-A233173E461E} = {A3C387AD-50A7-4C3C-88FC-D5BE73FBA4E7}
+		{0B40425A-9E06-4D9B-B73E-9A7C9F52E4B6} = {A3C387AD-50A7-4C3C-88FC-D5BE73FBA4E7}
+		{D91445E4-7DC5-420B-ABE6-865A0E56AF7B} = {FA7FBEB9-6484-46EE-BE5C-981D86E9ECED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {188DFC42-24F9-48C8-86D3-88AD5EFD2284}
