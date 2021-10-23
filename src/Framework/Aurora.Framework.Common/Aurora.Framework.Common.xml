@@ -534,12 +534,11 @@
             <param name="value">Valor decimal que se va a redondear.</param>
             <param name="decimals">Cantidad de dígitos fraccionarios. El valor por defecto es dos.</param>
         </member>
-        <member name="M:Aurora.Framework.DecimalExtensions.ToCurrency(System.Decimal,Aurora.Framework.DecimalsQuantity)">
+        <member name="M:Aurora.Framework.DecimalExtensions.ToCurrency(System.Decimal)">
             <summary>
             Convierte un valor decimal a una cadena de texto en formato de moneda.
             </summary>
             <param name="value">Valor decimal que se va a convertir a cadena de texto.</param>
-            <param name="decimals">Cantidad de dígitos fraccionarios.</param>
         </member>
         <member name="T:Aurora.Framework.IntegerExtensions">
             <summary>
