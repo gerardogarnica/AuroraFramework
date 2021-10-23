@@ -35,6 +35,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aurora.Platform.API", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Identity.API", "Services\Identity\Aurora.Identity.API\Aurora.Identity.API.csproj", "{D91445E4-7DC5-420B-ABE6-865A0E56AF7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Common.Domain", "Services\Common\Aurora.Common.Domain\Aurora.Common.Domain.csproj", "{0052C993-0A84-41CB-85D2-6F7528DED23D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Common.Repositories", "Services\Common\Aurora.Common.Repositories\Aurora.Common.Repositories.csproj", "{0D26C54D-D48B-4C38-83C8-FF6959E98302}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Common.Services", "Services\Common\Aurora.Common.Services\Aurora.Common.Services.csproj", "{44910D3E-1C4A-460B-9564-5CC0E983C5F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aurora.Common.API", "Services\Common\Aurora.Common.API\Aurora.Common.API.csproj", "{C033A9F0-D91E-4DF8-B0BC-24F9B3CC0C3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +85,22 @@ Global
 		{D91445E4-7DC5-420B-ABE6-865A0E56AF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D91445E4-7DC5-420B-ABE6-865A0E56AF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D91445E4-7DC5-420B-ABE6-865A0E56AF7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0052C993-0A84-41CB-85D2-6F7528DED23D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0052C993-0A84-41CB-85D2-6F7528DED23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0052C993-0A84-41CB-85D2-6F7528DED23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0052C993-0A84-41CB-85D2-6F7528DED23D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D26C54D-D48B-4C38-83C8-FF6959E98302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D26C54D-D48B-4C38-83C8-FF6959E98302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D26C54D-D48B-4C38-83C8-FF6959E98302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D26C54D-D48B-4C38-83C8-FF6959E98302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44910D3E-1C4A-460B-9564-5CC0E983C5F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44910D3E-1C4A-460B-9564-5CC0E983C5F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44910D3E-1C4A-460B-9564-5CC0E983C5F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44910D3E-1C4A-460B-9564-5CC0E983C5F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C033A9F0-D91E-4DF8-B0BC-24F9B3CC0C3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C033A9F0-D91E-4DF8-B0BC-24F9B3CC0C3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C033A9F0-D91E-4DF8-B0BC-24F9B3CC0C3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C033A9F0-D91E-4DF8-B0BC-24F9B3CC0C3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +118,10 @@ Global
 		{380B237C-5DB6-442C-8B42-A233173E461E} = {A3C387AD-50A7-4C3C-88FC-D5BE73FBA4E7}
 		{0B40425A-9E06-4D9B-B73E-9A7C9F52E4B6} = {A3C387AD-50A7-4C3C-88FC-D5BE73FBA4E7}
 		{D91445E4-7DC5-420B-ABE6-865A0E56AF7B} = {FA7FBEB9-6484-46EE-BE5C-981D86E9ECED}
+		{0052C993-0A84-41CB-85D2-6F7528DED23D} = {CDC08281-B820-4370-ABBD-71AD35B93EA1}
+		{0D26C54D-D48B-4C38-83C8-FF6959E98302} = {CDC08281-B820-4370-ABBD-71AD35B93EA1}
+		{44910D3E-1C4A-460B-9564-5CC0E983C5F2} = {CDC08281-B820-4370-ABBD-71AD35B93EA1}
+		{C033A9F0-D91E-4DF8-B0BC-24F9B3CC0C3C} = {CDC08281-B820-4370-ABBD-71AD35B93EA1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {188DFC42-24F9-48C8-86D3-88AD5EFD2284}
