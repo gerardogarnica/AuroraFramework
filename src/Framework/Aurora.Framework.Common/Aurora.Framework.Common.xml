@@ -790,6 +790,33 @@
             <param name="services">Especifa la interface Microsoft.Extensions.DependencyInjection.IServiceCollection
             donde se agregará la configuración de invocación de requerimientos HTTP del servicio.</param>
         </member>
+        <member name="T:Aurora.Framework.Serialization.JsonSerializer">
+            <summary>
+            Proveedor de serialización en formato JSON.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Serialization.JsonSerializer.LoadFromFile``1(System.String)">
+            <summary>
+            Carga un archivo que contiene un texto en formato JSON desde una ruta especificada
+            y devuelve un objeto de tipo <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Tipo de objeto que se requiere deserializar desde el archivo.</typeparam>
+            <param name="filePath">Ruta del archivo que contiene un texto en formato JSON.</param>
+        </member>
+        <member name="M:Aurora.Framework.Serialization.JsonSerializer.Deserialize``1(System.String)">
+            <summary>
+            Deserializa una cadena de texto en formato JSON y devuelve un objeto de tipo <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">Tipo de objeto que se requiere deserializar desde la cadena de texto en formato JSON.</typeparam>
+            <param name="jsonValue">Cadena de texto en formato JSON.</param>
+        </member>
+        <member name="M:Aurora.Framework.Serialization.JsonSerializer.Serialize``1(``0)">
+            <summary>
+            Serializa un objeto especificado de tipo <typeparamref name="T"/> a una cadena de texto en formato JSON.
+            </summary>
+            <typeparam name="T">Tipo de objeto que se requiere convertir en una cadena de texto en formato JSON.</typeparam>
+            <param name="entity">Objeto que se requiere convertir en una cadena de texto en formato JSON.</param>
+        </member>
         <member name="T:Aurora.Framework.Sessions.AuroraSession">
             <summary>
             Implementación de procesos de administración de sesiones de usuario de Aurora.
