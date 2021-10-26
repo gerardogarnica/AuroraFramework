@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "apiServerEnvName": "IdentityApiServer",
+      "path": "/aurora/api/identity/",
+      "requiresAuthorization": "true"
+    },
+    {
+      "apiServerEnvName": "PlatformApiServer",
+      "path": "/aurora/api/platform/",
+      "requiresAuthorization": "true"
+    },
+    {
+      "apiServerEnvName": "CommonApiServer",
+      "path": "/aurora/api/common/",
+      "requiresAuthorization": "true"
+    }
+  ]
+}
