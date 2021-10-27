@@ -15,7 +15,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "PlatformDataConnection": "Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;",
+        "CommonDataConnection": "Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;",
         "SecretKey": "DwkdopIDAISOPDQWD59AS8D9AWD2ASD9sd59qwd"
       }
     },
@@ -25,7 +25,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "PlatformDataConnection": "Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;",
+        "CommonDataConnection": "Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;",
         "SecretKey": "DwkdopIDAISOPDQWD59AS8D9AWD2ASD9sd59qwd"
       },
       "dotnetRunMessages": "true",

@@ -1,0 +1,42 @@
+version: '3.5'
+
+services:
+  Aurora.Identity.API:
+    image: aurora/identity-api:1.0
+    build:
+      context: .
+      dockerfile: Services/Identity/Aurora.Identity.API/Dockerfile
+    container_name: Aurora.Identity.API
+    networks:
+      - aurora-api
+
+  Aurora.Common.API:
+    image: aurora/common-api:1.0
+    build:
+      context: .
+      dockerfile: Services/Common/Aurora.Common.API/Dockerfile
+    container_name: Aurora.Common.API
+    networks:
+      - aurora-api
+
+  Aurora.Platform.API:
+    image: aurora/platform-api:1.0
+    build:
+      context: .
+      dockerfile: Services/Platform/Aurora.Platform.API/Dockerfile
+    container_name: Aurora.Platform.API
+    networks:
+      - aurora-api
+
+  Aurora.Platform.Gateway:
+    image: aurora/platform-gateway:1.0
+    build:
+      context: .
+      dockerfile: Gateway/Aurora.Platform.Gateway/Dockerfile
+    container_name: Aurora.Platform.Gateway
+    networks:
+      - aurora-api
+
+networks:
+  aurora-api:
+    name: aurora-api

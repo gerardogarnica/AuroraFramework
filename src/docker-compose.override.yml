@@ -1,0 +1,36 @@
+version: '3.5'
+
+services:
+  Aurora.Identity.API:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SecretKey=somevalue
+      - PlatformDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;
+    ports:
+      - "5001:80"
+
+  Aurora.Common.API:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SecretKey=somevalue
+      - CommonDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;
+    ports:
+      - "5003:80"
+
+  Aurora.Platform.API:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SecretKey=somevalue
+      - PlatformDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;
+    ports:
+      - "5002:80"
+
+  Aurora.Platform.Gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IdentityApiServer=localhost:5001
+      - PlatformApiServer=localhost:5002
+      - CommonApiServer=localhost:5003
+    ports:
+      - "5000:80"
+
