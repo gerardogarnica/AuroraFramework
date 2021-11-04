@@ -1,9 +1,11 @@
 # Aurora Framework
-Componentes base para programas de Aurora Soft.
+Base components for Aurora Soft applications.
 
-### Arquitecturas empleadas
+### Architectures used
+* Microservices
 * DDD Pattern
-* Repository Pattern
 * CQRS Pattern
-* Inyección de dependencias
-* Campos de auditoría
+* Repository Pattern
+* Dependency injection
+* Logs fields in data models
+* Error handling middleware
