@@ -4,25 +4,36 @@ namespace Aurora.Platform.Domain.Exceptions
 {
     public class ApplicationException : BusinessException
     {
-        public ApplicationException(string message, string code)
-            : base(message, "ApplicationException", code) { }
+        protected const string ApplicationNullMessage = "El registro de aplicación no puede ser nulo.";
+        protected const string ExistsApplicationCodeMessage = "El código de aplicación '{0}' ya se encuentra registrado y no puede ser creado de nuevo.";
+        protected const string InvalidApplicationIdMessage = "El ID de aplicación '{0}' no se encuentra registrado.";
+        protected const string InvalidApplicationCodeMessage = "El código de aplicación '{0}' no se encuentra registrado.";
+
+        public ApplicationException(string errorType, string message)
+            : base("ApplicationException", errorType, message) { }
+    }
+
+    public class ApplicationNullException : ApplicationException
+    {
+        public ApplicationNullException()
+            : base("ApplicationNullException", ApplicationNullMessage) { }
     }
 
     public class ExistsApplicationCodeException : ApplicationException
     {
         public ExistsApplicationCodeException(string code)
-            : base(string.Format("El código de aplicación '{0}' ya se encuentra registrado y no puede ser creado de nuevo.", code), "1001") { }
+            : base("ExistsApplicationCodeException", string.Format(ExistsApplicationCodeMessage, code)) { }
     }
 
     public class InvalidApplicationIdException : ApplicationException
     {
         public InvalidApplicationIdException(short applicationId)
-            : base(string.Format("El ID de aplicación '{0}' no se encuentra registrado.", applicationId), "1002") { }
+            : base("InvalidApplicationIdException", string.Format(InvalidApplicationIdMessage, applicationId)) { }
     }
 
     public class InvalidApplicationCodeException : ApplicationException
     {
         public InvalidApplicationCodeException(string code)
-            : base(string.Format("El código de aplicación '{0}' no se encuentra registrado.", code), "1003") { }
+            : base("InvalidApplicationCodeException", string.Format(InvalidApplicationCodeMessage, code)) { }
     }
 }
