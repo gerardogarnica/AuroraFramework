@@ -1,7 +1,6 @@
 ﻿using Aurora.Framework.Sessions;
-using Aurora.Platform.Services.Applications.Mappers;
 using Aurora.Platform.Services.Applications.Queries;
-using Aurora.Platform.Services.Security.Mappers;
+using Aurora.Platform.Services.Mappers;
 using Aurora.Platform.Services.Security.Queries;
 using AutoMapper;
 using MediatR;
@@ -28,14 +27,9 @@ namespace Aurora.Platform.Services
 
         public static IServiceCollection AddPlatformMapper(this IServiceCollection services)
         {
-            services.AddSingleton(f => new MapperConfiguration(x =>
+            services.AddScoped(f => new MapperConfiguration(x =>
             {
-                x.AddProfile(new ApplicationsMapperProfile(f.GetService<IAuroraSession>()));
-            }).CreateMapper());
-
-            services.AddSingleton(f => new MapperConfiguration(x =>
-            {
-                x.AddProfile(new SecurityMapperProfile(f.GetService<IAuroraSession>()));
+                x.AddProfile(new PlatformMapperProfile(f.GetService<IAuroraSession>()));
             }).CreateMapper());
 
             return services;
