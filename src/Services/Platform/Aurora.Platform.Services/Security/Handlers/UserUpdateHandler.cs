@@ -39,21 +39,14 @@ namespace Aurora.Platform.Services.Security.Handlers
         async Task<UserResponse> IRequestHandler<UserUpdateCommand, UserResponse>.Handle(
             UserUpdateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene el usuario existente
-                var entry = await GetExistentUserData(request.LoginName);
+            // Se obtiene el usuario existente
+            var entry = await GetExistentUserData(request.LoginName);
 
-                // Se actualiza el registro de usuario
-                UpdateUserData(entry, request);
-                entry = await _userRepository.UpdateAsync(entry);
+            // Se actualiza el registro de usuario
+            UpdateUserData(entry, request);
+            entry = await _userRepository.UpdateAsync(entry);
 
-                return new UserResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new UserResponse(e.ErrorKeyName, e.Message);
-            }
+            return new UserResponse(entry);
         }
 
         #endregion

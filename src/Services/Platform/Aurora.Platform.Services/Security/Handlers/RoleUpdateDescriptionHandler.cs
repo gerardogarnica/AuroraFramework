@@ -39,21 +39,14 @@ namespace Aurora.Platform.Services.Security.Handlers
         async Task<RoleResponse> IRequestHandler<RoleUpdateDescriptionCommand, RoleResponse>.Handle(
             RoleUpdateDescriptionCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene el rol de usuario existente
-                var entry = await GetExistentRoleData(request.RoleId);
+            // Se obtiene el rol de usuario existente
+            var entry = await GetExistentRoleData(request.RoleId);
 
-                // Se actualiza el registro de rol de usuario
-                UpdateRoleData(entry, request);
-                entry = await _roleRepository.UpdateAsync(entry);
+            // Se actualiza el registro de rol de usuario
+            UpdateRoleData(entry, request);
+            entry = await _roleRepository.UpdateAsync(entry);
 
-                return new RoleResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new RoleResponse(e.ErrorKeyName, e.Message);
-            }
+            return new RoleResponse(entry);
         }
 
         #endregion

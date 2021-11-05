@@ -42,25 +42,18 @@ namespace Aurora.Platform.Services.Security.Handlers
         async Task<RoleResponse> IRequestHandler<RoleSaveUsersCommand, RoleResponse>.Handle(
             RoleSaveUsersCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene el rol de usuario existente
-                var entry = await GetExistentRoleData(request.RoleId);
+            // Se obtiene el rol de usuario existente
+            var entry = await GetExistentRoleData(request.RoleId);
 
-                // Se verifica que no se envíen usuarios duplicados
-                VerifyDuplicatedUsers(request);
+            // Se verifica que no se envíen usuarios duplicados
+            VerifyDuplicatedUsers(request);
 
-                // Se actualizan los registros de usuarios
-                UpdateUsers(entry, request.UsersToAdd, BusinessActions.AddDetail);
-                UpdateUsers(entry, request.UsersToRemove, BusinessActions.RemoveDetail);
-                entry = await _roleRepository.UpdateAsync(entry);
+            // Se actualizan los registros de usuarios
+            UpdateUsers(entry, request.UsersToAdd, BusinessActions.AddDetail);
+            UpdateUsers(entry, request.UsersToRemove, BusinessActions.RemoveDetail);
+            entry = await _roleRepository.UpdateAsync(entry);
 
-                return new RoleResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new RoleResponse(e.ErrorKeyName, e.Message);
-            }
+            return new RoleResponse(entry);
         }
 
         #endregion

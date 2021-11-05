@@ -51,28 +51,21 @@ namespace Aurora.Platform.Services.Identity.Handlers
         async Task<UserPasswordChangeResponse> IRequestHandler<UserPasswordChangeCommand, UserPasswordChangeResponse>.Handle(
             UserPasswordChangeCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene y valida el usuario
-                var userData = await GetExistentUserData();
+            // Se obtiene y valida el usuario
+            var userData = await GetExistentUserData();
 
-                // Se valida la contraseña
-                var entry = userData.Credential;
-                ValidatePassword(entry, request.CurrentPassword);
+            // Se valida la contraseña
+            var entry = userData.Credential;
+            ValidatePassword(entry, request.CurrentPassword);
 
-                // Se obtienen los atributos de configuraciones de Seguridad
-                await GetSecurityAttributesAsync();
+            // Se obtienen los atributos de configuraciones de Seguridad
+            await GetSecurityAttributesAsync();
 
-                // Se actualiza el registro de credencial
-                Update(userData.Credential, request.NewPassword);
-                entry = await _userCredentialRepository.UpdateAsync(entry);
+            // Se actualiza el registro de credencial
+            Update(userData.Credential, request.NewPassword);
+            entry = await _userCredentialRepository.UpdateAsync(entry);
 
-                return new UserPasswordChangeResponse();
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new UserPasswordChangeResponse(e.ErrorKeyName, e.Message);
-            }
+            return new UserPasswordChangeResponse();
         }
 
         private async Task GetSecurityAttributesAsync()
@@ -180,7 +173,7 @@ namespace Aurora.Platform.Services.Identity.Handlers
 
             if (!Regex.IsMatch(newPassword, pattern))
             {
-                throw new InvalidUserPasswordPattern("");
+                throw new InvalidPasswordPatternException("");
             }
         }
 

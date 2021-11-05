@@ -35,21 +35,14 @@ namespace Aurora.Platform.Services.Applications.Handlers
         async Task<ApplicationResponse> IRequestHandler<ApplicationCreateCommand, ApplicationResponse>.Handle(
             ApplicationCreateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se verifica si el código de aplicación ya se encuentra registrado
-                await VerifyIfApplicationExists(request.Code);
+            // Se verifica si el código de aplicación ya se encuentra registrado
+            await VerifyIfApplicationExists(request.Code);
 
-                // Se crea el registro de aplicación
-                var entry = CreateApplicationData(request);
-                entry = await _applicationRepository.InsertAsync(entry);
+            // Se crea el registro de aplicación
+            var entry = CreateApplicationData(request);
+            entry = await _applicationRepository.InsertAsync(entry);
 
-                return new ApplicationResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new ApplicationResponse(e.ErrorKeyName, e.Message);
-            }
+            return new ApplicationResponse(entry);
         }
 
         #endregion

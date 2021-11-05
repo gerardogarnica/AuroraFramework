@@ -40,27 +40,20 @@ namespace Aurora.Platform.Services.Identity.Handlers
         async Task<IdentityAccess> IRequestHandler<UserLoginCommand, IdentityAccess>.Handle(
             UserLoginCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene y valida el usuario
-                var userData = await GetExistentUserData(request.LoginName, request.Password);
+            // Se obtiene y valida el usuario
+            var userData = await GetExistentUserData(request.LoginName, request.Password);
 
-                // Se generan los Claims
-                var claims = await CreateClaims(userData);
+            // Se generan los Claims
+            var claims = await CreateClaims(userData);
 
-                // Se genera el Token Descriptor
-                var tokenDescriptor = CreateTokenDescriptor(claims);
+            // Se genera el Token Descriptor
+            var tokenDescriptor = CreateTokenDescriptor(claims);
 
-                // Se genera el Token de Seguridad
-                var token = new JwtSecurityTokenHandler();
-                var createdToken = token.CreateToken(tokenDescriptor);
+            // Se genera el Token de Seguridad
+            var token = new JwtSecurityTokenHandler();
+            var createdToken = token.CreateToken(tokenDescriptor);
 
-                return new IdentityAccess(token.WriteToken(createdToken));
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new IdentityAccess(e.ErrorKeyName, e.Message);
-            }
+            return new IdentityAccess(token.WriteToken(createdToken));
         }
 
         #endregion

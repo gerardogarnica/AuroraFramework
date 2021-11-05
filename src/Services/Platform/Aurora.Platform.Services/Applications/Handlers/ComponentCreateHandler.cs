@@ -38,24 +38,17 @@ namespace Aurora.Platform.Services.Applications.Handlers
         async Task<ComponentResponse> IRequestHandler<ComponentCreateCommand, ComponentResponse>.Handle(
             ComponentCreateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se verifica que la aplicación se encuentre registrada
-                await VerifyIfApplicationExists(request.ApplicationId);
+            // Se verifica que la aplicación se encuentre registrada
+            await VerifyIfApplicationExists(request.ApplicationId);
 
-                // Se verifica si el componente ya se encuentra registrado
-                await VerifyIfComponentExists(request.ApplicationId, request.Code);
+            // Se verifica si el componente ya se encuentra registrado
+            await VerifyIfComponentExists(request.ApplicationId, request.Code);
 
-                // Se crea el registro de componente
-                var entry = CreateComponentData(request);
-                entry = await _componentRepository.InsertAsync(entry);
+            // Se crea el registro de componente
+            var entry = CreateComponentData(request);
+            entry = await _componentRepository.InsertAsync(entry);
 
-                return new ComponentResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new ComponentResponse(e.ErrorKeyName, e.Message);
-            }
+            return new ComponentResponse(entry);
         }
 
         #endregion

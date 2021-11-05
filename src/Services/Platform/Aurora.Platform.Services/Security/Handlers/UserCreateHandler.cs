@@ -45,22 +45,15 @@ namespace Aurora.Platform.Services.Security.Handlers
         async Task<UserResponse> IRequestHandler<UserCreateCommand, UserResponse>.Handle(
             UserCreateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se verifica si el nombre de usuario ya se encuentra registrado
-                await VerifyIfUserExists(request.LoginName);
+            // Se verifica si el nombre de usuario ya se encuentra registrado
+            await VerifyIfUserExists(request.LoginName);
 
-                // Se crea el registro de usuario
-                var entry = CreateUserData(request);
-                entry.Credential = CreateUserCredentialData(entry.LoginName);
-                entry = await _userRepository.InsertAsync(entry);
+            // Se crea el registro de usuario
+            var entry = CreateUserData(request);
+            entry.Credential = CreateUserCredentialData(entry.LoginName);
+            entry = await _userRepository.InsertAsync(entry);
 
-                return new UserResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new UserResponse(e.ErrorKeyName, e.Message);
-            }
+            return new UserResponse(entry);
         }
 
         #endregion

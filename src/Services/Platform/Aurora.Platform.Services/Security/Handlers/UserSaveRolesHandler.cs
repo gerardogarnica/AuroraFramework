@@ -42,25 +42,18 @@ namespace Aurora.Platform.Services.Security.Handlers
         async Task<UserResponse> IRequestHandler<UserSaveRolesCommand, UserResponse>.Handle(
             UserSaveRolesCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene el usuario existente
-                var entry = await GetExistentUserData(request.LoginName);
+            // Se obtiene el usuario existente
+            var entry = await GetExistentUserData(request.LoginName);
 
-                // Se verifica que no se envíen roles duplicados
-                VerifyDuplicatedRoles(request);
+            // Se verifica que no se envíen roles duplicados
+            VerifyDuplicatedRoles(request);
 
-                // Se actualizan los registros de roles
-                UpdateRoles(entry, request.RolesToAdd, BusinessActions.AddDetail);
-                UpdateRoles(entry, request.RolesToRemove, BusinessActions.RemoveDetail);
-                entry = await _userRepository.UpdateAsync(entry);
+            // Se actualizan los registros de roles
+            UpdateRoles(entry, request.RolesToAdd, BusinessActions.AddDetail);
+            UpdateRoles(entry, request.RolesToRemove, BusinessActions.RemoveDetail);
+            entry = await _userRepository.UpdateAsync(entry);
 
-                return new UserResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new UserResponse(e.ErrorKeyName, e.Message);
-            }
+            return new UserResponse(entry);
         }
 
         #endregion

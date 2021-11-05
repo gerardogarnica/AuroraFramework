@@ -47,24 +47,17 @@ namespace Aurora.Platform.Services.Applications.Handlers
         async Task<RepositoryResponse> IRequestHandler<RepositoryDetailCreateCommand, RepositoryResponse>.Handle(
             RepositoryDetailCreateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene el repositorio existente
-                var entry = await GetExistentRepositoryData(request.RepositoryId);
+            // Se obtiene el repositorio existente
+            var entry = await GetExistentRepositoryData(request.RepositoryId);
 
-                // Se verifica que el componente se encuentre registrado
-                await VerifyIfComponentExists(request.ComponentId);
+            // Se verifica que el componente se encuentre registrado
+            await VerifyIfComponentExists(request.ComponentId);
 
-                // Se almacena el registro de detalle de repositorio
-                SaveRepositoryDetailData(entry, request);
-                entry = await _genericRepository.UpdateAsync(entry);
+            // Se almacena el registro de detalle de repositorio
+            SaveRepositoryDetailData(entry, request);
+            entry = await _genericRepository.UpdateAsync(entry);
 
-                return new RepositoryResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new RepositoryResponse(e.ErrorKeyName, e.Message);
-            }
+            return new RepositoryResponse(entry);
         }
 
         #endregion

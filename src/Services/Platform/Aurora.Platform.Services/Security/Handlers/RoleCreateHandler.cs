@@ -35,21 +35,14 @@ namespace Aurora.Platform.Services.Security.Handlers
         async Task<RoleResponse> IRequestHandler<RoleCreateCommand, RoleResponse>.Handle(
             RoleCreateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se verifica si el nombre del rol de usuario ya se encuentra registrado en el repositorio indicado
-                await VerifyIfRoleDataExists(request.RepositoryId, request.Name);
+            // Se verifica si el nombre del rol de usuario ya se encuentra registrado en el repositorio indicado
+            await VerifyIfRoleDataExists(request.RepositoryId, request.Name);
 
-                // Se crea el registro de rol de usuario
-                var entry = CreateRoleData(request);
-                entry = await _roleRepository.InsertAsync(entry);
+            // Se crea el registro de rol de usuario
+            var entry = CreateRoleData(request);
+            entry = await _roleRepository.InsertAsync(entry);
 
-                return new RoleResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new RoleResponse(e.ErrorKeyName, e.Message);
-            }
+            return new RoleResponse(entry);
         }
 
         #endregion
