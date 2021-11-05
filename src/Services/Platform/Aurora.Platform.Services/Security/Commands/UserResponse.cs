@@ -1,4 +1,5 @@
 ﻿using Aurora.Framework;
+using Aurora.Platform.Domain.Exceptions;
 using Aurora.Platform.Domain.Security.Models;
 
 namespace Aurora.Platform.Services.Security.Commands
@@ -9,15 +10,13 @@ namespace Aurora.Platform.Services.Security.Commands
 
         public string LoginName { get; private set; }
 
-        private UserResponse(bool isSuccess, string code, string message, UserData user)
-            : base(isSuccess, code, message)
+        internal UserResponse(UserData user)
+            : base()
         {
-            UserId = user != null ? user.UserId : -1;
-            LoginName = user?.LoginName;
+            if (user == null) throw new RoleNullException();
+
+            UserId = user.UserId;
+            LoginName = user.LoginName;
         }
-
-        internal UserResponse(UserData user) : this(true, string.Empty, string.Empty, user) { }
-
-        internal UserResponse(string code, string message) : this(false, code, message, null) { }
     }
 }

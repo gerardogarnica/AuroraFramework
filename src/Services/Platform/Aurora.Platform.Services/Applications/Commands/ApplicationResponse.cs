@@ -1,5 +1,6 @@
 ﻿using Aurora.Framework;
 using Aurora.Platform.Domain.Applications.Models;
+using Aurora.Platform.Domain.Exceptions;
 
 namespace Aurora.Platform.Services.Applications.Commands
 {
@@ -11,16 +12,14 @@ namespace Aurora.Platform.Services.Applications.Commands
 
         public string Name { get; private set; }
 
-        private ApplicationResponse(bool isSuccess, string code, string message, ApplicationData application)
-            : base(isSuccess, code, message)
+        internal ApplicationResponse(ApplicationData application)
+            : base()
         {
-            ApplicationId = application != null ? application.ApplicationId : (short)-1;
-            Code = application?.Code;
-            Name = application?.Name;
+            if (application == null) throw new ApplicationNullException();
+
+            ApplicationId = application.ApplicationId;
+            Code = application.Code;
+            Name = application.Name;
         }
-
-        internal ApplicationResponse(ApplicationData application) : this(true, string.Empty, string.Empty, application) { }
-
-        internal ApplicationResponse(string code, string message) : this(false, code, message, null) { }
     }
 }
