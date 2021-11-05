@@ -3,6 +3,8 @@ using Aurora.Platform.Domain.Applications;
 using Aurora.Platform.Services.Applications.Commands;
 using Aurora.Platform.Services.Applications.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Aurora.Platform.API.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("aurora/api/platform/applications")]
     public class ApplicationsController : AuroraController
@@ -47,17 +50,10 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Application>> Get(string code)
         {
-            try
-            {
-                var application = await _applicationQueryService.GetByCodeAsync(code);
-                if (application == null) return NoContent();
+            var application = await _applicationQueryService.GetByCodeAsync(code);
+            if (application == null) return NoContent();
 
-                return Ok(application);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            return Ok(application);
         }
 
         // GET aurora/api/platform/applications
@@ -70,15 +66,8 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IList<Application>>> GetList()
         {
-            try
-            {
-                var applications = await _applicationQueryService.GetListAsync();
-                return Ok(applications);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var applications = await _applicationQueryService.GetListAsync();
+            return Ok(applications);
         }
 
         // POST aurora/api/platform/applications/create
@@ -93,16 +82,13 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<ApplicationResponse>> Create([FromBody] ApplicationCreateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
+
+        #endregion
+
+        #region Métodos privados del controlador
 
         #endregion
     }

@@ -50,17 +50,10 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Role>> Get(int roleId)
         {
-            try
-            {
-                var role = await _roleQueryService.GetByIdAsync(roleId);
-                if (role == null) return NoContent();
+            var role = await _roleQueryService.GetByIdAsync(roleId);
+            if (role == null) return NoContent();
 
-                return Ok(role);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            return Ok(role);
         }
 
         // GET aurora/api/platform/roles
@@ -75,15 +68,8 @@ namespace Aurora.Platform.API.Controllers
         public async Task<ActionResult<PagedCollection<Role>>> GetList(
             [FromQuery] PagedViewRequest viewRequest, [FromQuery] int repositoryId, [FromQuery] bool onlyActives)
         {
-            try
-            {
-                var roles = await _roleQueryService.GetListAsync(viewRequest, repositoryId, onlyActives);
-                return Ok(roles);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var roles = await _roleQueryService.GetListAsync(viewRequest, repositoryId, onlyActives);
+            return Ok(roles);
         }
 
         // POST aurora/api/platform/roles/create
@@ -97,15 +83,8 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<RoleResponse>> Create([FromBody] RoleCreateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
 
         // PUT aurora/api/platform/roles/update
@@ -119,15 +98,8 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<RoleResponse>> Update([FromBody] RoleUpdateDescriptionCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         // PUT aurora/api/platform/roles/activate/{roleId}
@@ -137,24 +109,18 @@ namespace Aurora.Platform.API.Controllers
         /// <param name="roleId">Identificador único del rol de usuarios.</param>
         [HttpPut("activate/{roleId}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<RoleResponse>> Activate(int roleId)
         {
-            try
+            var command = new RoleUpdateStatusCommand()
             {
-                var command = new RoleUpdateStatusCommand()
-                {
-                    RoleId = roleId,
-                    IsActive = true
-                };
+                RoleId = roleId,
+                IsActive = true
+            };
 
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         // PUT aurora/api/platform/roles/deactivate/{roleId}
@@ -164,24 +130,18 @@ namespace Aurora.Platform.API.Controllers
         /// <param name="roleId">Identificador único del rol de usuarios.</param>
         [HttpPut("deactivate/{roleId}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<RoleResponse>> Deactivate(int roleId)
         {
-            try
+            var command = new RoleUpdateStatusCommand()
             {
-                var command = new RoleUpdateStatusCommand()
-                {
-                    RoleId = roleId,
-                    IsActive = false
-                };
+                RoleId = roleId,
+                IsActive = false
+            };
 
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         // PUT aurora/api/platform/roles/saveusers
@@ -192,18 +152,12 @@ namespace Aurora.Platform.API.Controllers
         /// <returns></returns>
         [HttpPut("saveusers")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<RoleResponse>> SaveUsers([FromBody] RoleSaveUsersCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         #endregion

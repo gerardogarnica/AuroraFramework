@@ -3,6 +3,8 @@ using Aurora.Platform.Domain.Applications;
 using Aurora.Platform.Services.Applications.Commands;
 using Aurora.Platform.Services.Applications.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Aurora.Platform.API.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("aurora/api/platform/repositories")]
     public class RepositoriesController : AuroraController
@@ -48,17 +51,10 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Repository>> Get(short applicationId, string code)
         {
-            try
-            {
-                var repository = await _repositoryQueryService.GetByCodeAsync(applicationId, code);
-                if (repository == null) return NoContent();
+            var repository = await _repositoryQueryService.GetByCodeAsync(applicationId, code);
+            if (repository == null) return NoContent();
 
-                return Ok(repository);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            return Ok(repository);
         }
 
         // GET aurora/api/platform/repositories
@@ -72,15 +68,8 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IList<Repository>>> GetList(short applicationId)
         {
-            try
-            {
-                var repositories = await _repositoryQueryService.GetListAsync(applicationId);
-                return Ok(repositories);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var repositories = await _repositoryQueryService.GetListAsync(applicationId);
+            return Ok(repositories);
         }
 
         // POST aurora/api/platform/repositories/create
@@ -95,15 +84,8 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<RepositoryResponse>> Create([FromBody] RepositoryCreateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
 
         // PUT aurora/api/platform/repositories/savedetail
@@ -118,17 +100,15 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<RepositoryResponse>> SaveDetail([FromBody] RepositoryDetailCreateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         #endregion
+
+        #region Métodos privados del controlador
+
+        #endregion
+
     }
 }

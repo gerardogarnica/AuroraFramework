@@ -3,6 +3,8 @@ using Aurora.Platform.Domain.Applications;
 using Aurora.Platform.Services.Applications.Commands;
 using Aurora.Platform.Services.Applications.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Aurora.Platform.API.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("aurora/api/platform/components")]
     public class ComponentsController : AuroraController
@@ -48,17 +51,10 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Component>> Get(short applicationId, string code)
         {
-            try
-            {
-                var component = await _componentQueryService.GetByCodeAsync(applicationId, code);
-                if (component == null) return NoContent();
+            var component = await _componentQueryService.GetByCodeAsync(applicationId, code);
+            if (component == null) return NoContent();
 
-                return Ok(component);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            return Ok(component);
         }
 
         // GET aurora/api/platform/components
@@ -72,15 +68,8 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IList<Component>>> GetList(short applicationId)
         {
-            try
-            {
-                var components = await _componentQueryService.GetListAsync(applicationId);
-                return Ok(components);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var components = await _componentQueryService.GetListAsync(applicationId);
+            return Ok(components);
         }
 
         // POST aurora/api/platform/components/create
@@ -95,16 +84,13 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<ComponentResponse>> Create([FromBody] ComponentCreateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
+
+        #endregion
+
+        #region Métodos privados del controlador
 
         #endregion
     }

@@ -50,17 +50,10 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<User>> Get(string loginName)
         {
-            try
-            {
-                var user = await _userQueryService.GetByLoginNameAsync(loginName);
-                if (user == null) return NoContent();
+            var user = await _userQueryService.GetByLoginNameAsync(loginName);
+            if (user == null) return NoContent();
 
-                return Ok(user);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            return Ok(user);
         }
 
         // GET aurora/api/platform/users
@@ -74,15 +67,8 @@ namespace Aurora.Platform.API.Controllers
         public async Task<ActionResult<PagedCollection<User>>> GetList(
             [FromQuery] PagedViewRequest viewRequest, [FromQuery] int roleId, [FromQuery] bool onlyActives)
         {
-            try
-            {
-                var users = await _userQueryService.GetListAsync(viewRequest, roleId, onlyActives);
-                return Ok(users);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var users = await _userQueryService.GetListAsync(viewRequest, roleId, onlyActives);
+            return Ok(users);
         }
 
         // POST aurora/api/platform/users/create
@@ -96,15 +82,8 @@ namespace Aurora.Platform.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<UserResponse>> Create([FromBody] UserCreateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
 
         // PUT aurora/api/platform/users/activate/{loginName}
@@ -115,24 +94,18 @@ namespace Aurora.Platform.API.Controllers
         /// <returns></returns>
         [HttpPut("activate/{loginName}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<UserResponse>> Activate(string loginName)
         {
-            try
+            var command = new UserUpdateCommand()
             {
-                var command = new UserUpdateCommand()
-                {
-                    LoginName = loginName,
-                    IsActive = true
-                };
+                LoginName = loginName,
+                IsActive = true
+            };
 
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         // PUT aurora/api/platform/users/deactivate/{loginName}
@@ -143,24 +116,18 @@ namespace Aurora.Platform.API.Controllers
         /// <returns></returns>
         [HttpPut("deactivate/{loginName}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<UserResponse>> Deactivate(string loginName)
         {
-            try
+            var command = new UserUpdateCommand()
             {
-                var command = new UserUpdateCommand()
-                {
-                    LoginName = loginName,
-                    IsActive = false
-                };
+                LoginName = loginName,
+                IsActive = false
+            };
 
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         // PUT aurora/api/platform/users/saveroles
@@ -171,18 +138,12 @@ namespace Aurora.Platform.API.Controllers
         /// <returns></returns>
         [HttpPut("saveroles")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<UserResponse>> SaveRoles([FromBody] UserSaveRolesCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         #endregion
