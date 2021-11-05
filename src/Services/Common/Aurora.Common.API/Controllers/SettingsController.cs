@@ -54,17 +54,10 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<AttributeSetting>> GetSetting(string code)
         {
-            try
-            {
-                var setting = await _attributeSettingQueryService.GetAsync(code);
-                if (setting == null) return NoContent();
+            var setting = await _attributeSettingQueryService.GetAsync(code);
+            if (setting == null) return NoContent();
 
-                return Ok(setting);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            return Ok(setting);
         }
 
         // GET aurora/api/common/settings/configs
@@ -81,15 +74,8 @@ namespace Aurora.Common.API.Controllers
         public async Task<ActionResult<PagedCollection<AttributeSetting>>> GetSettingsList(
             [FromQuery] PagedViewRequest viewRequest, [FromQuery] string scopeType, [FromQuery] bool onlyGetActives)
         {
-            try
-            {
-                var settings = await _attributeSettingQueryService.GetListAsync(viewRequest, scopeType, onlyGetActives);
-                return Ok(settings);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            var settings = await _attributeSettingQueryService.GetListAsync(viewRequest, scopeType, onlyGetActives);
+            return Ok(settings);
         }
 
         // POST aurora/api/common/settings/configs/create
@@ -103,15 +89,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<SettingResponse>> CreateSetting([FromBody] SettingCreateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
 
         // GET aurora/api/common/settings/values/{code}
@@ -127,17 +106,10 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<AttributeValue>> GetValue(string code, [FromQuery] int relationshipId)
         {
-            try
-            {
-                var value = await _attributeValueQueryService.GetAsync(code, relationshipId);
-                if (value == null) return NoContent();
+            var value = await _attributeValueQueryService.GetAsync(code, relationshipId);
+            if (value == null) return NoContent();
 
-                return Ok(value);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            return Ok(value);
         }
 
         // GET aurora/api/common/settings/values/{scopeType}/{relationshipId}
@@ -152,15 +124,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IList<AttributeValue>>> GetValuesList(string scopeType, int relationshipId)
         {
-            try
-            {
-                var values = await _attributeValueQueryService.GetListAsync(scopeType, relationshipId);
-                return Ok(values);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            var values = await _attributeValueQueryService.GetListAsync(scopeType, relationshipId);
+            return Ok(values);
         }
 
         // POST aurora/api/common/settings/values/save
@@ -174,16 +139,13 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<ValueResponse>> SaveValue([FromBody] ValueSaveCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
+
+        #endregion
+
+        #region Métodos privados del controlador
 
         #endregion
     }

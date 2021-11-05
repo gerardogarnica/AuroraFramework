@@ -50,17 +50,10 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Country>> Get(short countryId)
         {
-            try
-            {
-                var country = await _countryQueryService.GetAsync(countryId);
-                if (country == null) return NoContent();
+            var country = await _countryQueryService.GetAsync(countryId);
+            if (country == null) return NoContent();
 
-                return Ok(country);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            return Ok(country);
         }
 
         // GET aurora/api/common/countries
@@ -76,15 +69,8 @@ namespace Aurora.Common.API.Controllers
         public async Task<ActionResult<PagedCollection<Country>>> GetList(
             [FromQuery] PagedViewRequest viewRequest, [FromQuery] bool onlyGetActives)
         {
-            try
-            {
-                var countries = await _countryQueryService.GetListAsync(viewRequest, onlyGetActives);
-                return Ok(countries);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            var countries = await _countryQueryService.GetListAsync(viewRequest, onlyGetActives);
+            return Ok(countries);
         }
 
         // POST aurora/api/common/countries/create
@@ -98,15 +84,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<CountryResponse>> Create([FromBody] CountryCreateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
 
         // PUT aurora/api/common/countries/update
@@ -120,15 +99,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<CountryResponse>> Update([FromBody] CountryUpdateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         // PUT aurora/api/common/countries/divisions/save
@@ -142,15 +114,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<CountryResponse>> SaveDivision([FromBody] CountryDivisionSaveCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         #endregion

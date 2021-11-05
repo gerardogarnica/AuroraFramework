@@ -51,17 +51,10 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Catalog>> Get(string code, [FromQuery] bool onlyGetActiveItems)
         {
-            try
-            {
-                var catalog = await _catalogQueryService.GetByCodeAsync(code, onlyGetActiveItems);
-                if (catalog == null) return NoContent();
+            var catalog = await _catalogQueryService.GetByCodeAsync(code, onlyGetActiveItems);
+            if (catalog == null) return NoContent();
 
-                return Ok(catalog);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            return Ok(catalog);
         }
 
         // GET aurora/api/common/catalogs
@@ -78,15 +71,8 @@ namespace Aurora.Common.API.Controllers
         public async Task<ActionResult<PagedCollection<Catalog>>> GetList(
             [FromQuery] PagedViewRequest viewRequest, [FromQuery] bool onlyGetVisibles, [FromQuery] bool onlyGetEditables)
         {
-            try
-            {
-                var catalogs = await _catalogQueryService.GetListAsync(viewRequest, onlyGetVisibles, onlyGetEditables);
-                return Ok(catalogs);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var catalogs = await _catalogQueryService.GetListAsync(viewRequest, onlyGetVisibles, onlyGetEditables);
+            return Ok(catalogs);
         }
 
         // POST aurora/api/common/catalogs/create
@@ -100,15 +86,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<CatalogResponse>> Create([FromBody] CatalogCreateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
 
         // PUT aurora/api/common/catalogs/update
@@ -122,15 +101,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<CatalogResponse>> Update([FromBody] CatalogUpdateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         // PUT aurora/api/common/catalogs/items/save
@@ -144,15 +116,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<CatalogResponse>> SaveItem([FromBody] CatalogItemSaveCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         #endregion

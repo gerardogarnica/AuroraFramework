@@ -53,17 +53,10 @@ namespace Aurora.Common.API.Controllers
         public async Task<ActionResult<Location>> Get(
             int locationId, [FromQuery] bool getNextLevel, [FromQuery] bool onlyGetActivesChilds)
         {
-            try
-            {
-                var location = await _locationQueryService.GetAsync(locationId, getNextLevel, onlyGetActivesChilds);
-                if (location == null) return NoContent();
+            var location = await _locationQueryService.GetAsync(locationId, getNextLevel, onlyGetActivesChilds);
+            if (location == null) return NoContent();
 
-                return Ok(location);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            return Ok(location);
         }
 
         // GET aurora/api/common/locations
@@ -78,15 +71,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IList<Location>>> GetList([FromQuery] int parentId, [FromQuery] bool onlyGetActives)
         {
-            try
-            {
-                var locations = await _locationQueryService.GetListAsync(parentId, onlyGetActives);
-                return Ok(locations);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status404NotFound, e);
-            }
+            var locations = await _locationQueryService.GetListAsync(parentId, onlyGetActives);
+            return Ok(locations);
         }
 
         // POST aurora/api/common/locations/create
@@ -100,15 +86,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<LocationResponse>> Create([FromBody] LocationCreateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
 
         // PUT aurora/api/common/locations/update
@@ -122,15 +101,8 @@ namespace Aurora.Common.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<LocationResponse>> Update([FromBody] LocationUpdateCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Accepted(response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(response);
         }
 
         #endregion
