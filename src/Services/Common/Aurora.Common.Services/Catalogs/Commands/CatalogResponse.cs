@@ -1,4 +1,5 @@
 ﻿using Aurora.Common.Domain.Catalogs.Models;
+using Aurora.Common.Domain.Exceptions;
 using Aurora.Framework;
 
 namespace Aurora.Common.Services.Catalogs.Commands
@@ -11,16 +12,14 @@ namespace Aurora.Common.Services.Catalogs.Commands
 
         public string Name { get; set; }
 
-        private CatalogResponse(bool isSuccess, string code, string message, CatalogData catalog)
-            : base(isSuccess, code, message)
+        internal CatalogResponse(CatalogData catalog)
+            : base()
         {
-            CatalogId = catalog != null ? catalog.CatalogId : -1;
-            Code = catalog?.Code;
-            Name = catalog?.Name;
+            if (catalog == null) throw new CatalogNullException();
+
+            CatalogId = catalog.CatalogId;
+            Code = catalog.Code;
+            Name = catalog.Name;
         }
-
-        internal CatalogResponse(CatalogData catalog) : this(true, string.Empty, string.Empty, catalog) { }
-
-        internal CatalogResponse(string code, string message) : this(false, code, message, null) { }
     }
 }

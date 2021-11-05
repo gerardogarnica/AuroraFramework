@@ -1,4 +1,5 @@
-﻿using Aurora.Common.Domain.Settings.Models;
+﻿using Aurora.Common.Domain.Exceptions;
+using Aurora.Common.Domain.Settings.Models;
 using Aurora.Framework;
 
 namespace Aurora.Common.Services.Settings.Commands
@@ -9,15 +10,13 @@ namespace Aurora.Common.Services.Settings.Commands
 
         public int RelationshipId { get; set; }
 
-        private ValueResponse(bool isSuccess, string code, string message, AttributeValueData value)
-            : base(isSuccess, code, message)
+        internal ValueResponse(AttributeValueData value)
+            : base()
         {
-            AttributeId = value != null ? value.AttributeId : -1;
-            RelationshipId = value != null ? value.RelationshipId : -1;
+            if (value == null) throw new AttributeNullException();
+
+            AttributeId = value.AttributeId;
+            RelationshipId = value.RelationshipId;
         }
-
-        internal ValueResponse(AttributeValueData value) : this(true, string.Empty, string.Empty, value) { }
-
-        internal ValueResponse(string code, string message) : this(false, code, message, null) { }
     }
 }

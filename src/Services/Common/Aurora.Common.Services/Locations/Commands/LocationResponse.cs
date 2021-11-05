@@ -1,4 +1,5 @@
-﻿using Aurora.Common.Domain.Locations.Models;
+﻿using Aurora.Common.Domain.Exceptions;
+using Aurora.Common.Domain.Locations.Models;
 using Aurora.Framework;
 
 namespace Aurora.Common.Services.Locations.Commands
@@ -11,16 +12,14 @@ namespace Aurora.Common.Services.Locations.Commands
 
         public string Code { get; set; }
 
-        private LocationResponse(bool isSuccess, string code, string message, LocationData location)
-            : base(isSuccess, code, message)
+        internal LocationResponse(LocationData location)
+            : base()
         {
-            LocationId = location != null ? location.LocationId : -1;
-            Name = location?.Name;
-            Code = location?.Code;
+            if (location == null) throw new LocationNullException();
+
+            LocationId = location.LocationId;
+            Name = location.Name;
+            Code = location.Code;
         }
-
-        internal LocationResponse(LocationData location) : this(true, string.Empty, string.Empty, location) { }
-
-        internal LocationResponse(string code, string message) : this(false, code, message, null) { }
     }
 }

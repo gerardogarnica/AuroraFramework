@@ -1,4 +1,5 @@
-﻿using Aurora.Common.Domain.Settings.Models;
+﻿using Aurora.Common.Domain.Exceptions;
+using Aurora.Common.Domain.Settings.Models;
 using Aurora.Framework;
 
 namespace Aurora.Common.Services.Settings.Commands
@@ -11,16 +12,14 @@ namespace Aurora.Common.Services.Settings.Commands
 
         public string Name { get; set; }
 
-        private SettingResponse(bool isSuccess, string code, string message, AttributeSettingData setting)
-            : base(isSuccess, code, message)
+        internal SettingResponse(AttributeSettingData setting)
+            : base()
         {
-            AttributeId = setting != null ? setting.AttributeId : -1;
-            Code = setting?.Code;
-            Name = setting?.Name;
+            if (setting == null) throw new AttributeNullException();
+
+            AttributeId = setting.AttributeId;
+            Code = setting.Code;
+            Name = setting.Name;
         }
-
-        internal SettingResponse(AttributeSettingData setting) : this(true, string.Empty, string.Empty, setting) { }
-
-        internal SettingResponse(string code, string message) : this(false, code, message, null) { }
     }
 }
