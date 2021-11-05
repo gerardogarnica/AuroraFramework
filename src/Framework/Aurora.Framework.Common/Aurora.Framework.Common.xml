@@ -19,16 +19,6 @@
             Lista de errores de una ejecución de la operación.
             </summary>
         </member>
-        <member name="P:Aurora.Framework.AuroraBaseResponse.ResponseCode">
-            <summary>
-            Código de respuesta de la operación.
-            </summary>
-        </member>
-        <member name="P:Aurora.Framework.AuroraBaseResponse.ResponseMessage">
-            <summary>
-            Mensaje de respuesta de la operación.
-            </summary>
-        </member>
         <member name="M:Aurora.Framework.AuroraBaseResponse.#ctor">
             <summary>
             Inicializa una instancia de la clase AuroraBaseResponse
@@ -51,14 +41,6 @@
             <param name="errorCategory">Categoría o descripción del error.</param>
             <param name="errorType">Tipo específico del error.</param>
             <param name="message">Mensaje específico de error.</param>
-        </member>
-        <member name="M:Aurora.Framework.AuroraBaseResponse.#ctor(System.Boolean,System.String,System.String)">
-            <summary>
-            Inicializa una instancia de la clase AuroraBaseResponse.
-            </summary>
-            <param name="success">Indica si la ejecución de la operación resulta exitosa o no.</param>
-            <param name="code">Código de respuesta de la operación.</param>
-            <param name="message">Mensaje de respuesta de la operación.</param>
         </member>
         <member name="T:Aurora.Framework.AuroraBaseResponse.ResponseError">
             <summary>

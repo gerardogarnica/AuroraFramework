@@ -18,16 +18,6 @@ namespace Aurora.Framework
         public List<ResponseError> Errors { get; set; } = new List<ResponseError>();
 
         /// <summary>
-        /// Código de respuesta de la operación.
-        /// </summary>
-        public string ResponseCode { get; set; }
-
-        /// <summary>
-        /// Mensaje de respuesta de la operación.
-        /// </summary>
-        public string ResponseMessage { get; set; }
-
-        /// <summary>
         /// Inicializa una instancia de la clase AuroraBaseResponse
         /// como ejecución exitosa de una operación.
         /// </summary>
@@ -62,19 +52,6 @@ namespace Aurora.Framework
                     ErrorType = errorType,
                     Message = message
                 });
-        }
-
-        /// <summary>
-        /// Inicializa una instancia de la clase AuroraBaseResponse.
-        /// </summary>
-        /// <param name="success">Indica si la ejecución de la operación resulta exitosa o no.</param>
-        /// <param name="code">Código de respuesta de la operación.</param>
-        /// <param name="message">Mensaje de respuesta de la operación.</param>
-        public AuroraBaseResponse(bool success, string code, string message)
-        {
-            IsSuccess = success;
-            ResponseCode = code;
-            ResponseMessage = message;
         }
 
         /// <summary>
