@@ -11,7 +11,12 @@
         </member>
         <member name="P:Aurora.Framework.AuroraBaseResponse.IsSuccess">
             <summary>
-            Indica si la ejecución de la operación resulta exitosa o no.
+            Indica si la ejecución de una operación resulta exitosa o no.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.AuroraBaseResponse.Errors">
+            <summary>
+            Lista de errores de una ejecución de la operación.
             </summary>
         </member>
         <member name="P:Aurora.Framework.AuroraBaseResponse.ResponseCode">
@@ -24,6 +29,29 @@
             Mensaje de respuesta de la operación.
             </summary>
         </member>
+        <member name="M:Aurora.Framework.AuroraBaseResponse.#ctor">
+            <summary>
+            Inicializa una instancia de la clase AuroraBaseResponse
+            como ejecución exitosa de una operación.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.AuroraBaseResponse.#ctor(System.String,System.String)">
+            <summary>
+            Inicializa una instancia de la clase AuroraBaseResponse
+            como ejecución con errores de una operación.
+            </summary>
+            <param name="errorType">Tipo específico del error.</param>
+            <param name="message">Mensaje específico de error.</param>
+        </member>
+        <member name="M:Aurora.Framework.AuroraBaseResponse.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Inicializa una instancia de la clase AuroraBaseResponse
+            como ejecución con errores de una operación.
+            </summary>
+            <param name="errorCategory">Categoría o descripción del error.</param>
+            <param name="errorType">Tipo específico del error.</param>
+            <param name="message">Mensaje específico de error.</param>
+        </member>
         <member name="M:Aurora.Framework.AuroraBaseResponse.#ctor(System.Boolean,System.String,System.String)">
             <summary>
             Inicializa una instancia de la clase AuroraBaseResponse.
@@ -31,6 +59,26 @@
             <param name="success">Indica si la ejecución de la operación resulta exitosa o no.</param>
             <param name="code">Código de respuesta de la operación.</param>
             <param name="message">Mensaje de respuesta de la operación.</param>
+        </member>
+        <member name="T:Aurora.Framework.AuroraBaseResponse.ResponseError">
+            <summary>
+            Representa el detalle de un error en la ejecución de una operación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.AuroraBaseResponse.ResponseError.Category">
+            <summary>
+            Categoría o descripción del error.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.AuroraBaseResponse.ResponseError.ErrorType">
+            <summary>
+            Tipo específico del error.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.AuroraBaseResponse.ResponseError.Message">
+            <summary>
+            Mensaje específico de error.
+            </summary>
         </member>
         <member name="T:Aurora.Framework.AuroraHttpClientBase">
             <summary>
@@ -385,12 +433,12 @@
         </member>
         <member name="P:Aurora.Framework.Exceptions.BusinessException.ErrorCategory">
             <summary>
-            Categoría o tipo de la excepción.
+            Categoría o descripción de la excepción.
             </summary>
         </member>
-        <member name="P:Aurora.Framework.Exceptions.BusinessException.ErrorKeyName">
+        <member name="P:Aurora.Framework.Exceptions.BusinessException.ErrorType">
             <summary>
-            Código identificativo de la excepción.
+            Tipo de la excepción.
             </summary>
         </member>
         <member name="M:Aurora.Framework.Exceptions.BusinessException.#ctor">
@@ -402,18 +450,18 @@
             <summary>
             Inicializa una nueva instancia de la clase BusinessException con el mensaje de error especificado.
             </summary>
+            <param name="category">Categoría o descripción de la excepción.</param>
+            <param name="errorType">Tipo de la excepción.</param>
             <param name="message">Mensaje de error que explica la razón de la excepción.</param>
-            <param name="category">Categoría o tipo de la excepción.</param>
-            <param name="keyName">Código identificativo de la excepción.</param>
         </member>
         <member name="M:Aurora.Framework.Exceptions.BusinessException.#ctor(System.String,System.String,System.String,System.Exception)">
             <summary>
             Inicializa una nueva instancia de la clase BusinessException con el mensaje de error especificado
             y una referencia a la excepción interna que representa la causa de la excepción.
             </summary>
-            <param name="message">Mensaje de error que explica la razón de la excepción.</param>
             <param name="category">Categoría o tipo de la excepción.</param>
-            <param name="keyName">Código identificativo de la excepción.</param>
+            <param name="errorType">Código identificativo de la excepción.</param>
+            <param name="message">Mensaje de error que explica la razón de la excepción.</param>
             <param name="innerException">Excepción que ha provocado que se produzca esta excepción.</param>
         </member>
         <member name="T:Aurora.Framework.Exceptions.PlatformException">
