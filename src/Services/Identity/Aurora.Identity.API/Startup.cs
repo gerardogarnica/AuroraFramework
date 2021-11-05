@@ -37,6 +37,9 @@ namespace Aurora.Identity.API
 
             // Configuración de autenticación
             services.AddAuthenticationServices();
+
+            // Configuración de middleware de excepciones
+            services.AddExceptionHandlerServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +49,9 @@ namespace Aurora.Identity.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Configuración de Middleware
+            app.UseExceptionHandlerMiddleware();
 
             // Configuración de Swagger
             app.UseSwagger(SwaggerStrings.ApplicationName, SwaggerStrings.ModuleName, SwaggerStrings.Version);

@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Threading.Tasks;
 
 namespace Aurora.Identity.API.Controllers
@@ -48,15 +47,8 @@ namespace Aurora.Identity.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IdentityAccess>> Login([FromBody] UserLoginCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Created(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Created(string.Empty, response);
         }
 
         // PUT aurora/api/identity/session/changepassword
@@ -71,15 +63,8 @@ namespace Aurora.Identity.API.Controllers
         public async Task<ActionResult<UserPasswordChangeResponse>> ChangePassword(
             [FromBody] UserPasswordChangeCommand command)
         {
-            try
-            {
-                var response = await _mediator.Send(command);
-                return Accepted(string.Empty, response);
-            }
-            catch (Exception e)
-            {
-                return ProcessException(StatusCodes.Status500InternalServerError, e);
-            }
+            var response = await _mediator.Send(command);
+            return Accepted(string.Empty, response);
         }
 
         #endregion
