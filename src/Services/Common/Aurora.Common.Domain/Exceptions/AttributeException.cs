@@ -4,25 +4,36 @@ namespace Aurora.Common.Domain.Exceptions
 {
     public class AttributeException : BusinessException
     {
-        public AttributeException(string message, string code)
-            : base(message, "AttributeException", code) { }
+        protected const string AttributeNullMessage = "El registro de atributo no puede ser nulo.";
+        protected const string ExistsSettingCodeMessage = "El código de configuración de atributo '{0}' ya se encuentra registrado y no puede ser creado de nuevo.";
+        protected const string InvalidSettingCodeMessage = "El código de configuración de atributo '{0}' no se encuentra registrado.";
+        protected const string InvalidSettingCatalogValueMessage = "Los elementos por defecto no corresponden al catálogo '{0}'.";
+
+        public AttributeException(string errorType, string message)
+            : base("AttributeException", errorType, message) { }
+    }
+
+    public class AttributeNullException : AttributeException
+    {
+        public AttributeNullException()
+            : base("AttributeNullException", AttributeNullMessage) { }
     }
 
     public class ExistsSettingCodeException : AttributeException
     {
         public ExistsSettingCodeException(string code)
-            : base(string.Format("El código de configuración de atributo parámetro '{0}' ya se encuentra registrado y no puede ser creado de nuevo.", code), "1001") { }
+            : base("ExistsSettingCodeException", string.Format(ExistsSettingCodeMessage, code)) { }
     }
 
     public class InvalidSettingCodeException : AttributeException
     {
         public InvalidSettingCodeException(string code)
-            : base(string.Format("El código de configuración de atributo parámetro '{0}' no se encuentra registrado.", code), "1002") { }
+            : base("InvalidSettingCodeException", string.Format(InvalidSettingCodeMessage, code)) { }
     }
 
-    public class InvalidSettingCatalogValue : AttributeException
+    public class InvalidSettingCatalogValueException : AttributeException
     {
-        public InvalidSettingCatalogValue(string code)
-            : base(string.Format("Los elementos por defecto no corresponden al catálogo '{0}'.", code), "1002") { }
+        public InvalidSettingCatalogValueException(string code)
+            : base("InvalidSettingCatalogValueException", string.Format(InvalidSettingCatalogValueMessage, code)) { }
     }
 }
