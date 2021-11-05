@@ -31,21 +31,14 @@ namespace Aurora.Common.Services.Catalogs.Handlers
         async Task<CatalogResponse> IRequestHandler<CatalogUpdateCommand, CatalogResponse>.Handle(
             CatalogUpdateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene el catálogo existente
-                var entry = await GetExistentCatalogData(request.Code.Trim());
+            // Se obtiene el catálogo existente
+            var entry = await GetExistentCatalogData(request.Code.Trim());
 
-                // Se actualiza el registro de catálogo
-                UpdateCatalogData(entry, request);
-                entry = await _catalogRepository.UpdateAsync(entry);
+            // Se actualiza el registro de catálogo
+            UpdateCatalogData(entry, request);
+            entry = await _catalogRepository.UpdateAsync(entry);
 
-                return new CatalogResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new CatalogResponse(e.ErrorKeyName, e.Message);
-            }
+            return new CatalogResponse(entry);
         }
 
         #endregion

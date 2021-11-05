@@ -31,21 +31,14 @@ namespace Aurora.Common.Services.Locations.Handlers
         async Task<CountryResponse> IRequestHandler<CountryUpdateCommand, CountryResponse>.Handle(
             CountryUpdateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene el país existente
-                var entry = await GetExistentCountryData(request.CountryId);
+            // Se obtiene el país existente
+            var entry = await GetExistentCountryData(request.CountryId);
 
-                // Se actualiza el registro de país
-                UpdateCountryData(entry, request);
-                entry = await _countryRepository.UpdateAsync(entry);
+            // Se actualiza el registro de país
+            UpdateCountryData(entry, request);
+            entry = await _countryRepository.UpdateAsync(entry);
 
-                return new CountryResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new CountryResponse(e.ErrorKeyName, e.Message);
-            }
+            return new CountryResponse(entry);
         }
 
         #endregion

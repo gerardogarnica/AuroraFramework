@@ -38,29 +38,22 @@ namespace Aurora.Common.Services.Locations.Handlers
         async Task<LocationResponse> IRequestHandler<LocationCreateCommand, LocationResponse>.Handle(
             LocationCreateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene la división administrativa
-                var divisionData = await GetExistentCountryDivisionData(request.DivisionId);
+            // Se obtiene la división administrativa
+            var divisionData = await GetExistentCountryDivisionData(request.DivisionId);
 
-                // Se obtiene la localidad padre
-                var parentLocationData = await GetExistentParentLocationData(request.ParentLocationId);
+            // Se obtiene la localidad padre
+            var parentLocationData = await GetExistentParentLocationData(request.ParentLocationId);
 
-                // Se verifica el nivel de la localidad
-                ValidateLocationLevel(divisionData, parentLocationData);
+            // Se verifica el nivel de la localidad
+            ValidateLocationLevel(divisionData, parentLocationData);
 
-                // Se verifica si la localidad ya se encuentra registrada
-                await VerifyIfLocationDataExists(request.Name, request.ParentLocationId);
+            // Se verifica si la localidad ya se encuentra registrada
+            await VerifyIfLocationDataExists(request.Name, request.ParentLocationId);
 
-                var entry = CreateLocationData(request);
-                entry = await _locationRepository.InsertAsync(entry);
+            var entry = CreateLocationData(request);
+            entry = await _locationRepository.InsertAsync(entry);
 
-                return new LocationResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new LocationResponse(e.ErrorKeyName, e.Message);
-            }
+            return new LocationResponse(entry);
         }
 
         #endregion

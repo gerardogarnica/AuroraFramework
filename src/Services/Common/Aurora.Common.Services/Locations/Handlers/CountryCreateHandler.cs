@@ -37,23 +37,16 @@ namespace Aurora.Common.Services.Locations.Handlers
         async Task<CountryResponse> IRequestHandler<CountryCreateCommand, CountryResponse>.Handle(
             CountryCreateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se verifica si el país ya se encuentra registrado
-                await VerifyIfCountryDataExists(request.ThreeLettersCode.Trim());
+            // Se verifica si el país ya se encuentra registrado
+            await VerifyIfCountryDataExists(request.ThreeLettersCode.Trim());
 
-                // Se verifica la cantidad de niveles tipo ciudad
-                VerifyCityLevel(request.Divisions.ToList());
+            // Se verifica la cantidad de niveles tipo ciudad
+            VerifyCityLevel(request.Divisions.ToList());
 
-                var entry = CreateCountryData(request);
-                entry = await _countryRepository.InsertAsync(entry);
+            var entry = CreateCountryData(request);
+            entry = await _countryRepository.InsertAsync(entry);
 
-                return new CountryResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new CountryResponse(e.ErrorKeyName, e.Message);
-            }
+            return new CountryResponse(entry);
         }
 
         #endregion

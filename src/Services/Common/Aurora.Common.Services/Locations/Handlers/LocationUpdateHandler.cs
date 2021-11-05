@@ -39,21 +39,14 @@ namespace Aurora.Common.Services.Locations.Handlers
         async Task<LocationResponse> IRequestHandler<LocationUpdateCommand, LocationResponse>.Handle(
             LocationUpdateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene la localidad existente
-                var entry = await GetExistentLocationData(request.LocationId);
+            // Se obtiene la localidad existente
+            var entry = await GetExistentLocationData(request.LocationId);
 
-                // Se actualiza el registro de localidad
-                UpdateLocationData(entry, request);
-                entry = await _locationRepository.UpdateAsync(entry);
+            // Se actualiza el registro de localidad
+            UpdateLocationData(entry, request);
+            entry = await _locationRepository.UpdateAsync(entry);
 
-                return new LocationResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new LocationResponse(e.ErrorKeyName, e.Message);
-            }
+            return new LocationResponse(entry);
         }
 
         #endregion

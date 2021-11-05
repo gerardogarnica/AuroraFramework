@@ -44,21 +44,14 @@ namespace Aurora.Common.Services.Catalogs.Handlers
         async Task<CatalogResponse> IRequestHandler<CatalogItemSaveCommand, CatalogResponse>.Handle(
             CatalogItemSaveCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene el catálogo existente
-                var entry = await GetExistentCatalogData(request.CatalogCode.Trim());
+            // Se obtiene el catálogo existente
+            var entry = await GetExistentCatalogData(request.CatalogCode.Trim());
 
-                // Se almacena el registro de item de catálogo
-                SaveCatalogItemData(entry, request);
-                entry = await _catalogRepository.UpdateAsync(entry);
+            // Se almacena el registro de item de catálogo
+            SaveCatalogItemData(entry, request);
+            entry = await _catalogRepository.UpdateAsync(entry);
 
-                return new CatalogResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new CatalogResponse(e.ErrorKeyName, e.Message);
-            }
+            return new CatalogResponse(entry);
         }
 
         #endregion

@@ -44,21 +44,14 @@ namespace Aurora.Common.Services.Locations.Handlers
         async Task<CountryResponse> IRequestHandler<CountryDivisionSaveCommand, CountryResponse>.Handle(
             CountryDivisionSaveCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se obtiene el país existente
-                var entry = await GetExistentCountryData(request.CountryId);
+            // Se obtiene el país existente
+            var entry = await GetExistentCountryData(request.CountryId);
 
-                // Se almacena el registro de división de país
-                SaveCountryDivisionData(entry, request);
-                entry = await _countryRepository.UpdateAsync(entry);
+            // Se almacena el registro de división de país
+            SaveCountryDivisionData(entry, request);
+            entry = await _countryRepository.UpdateAsync(entry);
 
-                return new CountryResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new CountryResponse(e.ErrorKeyName, e.Message);
-            }
+            return new CountryResponse(entry);
         }
 
         #endregion

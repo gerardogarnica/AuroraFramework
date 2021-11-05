@@ -41,23 +41,16 @@ namespace Aurora.Common.Services.Settings.Handlers
         async Task<SettingResponse> IRequestHandler<SettingCreateCommand, SettingResponse>.Handle(
             SettingCreateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se verifica si la configuración de atributo ya se encuentra registrado
-                await VerifyIfSettingDataExists(request.Code.Trim());
+            // Se verifica si la configuración de atributo ya se encuentra registrado
+            await VerifyIfSettingDataExists(request.Code.Trim());
 
-                // Se verifica si el tipo de ámbito es válido
-                await VerifyIfScopeExists(request.ScopeType.Trim());
+            // Se verifica si el tipo de ámbito es válido
+            await VerifyIfScopeExists(request.ScopeType.Trim());
 
-                var entry = CreateSettingData(request);
-                entry = await _settingRepository.InsertAsync(entry);
+            var entry = CreateSettingData(request);
+            entry = await _settingRepository.InsertAsync(entry);
 
-                return new SettingResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new SettingResponse(e.ErrorKeyName, e.Message);
-            }
+            return new SettingResponse(entry);
         }
 
         #endregion
@@ -104,7 +97,7 @@ namespace Aurora.Common.Services.Settings.Handlers
 
             if (!catalog.IsVisible) throw new InvalidCatalogCodeException(code);
 
-            if (!catalog.Items.Any(x => x.Code.Equals(items))) throw new InvalidSettingCatalogValue(code);
+            if (!catalog.Items.Any(x => x.Code.Equals(items))) throw new InvalidSettingCatalogValueException(code);
         }
 
         #endregion

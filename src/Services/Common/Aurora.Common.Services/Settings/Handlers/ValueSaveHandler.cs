@@ -47,30 +47,23 @@ namespace Aurora.Common.Services.Settings.Handlers
         async Task<ValueResponse> IRequestHandler<ValueSaveCommand, ValueResponse>.Handle(
             ValueSaveCommand request, CancellationToken cancellationToken)
         {
-            try
+            // Se obtiene la configuración de atributo existente
+            var setting = await GetExistentAttributeSetting(request.Code);
+
+            var entry = await GetExistentAttributeValueData(setting.Code, request.RelationshipId);
+
+            if (entry == null)
             {
-                // Se obtiene la configuración de atributo existente
-                var setting = await GetExistentAttributeSetting(request.Code);
-
-                var entry = await GetExistentAttributeValueData(setting.Code, request.RelationshipId);
-
-                if (entry == null)
-                {
-                    entry = CreateValueData(setting, request);
-                    entry = await _valueRepository.InsertAsync(entry);
-                }
-                else
-                {
-                    UpdateValueData(entry, setting, request);
-                    entry = await _valueRepository.UpdateAsync(entry);
-                }
-
-                return new ValueResponse(entry);
+                entry = CreateValueData(setting, request);
+                entry = await _valueRepository.InsertAsync(entry);
             }
-            catch (Framework.Exceptions.BusinessException e)
+            else
             {
-                return new ValueResponse(e.ErrorKeyName, e.Message);
+                UpdateValueData(entry, setting, request);
+                entry = await _valueRepository.UpdateAsync(entry);
             }
+
+            return new ValueResponse(entry);
         }
 
         #endregion

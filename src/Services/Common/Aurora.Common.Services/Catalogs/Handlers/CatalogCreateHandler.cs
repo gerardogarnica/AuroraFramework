@@ -35,20 +35,13 @@ namespace Aurora.Common.Services.Catalogs.Handlers
         async Task<CatalogResponse> IRequestHandler<CatalogCreateCommand, CatalogResponse>.Handle(
             CatalogCreateCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Se verifica si el catálogo ya se encuentra registrado
-                await VerifyIfCatalogDataExists(request.Code.Trim());
+            // Se verifica si el catálogo ya se encuentra registrado
+            await VerifyIfCatalogDataExists(request.Code.Trim());
 
-                var entry = CreateCatalogData(request);
-                entry = await _catalogRepository.InsertAsync(entry);
+            var entry = CreateCatalogData(request);
+            entry = await _catalogRepository.InsertAsync(entry);
 
-                return new CatalogResponse(entry);
-            }
-            catch (Framework.Exceptions.BusinessException e)
-            {
-                return new CatalogResponse(e.ErrorKeyName, e.Message);
-            }
+            return new CatalogResponse(entry);
         }
 
         #endregion
