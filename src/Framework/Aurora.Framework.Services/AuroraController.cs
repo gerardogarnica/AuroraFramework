@@ -9,6 +9,7 @@ namespace Aurora.Framework.Services
     /// <summary>
     /// Clase base para un controlador MVC de servicios API de Aurora.
     /// </summary>
+    [ProducesErrorResponseType(typeof(AuroraBaseResponse))]
     public abstract class AuroraController : ControllerBase
     {
         #region Miembros privados del controlador
@@ -49,7 +50,7 @@ namespace Aurora.Framework.Services
                 message = string.Format("{0}. Categoría: {1}. Código: {2}",
                     businessException.Message,
                     businessException.ErrorCategory,
-                    businessException.ErrorKeyName);
+                    businessException.ErrorType);
 
                 return StatusCode(code, message);
             }

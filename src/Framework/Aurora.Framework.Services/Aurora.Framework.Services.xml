@@ -39,6 +39,44 @@
             <param name="services">Especifa la interface Microsoft.Extensions.DependencyInjection.IServiceCollection
             donde se agregará la configuración de servicios de autenticación.</param>
         </member>
+        <member name="T:Aurora.Framework.Services.ExceptionHandlerConfiguration">
+            <summary>
+            Clase con métodos de extensión para la configuración de middleware para el manejo de excepciones.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Services.ExceptionHandlerConfiguration.AddExceptionHandlerServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Agrega la configuración de middleware para el manejo de excepciones
+            para una interface IServiceCollection especificada.
+            </summary>
+            <param name="services">Especifa la interface Microsoft.Extensions.DependencyInjection.IServiceCollection
+            donde se agregará la configuración de middleware para el manejo de excepciones.</param>
+        </member>
+        <member name="M:Aurora.Framework.Services.ExceptionHandlerConfiguration.UseExceptionHandlerMiddleware(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Agrega el registro de la configuración de middleware para el manejo de excepciones
+            para una interface IApplicationBuilder especificada.
+            </summary>
+            <param name="app">Especifa la interface Microsoft.AspNetCore.Builder.IApplicationBuilder
+            donde se agregará la configuración de middleware para el manejo de excepciones.</param>
+        </member>
+        <member name="T:Aurora.Framework.Services.ExceptionHandlerMiddleware">
+            <summary>
+            Define un middleware para el manejo de excepciones.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Services.ExceptionHandlerMiddleware.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase ExceptionHandlerMiddleware.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Services.ExceptionHandlerMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Método para el manejo de requerimientos.
+            </summary>
+            <param name="context">Contexto HttpContext para el requerimiento actual.</param>
+            <param name="next">Función para procesar un requerimiento HTTP.</param>
+        </member>
         <member name="T:Aurora.Framework.Services.SwaggerConfiguration">
             <summary>
             Clase con métodos de extensión para la configuración de documentación Swagger del servicio.
