@@ -22,36 +22,16 @@ namespace Aurora.Framework
         /// como ejecución exitosa de una operación.
         /// </summary>
         public AuroraBaseResponse()
-        {
-            IsSuccess = true;
-        }
+            : this(true) { }
 
         /// <summary>
-        /// Inicializa una instancia de la clase AuroraBaseResponse
-        /// como ejecución con errores de una operación.
+        /// Inicializa una instancia de la clase AuroraBaseResponse con la respuesta
+        /// del estado de la ejecución de una operación.
         /// </summary>
-        /// <param name="errorType">Tipo específico del error.</param>
-        /// <param name="message">Mensaje específico de error.</param>
-        public AuroraBaseResponse(string errorType, string message)
-            : this(errorType, errorType, message) { }
-
-        /// <summary>
-        /// Inicializa una instancia de la clase AuroraBaseResponse
-        /// como ejecución con errores de una operación.
-        /// </summary>
-        /// <param name="errorCategory">Categoría o descripción del error.</param>
-        /// <param name="errorType">Tipo específico del error.</param>
-        /// <param name="message">Mensaje específico de error.</param>
-        public AuroraBaseResponse(string errorCategory, string errorType, string message)
+        /// <param name="isSuccess">Indica si la ejecución de una operación resulta exitosa o no.</param>
+        public AuroraBaseResponse(bool isSuccess)
         {
-            IsSuccess = false;
-            Errors.Add(
-                new ResponseError()
-                {
-                    Category = errorCategory,
-                    ErrorType = errorType,
-                    Message = message
-                });
+            IsSuccess = isSuccess;
         }
 
         /// <summary>
@@ -60,9 +40,9 @@ namespace Aurora.Framework
         public class ResponseError
         {
             /// <summary>
-            /// Categoría o descripción del error.
+            /// Categoría del error.
             /// </summary>
-            public string Category { get; set; }
+            public ResponseErrorCategoryType Category { get; set; }
 
             /// <summary>
             /// Tipo específico del error.
@@ -74,5 +54,26 @@ namespace Aurora.Framework
             /// </summary>
             public string Message { get; set; }
         }
+    }
+
+    /// <summary>
+    /// Define los tipos de categoría de errores en la ejecución de una operación.
+    /// </summary>
+    public enum ResponseErrorCategoryType
+    {
+        /// <summary>
+        /// Validación de modelo de datos de entrada.
+        /// </summary>
+        ModelValidation,
+
+        /// <summary>
+        /// Validación de lógica de negocio.
+        /// </summary>
+        BusinessValidation,
+
+        /// <summary>
+        /// Error o excepción no controlada.
+        /// </summary>
+        Error
     }
 }
