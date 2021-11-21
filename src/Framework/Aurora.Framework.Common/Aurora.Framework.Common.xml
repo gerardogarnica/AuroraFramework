@@ -473,19 +473,26 @@
             <param name="message">Mensaje de error que explica la razón de la excepción.</param>
             <param name="innerException">Excepción que ha provocado que se produzca esta excepción.</param>
         </member>
-        <member name="T:Aurora.Framework.AuroraBaseResponseExtensions">
+        <member name="T:Aurora.Framework.Exceptions.ValidationException">
             <summary>
-            Clase con métodos de extensión para objetos de tipo AuroraBaseResponse.
+            Representa los errores de validaciones de modelos de entrada.
             </summary>
         </member>
-        <member name="M:Aurora.Framework.AuroraBaseResponseExtensions.AddError(Aurora.Framework.AuroraBaseResponse,Aurora.Framework.ResponseErrorCategoryType,System.String,System.String)">
+        <member name="P:Aurora.Framework.Exceptions.ValidationException.Errors">
             <summary>
-            Agrega un detalle de error en la ejecución de una operación.
+            Lista de mensajes de errores.
             </summary>
-            <param name="response">Objeto AuroraBaseResponse a evaluar.</param>
-            <param name="category">Categoría del error.</param>
-            <param name="errorType">Tipo específico del error.</param>
-            <param name="message">Mensaje específico de error.</param>
+        </member>
+        <member name="M:Aurora.Framework.Exceptions.ValidationException.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase ValidationException.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Exceptions.ValidationException.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Inicializa una nueva instancia de la clase ValidationException con una lista de mensajes de errores especificados.
+            </summary>
+            <param name="errors">Lista de mensajes de errores.</param>
         </member>
         <member name="T:Aurora.Framework.DateTimeExtensions">
             <summary>
