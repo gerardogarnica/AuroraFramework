@@ -4,6 +4,19 @@
         <name>Aurora.Framework.Logic</name>
     </assembly>
     <members>
+        <member name="T:Aurora.Framework.Logic.Behaviors.ValidationBehavior`2">
+            <summary>
+            Clase que implementa el comportamiento de validaciones de modelos de datos de entradas de requerimientos.
+            </summary>
+            <typeparam name="TRequest">Tipo de objeto de requerimiento.</typeparam>
+            <typeparam name="TResponse">Tipo de objeto de respuesta.</typeparam>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Behaviors.ValidationBehavior`2.#ctor(System.Collections.Generic.IEnumerable{FluentValidation.IValidator{`0}})">
+            <summary>
+            Inicializa una nueva instancia de la clase ValidationBehavior.
+            </summary>
+            <param name="validators">Define un validador para un objeto específico.</param>
+        </member>
         <member name="T:Aurora.Framework.Logic.BinaryExpressions">
             <summary>
             Clase para el manejo de expresiones binarias de consultas en repositorios de datos.
@@ -181,6 +194,19 @@
             </summary>
             <param name="entity">Registro a ser actualizado en el repositorio.</param>
             <returns>Registro actualizado en el repositorio.</returns>
+        </member>
+        <member name="T:Aurora.Framework.Logic.Validations.ValidatorsConfiguration">
+            <summary>
+            Clase con métodos de extensión para la configuración de validadores de modelos de datos de entradas de requerimientos.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Logic.Validations.ValidatorsConfiguration.AddValidationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Agrega la configuración de validadores de modelos de datos de entradas de requerimientos
+            para una interface IServiceCollection especificada.
+            </summary>
+            <param name="services">Especifa la interface Microsoft.Extensions.DependencyInjection.IServiceCollection
+            donde se agregará la configuración de documentación Swagger.</param>
         </member>
     </members>
 </doc>
