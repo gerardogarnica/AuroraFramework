@@ -21,6 +21,9 @@ namespace Aurora.Platform.API.Configurations
             // Configuración de AutoMapper
             services.AddPlatformMapper();
 
+            // Configuración de Validators
+            services.AddPlatformValidators();
+
             // Configuración de MediatR
             services.AddPlatformMediatR();
 
