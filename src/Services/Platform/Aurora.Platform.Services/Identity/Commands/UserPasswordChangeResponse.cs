@@ -1,10 +1,12 @@
-﻿using Aurora.Framework;
-
-namespace Aurora.Platform.Services.Identity.Commands
+﻿namespace Aurora.Platform.Services.Identity.Commands
 {
-    public class UserPasswordChangeResponse : AuroraBaseResponse
+    public class UserPasswordChangeResponse
     {
+        public bool IsSuccess { get; private set; }
+
         internal UserPasswordChangeResponse()
-            : base() { }
+        {
+            IsSuccess = true;
+        }
     }
 }

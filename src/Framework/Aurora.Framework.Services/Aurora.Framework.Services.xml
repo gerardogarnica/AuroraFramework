@@ -4,6 +4,18 @@
         <name>Aurora.Framework.Services</name>
     </assembly>
     <members>
+        <member name="T:Aurora.Framework.Services.AuthenticationConfiguration">
+            <summary>
+            Clase con métodos de extensión para la configuración de servicios de autenticación.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Services.AuthenticationConfiguration.AddAuthenticationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Agrega la configuración de servicios de autenticación para una interface IServiceCollection especificada.
+            </summary>
+            <param name="services">Especifa la interface Microsoft.Extensions.DependencyInjection.IServiceCollection
+            donde se agregará la configuración de servicios de autenticación.</param>
+        </member>
         <member name="T:Aurora.Framework.Services.AuroraController">
             <summary>
             Clase base para un controlador MVC de servicios API de Aurora.
@@ -20,24 +32,75 @@
             </summary>
             <param name="mediator">Elemento que encapsula patrones request/response e interacciones de publicación.</param>
         </member>
-        <member name="M:Aurora.Framework.Services.AuroraController.ProcessException(System.Int32,System.Exception)">
+        <member name="T:Aurora.Framework.Services.ErrorDetailCategory">
             <summary>
-            Procesa una excepción en la ejecución de un servicio API.
-            </summary>
-            <param name="code">Código de la excepción.</param>
-            <param name="e">Representación de la excepción.</param>
-        </member>
-        <member name="T:Aurora.Framework.Services.AuthenticationConfiguration">
-            <summary>
-            Clase con métodos de extensión para la configuración de servicios de autenticación.
+            Define la categoría del detalle de los errores en la ejecución de una operación.
             </summary>
         </member>
-        <member name="M:Aurora.Framework.Services.AuthenticationConfiguration.AddAuthenticationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="F:Aurora.Framework.Services.ErrorDetailCategory.ModelValidation">
             <summary>
-            Agrega la configuración de servicios de autenticación para una interface IServiceCollection especificada.
+            Validación de modelo de datos de entrada.
             </summary>
-            <param name="services">Especifa la interface Microsoft.Extensions.DependencyInjection.IServiceCollection
-            donde se agregará la configuración de servicios de autenticación.</param>
+        </member>
+        <member name="F:Aurora.Framework.Services.ErrorDetailCategory.BusinessValidation">
+            <summary>
+            Validación de lógica de negocio.
+            </summary>
+        </member>
+        <member name="F:Aurora.Framework.Services.ErrorDetailCategory.Error">
+            <summary>
+            Error o excepción no controlada.
+            </summary>
+        </member>
+        <member name="T:Aurora.Framework.Services.ErrorDetailResponse">
+            <summary>
+            Clase que representa las respuestas de errores en la ejecución de operaciones.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Services.ErrorDetailResponse.StatusCode">
+            <summary>
+            Código de respuesta del error.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Services.ErrorDetailResponse.ErrorCategory">
+            <summary>
+            Categoría de los errores.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Services.ErrorDetailResponse.Errors">
+            <summary>
+            Lista de mensajes de errores en la ejecución de operaciones.
+            </summary>
+        </member>
+        <member name="M:Aurora.Framework.Services.ErrorDetailResponse.#ctor(System.Int32,Aurora.Framework.Services.ErrorDetailCategory)">
+            <summary>
+            Inicializa una instancia de la clase ErrorDetailResponse con
+            el código de respuesta y la categoría de errores especificados.
+            </summary>
+            <param name="statusCode">Código de respuesta del error.</param>
+            <param name="category">Categoría de los errores.</param>
+        </member>
+        <member name="M:Aurora.Framework.Services.ErrorDetailResponse.AddErrorMessage(System.String,System.String)">
+            <summary>
+            Agrega un mensaje de error en la ejecución de operaciones.
+            </summary>
+            <param name="errorType">Tipo específico del error.</param>
+            <param name="message">Mensaje específico de error.</param>
+        </member>
+        <member name="T:Aurora.Framework.Services.ErrorDetailResponse.ErrorMessage">
+            <summary>
+            Representa el detalle de un mensaje de error en la ejecución de una operación.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Services.ErrorDetailResponse.ErrorMessage.ErrorType">
+            <summary>
+            Tipo específico del error.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Services.ErrorDetailResponse.ErrorMessage.Message">
+            <summary>
+            Mensaje específico de error.
+            </summary>
         </member>
         <member name="T:Aurora.Framework.Services.ExceptionHandlerConfiguration">
             <summary>
@@ -92,7 +155,6 @@
             <param name="moduleName">Nombre del módulo. Se incluye en el título del documento.</param>
             <param name="serviceDescription">Descripción breve del servicio.</param>
             <param name="versionNumber">Número de versión que identifica el servicio.</param>
-            <returns></returns>
         </member>
         <member name="M:Aurora.Framework.Services.SwaggerConfiguration.UseSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.String,System.String,System.Int32)">
             <summary>

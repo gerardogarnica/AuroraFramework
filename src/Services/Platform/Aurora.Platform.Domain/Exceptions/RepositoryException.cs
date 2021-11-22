@@ -9,31 +9,31 @@ namespace Aurora.Platform.Domain.Exceptions
         protected const string InvalidRepositoryIdMessage = "El ID de repositorio '{0}' no se encuentra registrado.";
         protected const string InvalidSqlAuthenticationMessage = "La configuración de conexión de tipo SQL debe poseer un nombre de usuario y una contraseña válidas.";
 
-        public RepositoryException(string errorType, string message)
-            : base("RepositoryException", errorType, message) { }
+        public RepositoryException(string message)
+            : base("RepositoryException", message) { }
     }
 
     public class RepositoryNullException : RepositoryException
     {
         public RepositoryNullException()
-            : base("RepositoryNullException", RepositoryNullMessage) { }
+            : base(RepositoryNullMessage) { }
     }
 
     public class ExistsRepositoryNameException : RepositoryException
     {
         public ExistsRepositoryNameException(string description)
-            : base("ExistsRepositoryNameException", string.Format(ExistsRepositoryNameMessage, description)) { }
+            : base(string.Format(ExistsRepositoryNameMessage, description)) { }
     }
 
     public class InvalidRepositoryIdException : RepositoryException
     {
         public InvalidRepositoryIdException(int repositoryId)
-            : base("InvalidRepositoryIdException", string.Format(InvalidRepositoryIdMessage, repositoryId)) { }
+            : base(string.Format(InvalidRepositoryIdMessage, repositoryId)) { }
     }
 
     public class InvalidSqlAuthenticationException : RepositoryException
     {
         public InvalidSqlAuthenticationException()
-            : base("InvalidSqlAuthenticationException", InvalidSqlAuthenticationMessage) { }
+            : base(InvalidSqlAuthenticationMessage) { }
     }
 }

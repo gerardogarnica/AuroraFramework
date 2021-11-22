@@ -4,33 +4,33 @@ services:
   Aurora.Identity.API:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - SecretKey=somevalue
-      - PlatformDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;
+      - SecretKey=DwkdopIDAISOPDQWD59AS8D9AWD2ASD9sd59qwd
+      - PlatformDataConnection=Data Source=10.100.43.225\sql2017;Database=DbPtfm;User ID=zeusdbc;Password=9*\7322;
     ports:
       - "5001:80"
 
   Aurora.Common.API:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - SecretKey=somevalue
-      - CommonDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;
+      - SecretKey=DwkdopIDAISOPDQWD59AS8D9AWD2ASD9sd59qwd
+      - CommonDataConnection=Data Source=10.100.43.225\sql2017;Database=DbPtfm;User ID=zeusdbc;Password=9*\7322;
     ports:
       - "5003:80"
 
   Aurora.Platform.API:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - SecretKey=somevalue
-      - PlatformDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;
+      - SecretKey=DwkdopIDAISOPDQWD59AS8D9AWD2ASD9sd59qwd
+      - PlatformDataConnection=Data Source=10.100.43.225\sql2017;Database=DbPtfm;User ID=zeusdbc;Password=9*\7322;
     ports:
       - "5002:80"
 
   Aurora.Platform.Gateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - IdentityApiServer=localhost:5001
-      - PlatformApiServer=localhost:5002
-      - CommonApiServer=localhost:5003
+      - IdentityApiServer=192.3.30.59:5001
+      - PlatformApiServer=192.3.30.59:5002
+      - CommonApiServer=192.3.30.59:5003
     ports:
       - "5000:80"
 

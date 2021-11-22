@@ -1,8 +1,10 @@
-﻿using Aurora.Framework.Sessions;
+﻿using Aurora.Framework.Logic.Validations;
+using Aurora.Framework.Sessions;
 using Aurora.Platform.Services.Applications.Queries;
 using Aurora.Platform.Services.Mappers;
 using Aurora.Platform.Services.Security.Queries;
 using AutoMapper;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -31,6 +33,14 @@ namespace Aurora.Platform.Services
             {
                 x.AddProfile(new PlatformMapperProfile(f.GetService<IAuroraSession>()));
             }).CreateMapper());
+
+            return services;
+        }
+
+        public static IServiceCollection AddPlatformValidators(this IServiceCollection services)
+        {
+            services.AddValidationServices();
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;
         }

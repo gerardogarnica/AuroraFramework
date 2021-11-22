@@ -21,7 +21,6 @@ namespace Aurora.Framework.Services
         /// <param name="moduleName">Nombre del módulo. Se incluye en el título del documento.</param>
         /// <param name="serviceDescription">Descripción breve del servicio.</param>
         /// <param name="versionNumber">Número de versión que identifica el servicio.</param>
-        /// <returns></returns>
         public static IServiceCollection AddSwaggerServices(
             this IServiceCollection services, string applicationName, string moduleName,
             string serviceDescription, int versionNumber)

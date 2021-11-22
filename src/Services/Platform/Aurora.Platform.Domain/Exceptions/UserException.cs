@@ -13,55 +13,55 @@ namespace Aurora.Platform.Domain.Exceptions
         protected const string PasswordExpiredMessage = "La contraseña del usuario ha expirado. Se debe cambiar la contraseña para iniciar sesión.";
         protected const string InvalidPasswordPatternMessage = "La contraseña de usuario no cumple con el patrón {0}.";
 
-        public UserException(string errorType, string message)
-            : base("UserException", errorType, message) { }
+        public UserException(string message)
+            : base("UserException", message) { }
     }
 
     public class UserNullException : UserException
     {
         public UserNullException()
-            : base("UserNullException", UserNullMessage) { }
+            : base(UserNullMessage) { }
     }
 
     public class ExistsUserNameException : UserException
     {
         public ExistsUserNameException(string loginName)
-            : base("ExistsUserNameException", string.Format(ExistsUserNameMessage, loginName)) { }
+            : base(string.Format(ExistsUserNameMessage, loginName)) { }
     }
 
     public class InvalidUserNameException : UserException
     {
         public InvalidUserNameException(string loginName)
-            : base("InvalidUserNameException", string.Format(InvalidUserNameMessage, loginName)) { }
+            : base(string.Format(InvalidUserNameMessage, loginName)) { }
     }
 
     public class DuplicatedRoleException : UserException
     {
         public DuplicatedRoleException()
-            : base("DuplicatedRoleException", DuplicatedRoleMessage) { }
+            : base(DuplicatedRoleMessage) { }
     }
 
     public class InvalidCredentialsException : UserException
     {
         public InvalidCredentialsException()
-            : base("InvalidCredentialsException", InvalidCredentialsMessage) { }
+            : base(InvalidCredentialsMessage) { }
     }
 
     public class InactiveUserException : UserException
     {
         public InactiveUserException(string loginName)
-            : base("InactiveUserException", string.Format(InactiveUserMessage, loginName)) { }
+            : base(string.Format(InactiveUserMessage, loginName)) { }
     }
 
     public class PasswordExpiredException : UserException
     {
         public PasswordExpiredException()
-            : base("PasswordExpiredException", PasswordExpiredMessage) { }
+            : base(PasswordExpiredMessage) { }
     }
 
     public class InvalidPasswordPatternException : UserException
     {
         public InvalidPasswordPatternException(string patternDescription)
-            : base("InvalidPasswordPatternException", string.Format(InvalidPasswordPatternMessage, patternDescription)) { }
+            : base(string.Format(InvalidPasswordPatternMessage, patternDescription)) { }
     }
 }

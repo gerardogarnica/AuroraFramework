@@ -27,48 +27,52 @@ namespace Aurora.Framework.Services
             {
                 await next(context);
             }
+            catch (BusinessException e)
+            {
+                var response = new ErrorDetailResponse(
+                    StatusCodes.Status400BadRequest,
+                    ErrorDetailCategory.BusinessValidation);
+
+                response.AddErrorMessage(e.ErrorType, e.Message);
+
+                await HandleExceptionAsync(context, response);
+            }
+            catch (ValidationException e)
+            {
+                var response = new ErrorDetailResponse(
+                    StatusCodes.Status400BadRequest,
+                    ErrorDetailCategory.ModelValidation);
+
+                foreach (var error in e.Errors)
+                {
+                    response.AddErrorMessage(e.GetType().Name, error);
+                }
+
+                await HandleExceptionAsync(context, response);
+            }
             catch (Exception e)
             {
-                await HandleExceptionAsync(context, e);
+                var response = new ErrorDetailResponse(
+                    StatusCodes.Status500InternalServerError,
+                    ErrorDetailCategory.Error);
+
+                response.AddErrorMessage(e.GetType().Name, e.Message);
+
+                if (e.InnerException != null)
+                {
+                    response.AddErrorMessage(
+                        e.InnerException.GetType().Name,
+                        e.InnerException.Message);
+                }
+
+                await HandleExceptionAsync(context, response);
             }
         }
 
-        private async Task HandleExceptionAsync(HttpContext context, Exception e)
+        private async Task HandleExceptionAsync(HttpContext context, ErrorDetailResponse response)
         {
-            AuroraBaseResponse responseModel;
-            var statusCode = StatusCodes.Status500InternalServerError;
-
-            switch (e)
-            {
-                case BusinessException ex:
-                    statusCode = StatusCodes.Status400BadRequest;
-                    responseModel = new AuroraBaseResponse(
-                        ex.ErrorCategory, ex.ErrorType, ex.Message);
-
-                    break;
-
-                case PlatformException ex:
-                    responseModel = new AuroraBaseResponse("PlatformException", ex.Message);
-                    break;
-
-                default:
-                    responseModel = new AuroraBaseResponse(e.GetType().ToString(), e.Message);
-
-                    if (e.InnerException != null)
-                    {
-                        responseModel.Errors.Add(new AuroraBaseResponse.ResponseError()
-                        {
-                            Category = "System.Exception",
-                            ErrorType = e.InnerException.GetType().ToString(),
-                            Message = e.InnerException.Message
-                        });
-                    }
-
-                    break;
-            }
-
-            context.Response.StatusCode = statusCode;
-            await context.Response.WriteAsJsonAsync(responseModel);
+            context.Response.StatusCode = response.StatusCode;
+            await context.Response.WriteAsJsonAsync(response);
         }
     }
 }
