@@ -3,29 +3,19 @@ using Aurora.Framework.Connections;
 using Aurora.Framework.Cryptography;
 using Aurora.Platform.Domain.Exceptions;
 using MediatR;
-using System.ComponentModel.DataAnnotations;
 
 namespace Aurora.Platform.Services.Applications.Commands
 {
     public class RepositoryDetailCreateCommand : IRequest<RepositoryResponse>
     {
-        [Required]
         public int RepositoryId { get; set; }
 
-        [Required]
         public int ComponentId { get; set; }
 
-        [Required]
-        [MinLength(1)]
-        [MaxLength(50)]
         public string ServerName { get; set; }
 
-        [Required]
-        [MinLength(2)]
-        [MaxLength(30)]
         public string DatabaseName { get; set; }
 
-        [Required]
         public SqlAuthenticationType AuthenticationType { get; set; }
 
         public string UserName { get; set; }

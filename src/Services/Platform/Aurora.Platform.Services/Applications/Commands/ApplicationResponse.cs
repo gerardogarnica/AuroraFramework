@@ -1,10 +1,9 @@
-﻿using Aurora.Framework;
-using Aurora.Platform.Domain.Applications.Models;
+﻿using Aurora.Platform.Domain.Applications.Models;
 using Aurora.Platform.Domain.Exceptions;
 
 namespace Aurora.Platform.Services.Applications.Commands
 {
-    public class ApplicationResponse : AuroraBaseResponse
+    public class ApplicationResponse
     {
         public short ApplicationId { get; private set; }
 
@@ -13,7 +12,6 @@ namespace Aurora.Platform.Services.Applications.Commands
         public string Name { get; private set; }
 
         internal ApplicationResponse(ApplicationData application)
-            : base()
         {
             if (application == null) throw new ApplicationNullException();
 

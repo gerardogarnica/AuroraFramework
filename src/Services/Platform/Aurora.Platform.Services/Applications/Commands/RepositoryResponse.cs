@@ -1,10 +1,9 @@
-﻿using Aurora.Framework;
-using Aurora.Platform.Domain.Applications.Models;
+﻿using Aurora.Platform.Domain.Applications.Models;
 using Aurora.Platform.Domain.Exceptions;
 
 namespace Aurora.Platform.Services.Applications.Commands
 {
-    public class RepositoryResponse : AuroraBaseResponse
+    public class RepositoryResponse
     {
         public int RepositoryId { get; private set; }
 
@@ -13,7 +12,6 @@ namespace Aurora.Platform.Services.Applications.Commands
         public string Description { get; private set; }
 
         internal RepositoryResponse(RepositoryData repository)
-            : base()
         {
             if (repository == null) throw new RepositoryNullException();
 
