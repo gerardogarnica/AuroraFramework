@@ -1,10 +1,9 @@
 ﻿using Aurora.Common.Domain.Exceptions;
 using Aurora.Common.Domain.Locations.Models;
-using Aurora.Framework;
 
 namespace Aurora.Common.Services.Locations.Commands
 {
-    public class LocationResponse : AuroraBaseResponse
+    public class LocationResponse
     {
         public int LocationId { get; set; }
 
@@ -13,7 +12,6 @@ namespace Aurora.Common.Services.Locations.Commands
         public string Code { get; set; }
 
         internal LocationResponse(LocationData location)
-            : base()
         {
             if (location == null) throw new LocationNullException();
 

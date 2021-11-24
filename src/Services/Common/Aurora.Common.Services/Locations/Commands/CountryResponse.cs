@@ -1,10 +1,9 @@
 ﻿using Aurora.Common.Domain.Exceptions;
 using Aurora.Common.Domain.Locations.Models;
-using Aurora.Framework;
 
 namespace Aurora.Common.Services.Locations.Commands
 {
-    public class CountryResponse : AuroraBaseResponse
+    public class CountryResponse
     {
         public short CountryId { get; set; }
 
@@ -13,7 +12,6 @@ namespace Aurora.Common.Services.Locations.Commands
         public string Name { get; set; }
 
         internal CountryResponse(CountryData country)
-            : base()
         {
             if (country == null) throw new CountryNullException();
 
