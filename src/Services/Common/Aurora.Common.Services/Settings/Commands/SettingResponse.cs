@@ -1,10 +1,9 @@
 ﻿using Aurora.Common.Domain.Exceptions;
 using Aurora.Common.Domain.Settings.Models;
-using Aurora.Framework;
 
 namespace Aurora.Common.Services.Settings.Commands
 {
-    public class SettingResponse : AuroraBaseResponse
+    public class SettingResponse
     {
         public int AttributeId { get; set; }
 
@@ -13,7 +12,6 @@ namespace Aurora.Common.Services.Settings.Commands
         public string Name { get; set; }
 
         internal SettingResponse(AttributeSettingData setting)
-            : base()
         {
             if (setting == null) throw new AttributeNullException();
 
