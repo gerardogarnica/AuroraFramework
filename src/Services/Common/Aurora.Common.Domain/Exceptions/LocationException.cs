@@ -13,55 +13,55 @@ namespace Aurora.Common.Domain.Exceptions
         protected const string InvalidParentLocationLevelMessage = "El nivel de la localidad padre '{0}' no corresponde al nivel superior de la división '{1}'.";
         protected const string InvalidParentLocationCountryMessage = "La localidad padre '{0}' no corresponde al país '{1}'.";
 
-        public LocationException(string errorType, string message)
-            : base("LocationException", errorType, message) { }
+        public LocationException(string message)
+            : base("LocationException", message) { }
     }
 
     public class LocationNullException : LocationException
     {
         public LocationNullException()
-            : base("LocationNullException", LocationNullMessage) { }
+            : base(LocationNullMessage) { }
     }
 
     public class ExistsLocationNameException : LocationException
     {
         public ExistsLocationNameException(string name)
-            : base("ExistsLocationNameException", string.Format(ExistsLocationNameMessage, name)) { }
+            : base(string.Format(ExistsLocationNameMessage, name)) { }
     }
 
     public class InvalidLocationIdException : LocationException
     {
         public InvalidLocationIdException(int locationId)
-            : base("InvalidLocationIdException", string.Format(InvalidLocationIdMessage, locationId)) { }
+            : base(string.Format(InvalidLocationIdMessage, locationId)) { }
     }
 
     public class InvalidParentLocationIdException : LocationException
     {
         public InvalidParentLocationIdException(int locationId)
-            : base("InvalidParentLocationIdException", string.Format(InvalidParentLocationIdMessage, locationId)) { }
+            : base(string.Format(InvalidParentLocationIdMessage, locationId)) { }
     }
 
     public class InvalidLocationFirstLevelException : LocationException
     {
         public InvalidLocationFirstLevelException(string divisionName)
-            : base("InvalidLocationFirstLevelException", string.Format(InvalidLocationFirstLevelMessage, divisionName)) { }
+            : base(string.Format(InvalidLocationFirstLevelMessage, divisionName)) { }
     }
 
     public class InvalidLocationLevelException : LocationException
     {
         public InvalidLocationLevelException(string divisionName, int levelNumber)
-            : base("InvalidLocationLevelException", string.Format(InvalidLocationLevelMessage, divisionName, levelNumber)) { }
+            : base(string.Format(InvalidLocationLevelMessage, divisionName, levelNumber)) { }
     }
 
     public class InvalidParentLocationLevelException : LocationException
     {
         public InvalidParentLocationLevelException(string parentLocationName, string divisionName)
-            : base("InvalidParentLocationLevelException", string.Format(InvalidParentLocationLevelMessage, parentLocationName, divisionName)) { }
+            : base(string.Format(InvalidParentLocationLevelMessage, parentLocationName, divisionName)) { }
     }
 
     public class InvalidParentLocationCountryException : LocationException
     {
         public InvalidParentLocationCountryException(string parentLocationName, string countryName)
-            : base("InvalidParentLocationCountryException", string.Format(InvalidParentLocationCountryMessage, parentLocationName, countryName)) { }
+            : base(string.Format(InvalidParentLocationCountryMessage, parentLocationName, countryName)) { }
     }
 }

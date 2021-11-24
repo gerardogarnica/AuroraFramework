@@ -11,43 +11,43 @@ namespace Aurora.Common.Domain.Exceptions
         protected const string CatalogNotEditableMessage = "El catálogo '{0}' se encuentra configurado para no ser modificado.";
         protected const string CatalogItemNotEditableMessage = "El elemento '{0}' del catálogo '{1}' se encuentra configurado para no ser modificado.";
 
-        public CatalogException(string errorType, string message)
-            : base("CatalogException", errorType, message) { }
+        public CatalogException(string message)
+            : base("CatalogException", message) { }
     }
 
     public class CatalogNullException : CatalogException
     {
         public CatalogNullException()
-            : base("CatalogNullException", CatalogNullMessage) { }
+            : base(CatalogNullMessage) { }
     }
 
     public class ExistsCatalogCodeException : CatalogException
     {
         public ExistsCatalogCodeException(string code)
-            : base("ExistsCatalogCodeException", string.Format(ExistsCatalogCodeMessage, code)) { }
+            : base(string.Format(ExistsCatalogCodeMessage, code)) { }
     }
 
     public class InvalidCatalogCodeException : CatalogException
     {
         public InvalidCatalogCodeException(string code)
-            : base("InvalidCatalogCodeException", string.Format(InvalidCatalogCodeMessage, code)) { }
+            : base(string.Format(InvalidCatalogCodeMessage, code)) { }
     }
 
     public class InvalidCatalogItemCodeException : CatalogException
     {
         public InvalidCatalogItemCodeException(string catalogCode, string itemCode)
-            : base("InvalidCatalogItemCodeException", string.Format(InvalidCatalogItemCodeMessage, itemCode, catalogCode)) { }
+            : base(string.Format(InvalidCatalogItemCodeMessage, itemCode, catalogCode)) { }
     }
 
     public class CatalogNotEditableException : CatalogException
     {
         public CatalogNotEditableException(string code)
-            : base("CatalogNotEditableException", string.Format(CatalogNotEditableMessage, code)) { }
+            : base(string.Format(CatalogNotEditableMessage, code)) { }
     }
 
     public class CatalogItemNotEditableException : CatalogException
     {
         public CatalogItemNotEditableException(string catalogCode, string itemCode)
-            : base("CatalogItemNotEditableException", string.Format(CatalogItemNotEditableMessage, itemCode, catalogCode)) { }
+            : base(string.Format(CatalogItemNotEditableMessage, itemCode, catalogCode)) { }
     }
 }

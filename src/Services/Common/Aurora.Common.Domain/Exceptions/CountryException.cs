@@ -12,49 +12,49 @@ namespace Aurora.Common.Domain.Exceptions
         protected const string DuplicatedCountryCityLevelMessage = "No se puede registrar más de un nivel de ciudad para una división administrativa de país.";
         protected const string DuplicatedCountryDivisionMessage = "Ya existe la división administrativa '{0}' del país {1} y no puede ser registrado de nuevo.";
 
-        public CountryException(string errorType, string message)
-            : base("CountryException", errorType, message) { }
+        public CountryException(string message)
+            : base("CountryException", message) { }
     }
 
     public class CountryNullException : CountryException
     {
         public CountryNullException()
-            : base("CountryNullException", CountryNullMessage) { }
+            : base(CountryNullMessage) { }
     }
 
     public class ExistsCountryCodeException : CountryException
     {
         public ExistsCountryCodeException(string code)
-            : base("ExistsCountryCodeException", string.Format(ExistsCountryCodeMessage, code)) { }
+            : base(string.Format(ExistsCountryCodeMessage, code)) { }
     }
 
     public class InvalidCountryIdException : CountryException
     {
         public InvalidCountryIdException(short countryId)
-            : base("InvalidCountryIdException", string.Format(InvalidCountryIdMessage, countryId)) { }
+            : base(string.Format(InvalidCountryIdMessage, countryId)) { }
     }
 
     public class InvalidCountryDivisionIdException : CountryException
     {
         public InvalidCountryDivisionIdException(short divisionId)
-            : base("InvalidCountryDivisionIdException", string.Format(InvalidCountryDivisionIdMessage, divisionId)) { }
+            : base(string.Format(InvalidCountryDivisionIdMessage, divisionId)) { }
     }
 
     public class InvalidCountryDivisionLevelException : CountryException
     {
         public InvalidCountryDivisionLevelException(string divisionName, int sentLevelNumber, int expectedLevelNumber)
-            : base("InvalidCountryDivisionLevelException", string.Format(InvalidCountryDivisionLevelMessage, sentLevelNumber, divisionName, expectedLevelNumber)) { }
+            : base(string.Format(InvalidCountryDivisionLevelMessage, sentLevelNumber, divisionName, expectedLevelNumber)) { }
     }
 
     public class DuplicatedCountryCityLevelException : CountryException
     {
         public DuplicatedCountryCityLevelException()
-            : base("DuplicatedCountryCityLevelException", string.Format(DuplicatedCountryCityLevelMessage)) { }
+            : base(string.Format(DuplicatedCountryCityLevelMessage)) { }
     }
 
     public class DuplicatedCountryDivisionException : CountryException
     {
         public DuplicatedCountryDivisionException(string countryName, string divisionName)
-            : base("DuplicatedCountryDivisionException", string.Format(DuplicatedCountryDivisionMessage, divisionName, countryName)) { }
+            : base(string.Format(DuplicatedCountryDivisionMessage, divisionName, countryName)) { }
     }
 }

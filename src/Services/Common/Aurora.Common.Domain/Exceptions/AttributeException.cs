@@ -9,31 +9,31 @@ namespace Aurora.Common.Domain.Exceptions
         protected const string InvalidSettingCodeMessage = "El código de configuración de atributo '{0}' no se encuentra registrado.";
         protected const string InvalidSettingCatalogValueMessage = "Los elementos por defecto no corresponden al catálogo '{0}'.";
 
-        public AttributeException(string errorType, string message)
-            : base("AttributeException", errorType, message) { }
+        public AttributeException(string message)
+            : base("AttributeException", message) { }
     }
 
     public class AttributeNullException : AttributeException
     {
         public AttributeNullException()
-            : base("AttributeNullException", AttributeNullMessage) { }
+            : base(AttributeNullMessage) { }
     }
 
     public class ExistsSettingCodeException : AttributeException
     {
         public ExistsSettingCodeException(string code)
-            : base("ExistsSettingCodeException", string.Format(ExistsSettingCodeMessage, code)) { }
+            : base(string.Format(ExistsSettingCodeMessage, code)) { }
     }
 
     public class InvalidSettingCodeException : AttributeException
     {
         public InvalidSettingCodeException(string code)
-            : base("InvalidSettingCodeException", string.Format(InvalidSettingCodeMessage, code)) { }
+            : base(string.Format(InvalidSettingCodeMessage, code)) { }
     }
 
     public class InvalidSettingCatalogValueException : AttributeException
     {
         public InvalidSettingCatalogValueException(string code)
-            : base("InvalidSettingCatalogValueException", string.Format(InvalidSettingCatalogValueMessage, code)) { }
+            : base(string.Format(InvalidSettingCatalogValueMessage, code)) { }
     }
 }
