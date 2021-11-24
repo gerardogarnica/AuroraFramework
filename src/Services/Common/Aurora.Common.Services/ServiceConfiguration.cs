@@ -2,8 +2,10 @@
 using Aurora.Common.Services.Locations.Queries;
 using Aurora.Common.Services.Mappers;
 using Aurora.Common.Services.Settings.Queries;
+using Aurora.Framework.Logic.Validations;
 using Aurora.Framework.Sessions;
 using AutoMapper;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -34,6 +36,14 @@ namespace Aurora.Common.Services
             {
                 x.AddProfile(new CommonMapperProfile(f.GetService<IAuroraSession>()));
             }).CreateMapper());
+
+            return services;
+        }
+
+        public static IServiceCollection AddCommonValidators(this IServiceCollection services)
+        {
+            services.AddValidationServices();
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             return services;
         }

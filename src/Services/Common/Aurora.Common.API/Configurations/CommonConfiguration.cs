@@ -21,6 +21,9 @@ namespace Aurora.Common.API.Configurations
             // Configuración de AutoMapper
             services.AddCommonMapper();
 
+            // Configuración de Validators
+            services.AddCommonValidators();
+
             // Configuración de MediatR
             services.AddCommonMediatR();
 
