@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Aurora.Common.Repositories.Settings.Configurations
 {
-    public class AttributeSettingConfiguration
+    public class AttributeSettingConfiguration : IEntityTypeConfiguration<Domain.Settings.Models.AttributeSettingData>
     {
-        public AttributeSettingConfiguration(EntityTypeBuilder<Domain.Settings.Models.AttributeSettingData> builder)
+        public void Configure(EntityTypeBuilder<Domain.Settings.Models.AttributeSettingData> builder)
         {
             builder.ToTable("Atributo", "COM");
 

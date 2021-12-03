@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Aurora.Common.Repositories.Locations.Configurations
 {
-    public class CountryDivisionConfiguration
+    public class CountryDivisionConfiguration : IEntityTypeConfiguration<Domain.Locations.Models.CountryDivisionData>
     {
-        public CountryDivisionConfiguration(EntityTypeBuilder<Domain.Locations.Models.CountryDivisionData> builder)
+        public void Configure(EntityTypeBuilder<Domain.Locations.Models.CountryDivisionData> builder)
         {
             builder.ToTable("PaisDivision", "COM");
 

@@ -59,8 +59,8 @@ namespace Aurora.Common.Repositories
             // Secuencias
 
             // Configuraciones
-            new CatalogConfiguration(builder.Entity<CatalogData>());
-            new CatalogItemConfiguration(builder.Entity<CatalogItemData>());
+            builder.ApplyConfiguration(new CatalogConfiguration());
+            builder.ApplyConfiguration(new CatalogItemConfiguration());
         }
 
         private void ModelLocationsConfig(ModelBuilder builder)
@@ -68,9 +68,9 @@ namespace Aurora.Common.Repositories
             // Secuencias
 
             // Configuraciones
-            new CountryConfiguration(builder.Entity<CountryData>());
-            new CountryDivisionConfiguration(builder.Entity<CountryDivisionData>());
-            new LocationConfiguration(builder.Entity<LocationData>());
+            builder.ApplyConfiguration(new CountryConfiguration());
+            builder.ApplyConfiguration(new CountryDivisionConfiguration());
+            builder.ApplyConfiguration(new LocationConfiguration());
         }
 
         private void ModelSettingsConfig(ModelBuilder builder)
@@ -78,8 +78,8 @@ namespace Aurora.Common.Repositories
             // Secuencias
 
             // Configuraciones
-            new AttributeSettingConfiguration(builder.Entity<AttributeSettingData>());
-            new AttributeValueConfiguration(builder.Entity<AttributeValueData>());
+            builder.ApplyConfiguration(new AttributeSettingConfiguration());
+            builder.ApplyConfiguration(new AttributeValueConfiguration());
         }
     }
 }

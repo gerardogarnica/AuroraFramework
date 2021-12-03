@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Aurora.Common.Repositories.Catalogs.Configurations
 {
-    public class CatalogItemConfiguration
+    public class CatalogItemConfiguration : IEntityTypeConfiguration<Domain.Catalogs.Models.CatalogItemData>
     {
-        public CatalogItemConfiguration(EntityTypeBuilder<Domain.Catalogs.Models.CatalogItemData> builder)
+        public void Configure(EntityTypeBuilder<Domain.Catalogs.Models.CatalogItemData> builder)
         {
             builder.ToTable("CatalogoItem", "COM");
 

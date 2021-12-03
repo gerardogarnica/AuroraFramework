@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Aurora.Common.Repositories.Locations.Configurations
 {
-    public class LocationConfiguration
+    public class LocationConfiguration : IEntityTypeConfiguration<Domain.Locations.Models.LocationData>
     {
-        public LocationConfiguration(EntityTypeBuilder<Domain.Locations.Models.LocationData> builder)
+        public void Configure(EntityTypeBuilder<Domain.Locations.Models.LocationData> builder)
         {
             builder.ToTable("Localidad", "COM");
 

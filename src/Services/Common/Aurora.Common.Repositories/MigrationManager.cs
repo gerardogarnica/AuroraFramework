@@ -1,6 +1,7 @@
 ﻿using Aurora.Common.Domain.Catalogs.Models;
 using Aurora.Common.Domain.Locations.Models;
 using Aurora.Common.Domain.Settings.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -17,6 +18,8 @@ namespace Aurora.Common.Repositories
             {
                 using (var context = scope.ServiceProvider.GetRequiredService<CommonDataContext>())
                 {
+                    context.Database.Migrate();
+
                     CreateGlobalCatalog(context);
                     CreateSecurityAttributes(context);
                     CreateCountries(context);
