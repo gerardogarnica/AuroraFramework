@@ -25,10 +25,7 @@ namespace Aurora.Platform.Repositories
         #region Constructores de la clase
 
         public PlatformDataContext(DbContextOptions<PlatformDataContext> options)
-            : base(options)
-        {
-            Database.EnsureCreated();
-        }
+            : base(options) { }
 
         #endregion
 
@@ -57,11 +54,11 @@ namespace Aurora.Platform.Repositories
             //builder.HasSequence<int>("SeqUsuario", "SEG");
 
             // Configuraciones
-            new UserConfiguration(builder.Entity<UserData>());
-            new UserCredentialConfiguration(builder.Entity<UserCredentialData>());
-            new UserCredentialLogConfiguration(builder.Entity<UserCredentialLogData>());
-            new RoleConfiguration(builder.Entity<RoleData>());
-            new UserMembershipConfiguration(builder.Entity<UserMembershipData>());
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new UserCredentialConfiguration());
+            builder.ApplyConfiguration(new UserCredentialLogConfiguration());
+            builder.ApplyConfiguration(new RoleConfiguration());
+            builder.ApplyConfiguration(new UserMembershipConfiguration());
         }
 
         private void ModelApplicationsConfig(ModelBuilder builder)
@@ -72,10 +69,10 @@ namespace Aurora.Platform.Repositories
             // Secuencias
 
             // Configuraciones
-            new ApplicationConfiguration(builder.Entity<ApplicationData>());
-            new ComponentConfiguration(builder.Entity<ComponentData>());
-            new RepositoryConfiguration(builder.Entity<RepositoryData>());
-            new RepositoryDetailConfiguration(builder.Entity<RepositoryDetailData>());
+            builder.ApplyConfiguration(new ApplicationConfiguration());
+            builder.ApplyConfiguration(new ComponentConfiguration());
+            builder.ApplyConfiguration(new RepositoryConfiguration());
+            builder.ApplyConfiguration(new RepositoryDetailConfiguration());
         }
     }
 }

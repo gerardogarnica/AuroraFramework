@@ -1,5 +1,6 @@
 ﻿using Aurora.Platform.Domain.Applications.Models;
 using Aurora.Platform.Domain.Security.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -18,6 +19,8 @@ namespace Aurora.Platform.Repositories
                 {
                     try
                     {
+                        context.Database.Migrate();
+
                         var applicationId = CreatePlatformApplication(context);
                         var componentId = CreatePlatformComponent(context, applicationId);
                         var repositoryId = CreatePlatformRepository(context, applicationId);

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Aurora.Platform.Repositories.Security.Configurations
 {
-    public class RoleConfiguration
+    public class RoleConfiguration : IEntityTypeConfiguration<Domain.Security.Models.RoleData>
     {
-        public RoleConfiguration(EntityTypeBuilder<Domain.Security.Models.RoleData> builder)
+        public void Configure(EntityTypeBuilder<Domain.Security.Models.RoleData> builder)
         {
             builder.ToTable("Rol", "SEG");
 

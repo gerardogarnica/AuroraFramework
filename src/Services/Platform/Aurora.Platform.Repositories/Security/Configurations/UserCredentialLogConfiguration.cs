@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Aurora.Platform.Repositories.Security.Configurations
 {
-    public class UserCredentialLogConfiguration
+    public class UserCredentialLogConfiguration : IEntityTypeConfiguration<Domain.Security.Models.UserCredentialLogData>
     {
-        public UserCredentialLogConfiguration(EntityTypeBuilder<Domain.Security.Models.UserCredentialLogData> builder)
+        public void Configure(EntityTypeBuilder<Domain.Security.Models.UserCredentialLogData> builder)
         {
             builder.ToTable("UsuarioCredencialHistorial", "SEG");
 

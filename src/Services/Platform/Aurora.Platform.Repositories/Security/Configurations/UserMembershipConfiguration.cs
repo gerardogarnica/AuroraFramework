@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Aurora.Platform.Repositories.Security.Configurations
 {
-    public class UserMembershipConfiguration
+    public class UserMembershipConfiguration : IEntityTypeConfiguration<Domain.Security.Models.UserMembershipData>
     {
-        public UserMembershipConfiguration(EntityTypeBuilder<Domain.Security.Models.UserMembershipData> builder)
+        public void Configure(EntityTypeBuilder<Domain.Security.Models.UserMembershipData> builder)
         {
             builder.ToTable("UsuarioPertenencia", "SEG");
 

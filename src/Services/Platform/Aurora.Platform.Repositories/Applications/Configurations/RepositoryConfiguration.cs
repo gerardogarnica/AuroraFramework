@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Aurora.Platform.Repositories.Applications.Configurations
 {
-    public class RepositoryConfiguration
+    public class RepositoryConfiguration : IEntityTypeConfiguration<Domain.Applications.Models.RepositoryData>
     {
-        public RepositoryConfiguration(EntityTypeBuilder<Domain.Applications.Models.RepositoryData> builder)
+        public void Configure(EntityTypeBuilder<Domain.Applications.Models.RepositoryData> builder)
         {
             builder.ToTable("Repositorio", "APP");
 
