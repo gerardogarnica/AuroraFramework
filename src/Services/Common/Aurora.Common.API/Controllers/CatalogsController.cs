@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -28,8 +29,9 @@ namespace Aurora.Common.API.Controllers
 
         public CatalogsController(
             ICatalogQueryService catalogQueryService,
+            ILogger<CatalogsController> logger,
             IMediator mediator)
-            : base(mediator)
+            : base(logger, mediator)
         {
             _catalogQueryService = catalogQueryService ?? throw new ArgumentNullException(nameof(catalogQueryService));
         }

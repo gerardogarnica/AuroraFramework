@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -28,8 +29,9 @@ namespace Aurora.Platform.API.Controllers
 
         public RepositoriesController(
             IRepositoryQueryService repositoryQueryService,
+            ILogger<RepositoriesController> logger,
             IMediator mediator)
-            : base(mediator)
+            : base(logger, mediator)
         {
             _repositoryQueryService = repositoryQueryService ?? throw new ArgumentNullException(nameof(repositoryQueryService));
         }

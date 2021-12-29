@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -28,8 +29,9 @@ namespace Aurora.Platform.API.Controllers
 
         public RolesController(
             IRoleQueryService roleQueryService,
+            ILogger<RolesController> logger,
             IMediator mediator)
-            : base(mediator)
+            : base(logger, mediator)
         {
             _roleQueryService = roleQueryService ?? throw new ArgumentNullException(nameof(roleQueryService));
         }

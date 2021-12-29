@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -28,8 +29,9 @@ namespace Aurora.Platform.API.Controllers
 
         public UsersController(
             IUserQueryService userQueryService,
+            ILogger<UsersController> logger,
             IMediator mediator)
-            : base(mediator)
+            : base(logger, mediator)
         {
             _userQueryService = userQueryService ?? throw new ArgumentNullException(nameof(userQueryService));
         }

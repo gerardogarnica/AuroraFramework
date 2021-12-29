@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 
 namespace Aurora.Framework.Services
@@ -13,6 +14,11 @@ namespace Aurora.Framework.Services
         #region Miembros privados del controlador
 
         /// <summary>
+        /// Interface para manejo de registro de logs.
+        /// </summary>
+        protected readonly ILogger<AuroraController> _logger;
+
+        /// <summary>
         /// Elemento que encapsula patrones request/response e interacciones de publicación.
         /// </summary>
         protected readonly IMediator _mediator;
@@ -24,9 +30,13 @@ namespace Aurora.Framework.Services
         /// <summary>
         /// Inicializa una nueva instancia del controlador base de Aurora.
         /// </summary>
+        /// <param name="logger">Interface para manejo de registro de logs.</param>
         /// <param name="mediator">Elemento que encapsula patrones request/response e interacciones de publicación.</param>
-        public AuroraController(IMediator mediator)
+        public AuroraController(
+            ILogger<AuroraController> logger,
+            IMediator mediator)
         {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 

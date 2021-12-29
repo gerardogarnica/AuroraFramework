@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -28,8 +29,9 @@ namespace Aurora.Platform.API.Controllers
 
         public ComponentsController(
             IComponentQueryService componentQueryService,
+            ILogger<ComponentsController> logger,
             IMediator mediator)
-            : base(mediator)
+            : base(logger, mediator)
         {
             _componentQueryService = componentQueryService ?? throw new ArgumentNullException(nameof(componentQueryService));
         }

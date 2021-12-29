@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -31,8 +32,9 @@ namespace Aurora.Common.API.Controllers
         public SettingsController(
             IAttributeSettingQueryService attributeSettingQueryService,
             IAttributeValueQueryService attributeValueQueryService,
+            ILogger<SettingsController> logger,
             IMediator mediator)
-            : base(mediator)
+            : base(logger, mediator)
         {
             _attributeSettingQueryService = attributeSettingQueryService ?? throw new ArgumentNullException(nameof(attributeSettingQueryService));
             _attributeValueQueryService = attributeValueQueryService ?? throw new ArgumentNullException(nameof(attributeValueQueryService));
