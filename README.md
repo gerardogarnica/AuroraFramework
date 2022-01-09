@@ -9,3 +9,11 @@ Base components for Aurora Soft applications.
 * Dependency injection
 * Logs fields in data models
 * Error handling middleware
+
+### Packages used
+* Entity Framework Core
+* AutoMapper
+* MediatR
+* FluentValidation
+* Swashbuckle
+* Serilog
