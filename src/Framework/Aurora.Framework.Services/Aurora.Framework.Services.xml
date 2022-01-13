@@ -21,15 +21,21 @@
             Clase base para un controlador MVC de servicios API de Aurora.
             </summary>
         </member>
+        <member name="F:Aurora.Framework.Services.AuroraController._logger">
+            <summary>
+            Interface para manejo de registro de logs.
+            </summary>
+        </member>
         <member name="F:Aurora.Framework.Services.AuroraController._mediator">
             <summary>
             Elemento que encapsula patrones request/response e interacciones de publicación.
             </summary>
         </member>
-        <member name="M:Aurora.Framework.Services.AuroraController.#ctor(MediatR.IMediator)">
+        <member name="M:Aurora.Framework.Services.AuroraController.#ctor(Microsoft.Extensions.Logging.ILogger{Aurora.Framework.Services.AuroraController},MediatR.IMediator)">
             <summary>
             Inicializa una nueva instancia del controlador base de Aurora.
             </summary>
+            <param name="logger">Interface para manejo de registro de logs.</param>
             <param name="mediator">Elemento que encapsula patrones request/response e interacciones de publicación.</param>
         </member>
         <member name="T:Aurora.Framework.Services.ErrorDetailCategory">
@@ -128,10 +134,11 @@
             Define un middleware para el manejo de excepciones.
             </summary>
         </member>
-        <member name="M:Aurora.Framework.Services.ExceptionHandlerMiddleware.#ctor">
+        <member name="M:Aurora.Framework.Services.ExceptionHandlerMiddleware.#ctor(Microsoft.Extensions.Logging.ILogger{Aurora.Framework.Services.ExceptionHandlerMiddleware})">
             <summary>
             Inicializa una nueva instancia de la clase ExceptionHandlerMiddleware.
             </summary>
+            <param name="logger">Interface para manejo de registro de logs.</param>
         </member>
         <member name="M:Aurora.Framework.Services.ExceptionHandlerMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Http.RequestDelegate)">
             <summary>
@@ -139,6 +146,16 @@
             </summary>
             <param name="context">Contexto HttpContext para el requerimiento actual.</param>
             <param name="next">Función para procesar un requerimiento HTTP.</param>
+        </member>
+        <member name="T:Aurora.Framework.Services.LoggerHandlerConfiguration">
+            <summary>
+            Clase con métodos de extensión para la configuración de servicios de Log utilizando Serilog.
+            </summary>
+        </member>
+        <member name="P:Aurora.Framework.Services.LoggerHandlerConfiguration.Configure">
+            <summary>
+            Realiza la configuración de Serilog.
+            </summary>
         </member>
         <member name="T:Aurora.Framework.Services.SwaggerConfiguration">
             <summary>
