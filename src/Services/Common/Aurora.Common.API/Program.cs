@@ -1,6 +1,8 @@
 using Aurora.Common.Repositories;
+using Aurora.Framework.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace Aurora.Common.API
 {
@@ -13,6 +15,7 @@ namespace Aurora.Common.API
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog(LoggerHandlerConfiguration.Configure)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
