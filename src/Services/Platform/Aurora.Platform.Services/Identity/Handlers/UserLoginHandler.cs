@@ -3,6 +3,7 @@ using Aurora.Platform.Domain.Security.Models;
 using Aurora.Platform.Domain.Security.Repositories;
 using Aurora.Platform.Services.Identity.Commands;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Aurora.Platform.Services.Identity.Handlers
     {
         #region Miembros privados de la clase
 
+        private readonly IConfiguration _configuration;
         private readonly IUserRepository _userRepository;
         private readonly IRoleRepository _roleRepository;
 
@@ -26,9 +28,11 @@ namespace Aurora.Platform.Services.Identity.Handlers
         #region Constructores de la clase
 
         public UserLoginHandler(
+            IConfiguration configuration,
             IUserRepository userRepository,
             IRoleRepository roleRepository)
         {
+            _configuration = configuration;
             _userRepository = userRepository;
             _roleRepository = roleRepository;
         }
@@ -115,7 +119,7 @@ namespace Aurora.Platform.Services.Identity.Handlers
 
         private SecurityTokenDescriptor CreateTokenDescriptor(List<Claim> claims)
         {
-            var secretKey = Environment.GetEnvironmentVariable("SecretKey");
+            var secretKey = _configuration.GetValue<string>("SecretKey");
             var key = Encoding.ASCII.GetBytes(secretKey);
 
             return new SecurityTokenDescriptor()

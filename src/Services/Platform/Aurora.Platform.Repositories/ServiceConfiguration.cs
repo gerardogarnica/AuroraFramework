@@ -3,18 +3,18 @@ using Aurora.Platform.Domain.Security.Repositories;
 using Aurora.Platform.Repositories.Applications;
 using Aurora.Platform.Repositories.Security;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Aurora.Platform.Repositories
 {
     public static class ServiceConfiguration
     {
-        public static IServiceCollection AddPlatformRepositories(this IServiceCollection services)
+        public static IServiceCollection AddPlatformRepositories(this IServiceCollection services, IConfiguration configuration)
         {
             // Configuración de acceso a datos
             services.AddDbContext<PlatformDataContext>(
-                o => o.UseSqlServer(Environment.GetEnvironmentVariable("PlatformDataConnection"))
+                o => o.UseSqlServer(configuration.GetConnectionString("PlatformDataConnection"))
             );
 
             // Repositorios de aplicaciones

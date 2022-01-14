@@ -22,7 +22,7 @@ namespace Aurora.Platform.API
         public void ConfigureServices(IServiceCollection services)
         {
             // Configuración de servicios de la plataforma
-            services.AddPlatformApiConfiguration();
+            services.AddPlatformApiConfiguration(Configuration);
 
             // Configuración de servicios de Swagger
             services.AddSwaggerServices(
@@ -36,7 +36,7 @@ namespace Aurora.Platform.API
             services.AddHealthChecks();
 
             // Configuración de autenticación
-            services.AddAuthenticationServices();
+            services.AddAuthenticationServices(Configuration);
 
             // Configuración de middleware de excepciones
             services.AddExceptionHandlerServices();
