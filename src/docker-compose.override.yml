@@ -4,24 +4,27 @@ services:
   Aurora.Identity.API:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - SecretKey=somevalue
-      - PlatformDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;
+      - "ConnectionStrings:PlatformDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True"
+      - "ElasticsearchConfiguration:Uri=http://elasticsearch:9200"
+      - "ElasticsearchConfiguration:IndexName=aurora-platform"
     ports:
       - "5001:80"
 
   Aurora.Common.API:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - SecretKey=somevalue
-      - CommonDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;
+      - "ConnectionStrings:CommonDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True"
+      - "ElasticsearchConfiguration:Uri=http://elasticsearch:9200"
+      - "ElasticsearchConfiguration:IndexName=aurora-platform"
     ports:
       - "5003:80"
 
   Aurora.Platform.API:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - SecretKey=somevalue
-      - PlatformDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;
+      - "ConnectionStrings:PlatformDataConnection=Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True"
+      - "ElasticsearchConfiguration:Uri=http://elasticsearch:9200"
+      - "ElasticsearchConfiguration:IndexName=aurora-platform"
     ports:
       - "5002:80"
 
