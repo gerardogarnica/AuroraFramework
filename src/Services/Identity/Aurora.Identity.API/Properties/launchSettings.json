@@ -14,9 +14,7 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "PlatformDataConnection": "Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;",
-        "SecretKey": "DwkdopIDAISOPDQWD59AS8D9AWD2ASD9sd59qwd"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "Aurora.Identity.API": {
@@ -24,9 +22,7 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "PlatformDataConnection": "Data Source=LDFMTSDS20\\SQLEXPRESS;Database=AuroraPlatform;Integrated Security=True;",
-        "SecretKey": "DwkdopIDAISOPDQWD59AS8D9AWD2ASD9sd59qwd"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": "true",
       "applicationUrl": "http://localhost:5000"
