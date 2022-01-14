@@ -5,18 +5,18 @@ using Aurora.Common.Repositories.Catalogs;
 using Aurora.Common.Repositories.Locations;
 using Aurora.Common.Repositories.Settings;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Aurora.Common.Repositories
 {
     public static class ServiceConfiguration
     {
-        public static IServiceCollection AddCommonRepositories(this IServiceCollection services)
+        public static IServiceCollection AddCommonRepositories(this IServiceCollection services, IConfiguration configuration)
         {
             // Configuración de acceso a datos
             services.AddDbContext<CommonDataContext>(
-                o => o.UseSqlServer(Environment.GetEnvironmentVariable("CommonDataConnection"))
+                o => o.UseSqlServer(configuration.GetConnectionString("CommonDataConnection"))
             );
 
             // Repositorios de catálogos
