@@ -9,12 +9,14 @@
             Clase con métodos de extensión para la configuración de servicios de autenticación.
             </summary>
         </member>
-        <member name="M:Aurora.Framework.Services.AuthenticationConfiguration.AddAuthenticationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:Aurora.Framework.Services.AuthenticationConfiguration.AddAuthenticationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             Agrega la configuración de servicios de autenticación para una interface IServiceCollection especificada.
             </summary>
             <param name="services">Especifa la interface Microsoft.Extensions.DependencyInjection.IServiceCollection
             donde se agregará la configuración de servicios de autenticación.</param>
+            <param name="configuration">Especifica la interface Microsoft.Extensions.Configuration
+            que contiene las propiedades de configuración de una aplicación.</param>
         </member>
         <member name="T:Aurora.Framework.Services.AuroraController">
             <summary>

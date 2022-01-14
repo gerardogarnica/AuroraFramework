@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
 using System.Text;
 
 namespace Aurora.Framework.Services
@@ -16,10 +16,12 @@ namespace Aurora.Framework.Services
         /// </summary>
         /// <param name="services">Especifa la interface Microsoft.Extensions.DependencyInjection.IServiceCollection
         /// donde se agregará la configuración de servicios de autenticación.</param>
-        public static IServiceCollection AddAuthenticationServices(this IServiceCollection services)
+        /// <param name="configuration">Especifica la interface Microsoft.Extensions.Configuration
+        /// que contiene las propiedades de configuración de una aplicación.</param>
+        public static IServiceCollection AddAuthenticationServices(this IServiceCollection services, IConfiguration configuration)
         {
             // Se obtiene la variable de entorno SecretKey
-            var secretValue = Environment.GetEnvironmentVariable("SecretKey");
+            var secretValue = configuration.GetValue<string>("SecretKey");
 
             if (string.IsNullOrWhiteSpace(secretValue))
             {
