@@ -25,10 +25,7 @@ namespace Aurora.Common.Repositories
         #region Constructores de la clase
 
         public CommonDataContext(DbContextOptions<CommonDataContext> options)
-            : base(options)
-        {
-            Database.EnsureCreated();
-        }
+            : base(options) { }
 
         #endregion
 

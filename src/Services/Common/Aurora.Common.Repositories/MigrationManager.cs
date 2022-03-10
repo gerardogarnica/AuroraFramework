@@ -18,11 +18,15 @@ namespace Aurora.Common.Repositories
             {
                 using (var context = scope.ServiceProvider.GetRequiredService<CommonDataContext>())
                 {
-                    context.Database.Migrate();
+                    try
+                    {
+                        context.Database.Migrate();
 
-                    CreateGlobalCatalog(context);
-                    CreateSecurityAttributes(context);
-                    CreateCountries(context);
+                        CreateGlobalCatalog(context);
+                        CreateSecurityAttributes(context);
+                        CreateCountries(context);
+                    }
+                    catch { }
                 }
             }
 
