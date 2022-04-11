@@ -22,7 +22,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
-    <DocumentationFile>C:\SourcesGG\AuroraFramework\src\Framework\Aurora.Framework.Services\Aurora.Framework.Services.xml</DocumentationFile>
+    <DocumentationFile>C:\SourcesGGB\AuroraFramework\src\Framework\Aurora.Framework.Services\Aurora.Framework.Services.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
