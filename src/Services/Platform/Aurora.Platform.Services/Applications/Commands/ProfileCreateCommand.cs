@@ -2,7 +2,7 @@
 
 namespace Aurora.Platform.Services.Applications.Commands
 {
-    public class RepositoryCreateCommand : IRequest<RepositoryResponse>
+    public class ProfileCreateCommand : IRequest<ProfileResponse>
     {
         public short ApplicationId { get; set; }
 

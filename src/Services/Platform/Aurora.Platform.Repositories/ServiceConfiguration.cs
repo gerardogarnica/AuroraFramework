@@ -20,7 +20,7 @@ namespace Aurora.Platform.Repositories
             // Repositorios de aplicaciones
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<IComponentRepository, ComponentRepository>();
-            services.AddScoped<IGenericRepository, GenericRepository>();
+            services.AddScoped<IProfileRepository, ProfileRepository>();
 
             // Repositorios de seguridades
             services.AddScoped<IRoleRepository, RoleRepository>();

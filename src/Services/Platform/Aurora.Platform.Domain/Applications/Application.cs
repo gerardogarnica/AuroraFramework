@@ -8,7 +8,8 @@ namespace Aurora.Platform.Domain.Applications
         public string Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public bool HasCustomConfig { get; set; }
         public IList<Component> Components { get; set; }
-        public IList<Repository> Repositories { get; set; }
+        public IList<Profile> Profiles { get; set; }
     }
 }

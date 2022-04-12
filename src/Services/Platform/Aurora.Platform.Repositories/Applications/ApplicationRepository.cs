@@ -32,7 +32,7 @@ namespace Aurora.Platform.Repositories.Applications
                 .Applications
                 .AsNoTracking()
                 .Include(x => x.Components)
-                .Include(x => x.Repositories)
+                .Include(x => x.Profiles)
                 .FirstOrDefaultAsync(x => x.Code.Equals(code));
         }
 
@@ -42,7 +42,7 @@ namespace Aurora.Platform.Repositories.Applications
                 .Applications
                 .AsNoTracking()
                 .Include(x => x.Components)
-                .Include(x => x.Repositories)
+                .Include(x => x.Profiles)
                 .FirstOrDefaultAsync(x => x.ApplicationId.Equals(applicationId));
         }
 

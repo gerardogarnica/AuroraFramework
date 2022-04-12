@@ -18,7 +18,7 @@ namespace Aurora.Platform.Services
             // Servicios de aplicaciones
             services.AddScoped<IApplicationQueryService, ApplicationQueryService>();
             services.AddScoped<IComponentQueryService, ComponentQueryService>();
-            services.AddScoped<IRepositoryQueryService, RepositoryQueryService>();
+            services.AddScoped<IProfileQueryService, ProfileQueryService>();
 
             // Servicios de seguridad
             services.AddScoped<IRoleQueryService, RoleQueryService>();

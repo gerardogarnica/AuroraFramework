@@ -6,11 +6,13 @@ using MediatR;
 
 namespace Aurora.Platform.Services.Applications.Commands
 {
-    public class RepositoryDetailCreateCommand : IRequest<RepositoryResponse>
+    public class ConnectionCreateCommand : IRequest<ProfileResponse>
     {
-        public int RepositoryId { get; set; }
+        public int ProfileId { get; set; }
 
         public int ComponentId { get; set; }
+
+        public bool IsEncrypted { get; set; }
 
         public string ServerName { get; set; }
 
@@ -42,6 +44,9 @@ namespace Aurora.Platform.Services.Applications.Commands
             var connectionString = AuthenticationType.Equals(SqlAuthenticationType.WindowsAuthentication)
                 ? new SqlConnectionStringHelper(ServerName, DatabaseName)
                 : new SqlConnectionStringHelper(ServerName, DatabaseName, UserName, UserPassword);
+
+            if (!IsEncrypted)
+                return connectionString.ConnectionString;
 
             var encryptedConnectionOne = EncryptionProvider.Protect(connectionString.ConnectionString);
             var encryptedConnectionTwo = EncryptionProvider.Protect(encryptedConnectionOne);

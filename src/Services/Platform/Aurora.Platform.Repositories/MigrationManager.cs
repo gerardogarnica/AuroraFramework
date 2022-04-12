@@ -22,11 +22,9 @@ namespace Aurora.Platform.Repositories
                         context.Database.Migrate();
 
                         var applicationId = CreatePlatformApplication(context);
-                        var componentId = CreatePlatformComponent(context, applicationId);
-                        var repositoryId = CreatePlatformRepository(context, applicationId);
                         var userId = CreateAdminUser(context);
                         CreateAdminPassword(context, userId);
-                        CreateAdminRole(context, repositoryId, userId);
+                        //CreateAdminRole(context, repositoryId, userId);
                     }
                     catch { }
                 }
@@ -51,6 +49,7 @@ namespace Aurora.Platform.Repositories
                     Code = "DBB1F084-0E5C-488F-8990-EA1FDF223A94",
                     Name = "Aurora Platform",
                     Description = "Plataforma de aplicaciones Aurora Soft.",
+                    HasCustomConfig = false,
                     CreatedDate = DateTime.Now
                 };
 
@@ -59,54 +58,6 @@ namespace Aurora.Platform.Repositories
             }
 
             return application.ApplicationId;
-        }
-
-        private static int CreatePlatformComponent(PlatformDataContext context, short applicationId)
-        {
-            // Creación de componente 'Aurora.Platform'
-            var component = context
-                .Components
-                .FirstOrDefault(x => x.ApplicationId.Equals(applicationId) && x.Code.Equals("Aurora.Platform"));
-
-            if (component == null)
-            {
-                component = new ComponentData()
-                {
-                    ApplicationId = applicationId,
-                    Code = "Aurora.Platform",
-                    Description = "Componente de Administración de Aurora Platform.",
-                    CreatedDate = DateTime.Now
-                };
-
-                context.Components.Add(component);
-                context.SaveChanges();
-            }
-
-            return component.ComponentId;
-        }
-
-        private static int CreatePlatformRepository(PlatformDataContext context, short applicationId)
-        {
-            // Creación de repositorio '8FDB73DC-7514-447A-8B28-0C09A45879E7'
-            var repository = context
-                .Repositories
-                .FirstOrDefault(x => x.ApplicationId.Equals(applicationId) && x.Code.Equals("8FDB73DC-7514-447A-8B28-0C09A45879E7"));
-
-            if (repository == null)
-            {
-                repository = new RepositoryData()
-                {
-                    ApplicationId = applicationId,
-                    Code = "8FDB73DC-7514-447A-8B28-0C09A45879E7",
-                    Description = "Repositorio de Administración de Aurora Platform.",
-                    CreatedDate = DateTime.Now
-                };
-
-                context.Repositories.Add(repository);
-                context.SaveChanges();
-            }
-
-            return repository.RepositoryId;
         }
 
         private static int CreateAdminUser(PlatformDataContext context)

@@ -12,8 +12,8 @@ namespace Aurora.Platform.Repositories
 
         public DbSet<ApplicationData> Applications { get; set; }
         public DbSet<ComponentData> Components { get; set; }
-        public DbSet<RepositoryData> Repositories { get; set; }
-        public DbSet<RepositoryDetailData> RepositoryDetails { get; set; }
+        public DbSet<ProfileData> Profiles { get; set; }
+        public DbSet<ConnectionData> Connections { get; set; }
         public DbSet<UserData> Users { get; set; }
         public DbSet<UserCredentialData> UserCredentials { get; set; }
         public DbSet<UserCredentialLogData> UserCredentialLogs { get; set; }
@@ -48,7 +48,7 @@ namespace Aurora.Platform.Repositories
         private void ModelSecurityConfig(ModelBuilder builder)
         {
             // Database schema
-            builder.HasDefaultSchema("SEG");
+            builder.HasDefaultSchema("SEC");
 
             // Secuencias
             //builder.HasSequence<int>("SeqUsuario", "SEG");
@@ -71,8 +71,8 @@ namespace Aurora.Platform.Repositories
             // Configuraciones
             builder.ApplyConfiguration(new ApplicationConfiguration());
             builder.ApplyConfiguration(new ComponentConfiguration());
-            builder.ApplyConfiguration(new RepositoryConfiguration());
-            builder.ApplyConfiguration(new RepositoryDetailConfiguration());
+            builder.ApplyConfiguration(new ProfileConfiguration());
+            builder.ApplyConfiguration(new ConnectionConfiguration());
         }
     }
 }

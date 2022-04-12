@@ -9,25 +9,25 @@ using System.Threading.Tasks;
 
 namespace Aurora.Platform.Services.Applications.Handlers
 {
-    public class RepositoryCreateHandler : IRequestHandler<RepositoryCreateCommand, RepositoryResponse>
+    public class ProfileCreateHandler : IRequestHandler<ProfileCreateCommand, ProfileResponse>
     {
         #region Miembros privados de la clase
 
         private readonly IApplicationRepository _applicationRepository;
-        private readonly IGenericRepository _genericRepository;
+        private readonly IProfileRepository _profileRepository;
         private readonly IMapper _mapper;
 
         #endregion
 
         #region Constructores de la clase
 
-        public RepositoryCreateHandler(
+        public ProfileCreateHandler(
             IApplicationRepository applicationRepository,
-            IGenericRepository genericRepository,
+            IProfileRepository profileRepository,
             IMapper mapper)
         {
             _applicationRepository = applicationRepository;
-            _genericRepository = genericRepository;
+            _profileRepository = profileRepository;
             _mapper = mapper;
         }
 
@@ -35,29 +35,29 @@ namespace Aurora.Platform.Services.Applications.Handlers
 
         #region Implementación de la interface IRequestHandler
 
-        async Task<RepositoryResponse> IRequestHandler<RepositoryCreateCommand, RepositoryResponse>.Handle(
-            RepositoryCreateCommand request, CancellationToken cancellationToken)
+        async Task<ProfileResponse> IRequestHandler<ProfileCreateCommand, ProfileResponse>.Handle(
+            ProfileCreateCommand request, CancellationToken cancellationToken)
         {
             // Se verifica que la aplicación se encuentre registrada
             await VerifyIfApplicationExists(request.ApplicationId);
 
-            // Se verifica si el repositorio ya se encuentra registrado
-            await VerifyIfRepositoryExists(request.ApplicationId, request.Description);
+            // Se verifica si el perfil de configuración ya se encuentra registrado
+            await VerifyIfProfileExists(request.ApplicationId, request.Description);
 
-            // Se crea el registro de repositorio
-            var entry = CreateRepositoryData(request);
-            entry = await _genericRepository.InsertAsync(entry);
+            // Se crea el registro de perfil de configuración
+            var entry = CreateProfileData(request);
+            entry = await _profileRepository.InsertAsync(entry);
 
-            return new RepositoryResponse(entry);
+            return new ProfileResponse(entry);
         }
 
         #endregion
 
         #region Métodos privados de la clase
 
-        private RepositoryData CreateRepositoryData(RepositoryCreateCommand request)
+        private ProfileData CreateProfileData(ProfileCreateCommand request)
         {
-            return _mapper.Map<RepositoryData>(request);
+            return _mapper.Map<ProfileData>(request);
         }
 
         private async Task VerifyIfApplicationExists(short applicationId)
@@ -68,15 +68,20 @@ namespace Aurora.Platform.Services.Applications.Handlers
             {
                 throw new InvalidApplicationIdException(applicationId);
             }
+
+            if (!applicationData.HasCustomConfig)
+            {
+                throw new CustomConfigNotAllowedException(applicationData.Name);
+            }
         }
 
-        private async Task VerifyIfRepositoryExists(short applicationId, string code)
+        private async Task VerifyIfProfileExists(short applicationId, string code)
         {
-            var repository = await _genericRepository.GetAsync(applicationId, code);
+            var profileData = await _profileRepository.GetAsync(applicationId, code);
 
-            if (repository != null)
+            if (profileData != null)
             {
-                throw new ExistsRepositoryNameException(code);
+                throw new ExistsProfileNameException(code);
             }
         }
 

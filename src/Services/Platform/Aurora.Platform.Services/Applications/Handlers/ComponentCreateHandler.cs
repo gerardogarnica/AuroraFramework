@@ -68,6 +68,11 @@ namespace Aurora.Platform.Services.Applications.Handlers
             {
                 throw new InvalidApplicationIdException(applicationId);
             }
+
+            if (!applicationData.HasCustomConfig)
+            {
+                throw new CustomConfigNotAllowedException(applicationData.Name);
+            }
         }
 
         private async Task VerifyIfComponentExists(short applicationId, string code)

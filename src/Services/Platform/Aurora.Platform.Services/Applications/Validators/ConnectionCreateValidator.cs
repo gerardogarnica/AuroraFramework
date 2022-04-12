@@ -3,16 +3,16 @@ using FluentValidation;
 
 namespace Aurora.Platform.Services.Applications.Validators
 {
-    public class RepositoryDetailCreateValidator : AbstractValidator<RepositoryDetailCreateCommand>
+    public class ConnectionCreateValidator : AbstractValidator<ConnectionCreateCommand>
     {
-        public RepositoryDetailCreateValidator()
+        public ConnectionCreateValidator()
         {
             RuleFor(p => p.ServerName)
                 .NotEmpty().WithMessage("El nombre de servidor es requerido.")
                 .MinimumLength(1).WithMessage("La longitud mínima del nombre de servidor es de 1 caracter.")
                 .MaximumLength(50).WithMessage("La longitud máxima del nombre de servidor es de 50 caracteres.");
 
-            RuleFor(p => p.ServerName)
+            RuleFor(p => p.DatabaseName)
                 .NotEmpty().WithMessage("El nombre de base de datos es requerido.")
                 .MinimumLength(2).WithMessage("La longitud mínima del nombre de base de datos es de 2 caracteres.")
                 .MaximumLength(30).WithMessage("La longitud máxima del nombre de base de datos es de 30 caracteres.");

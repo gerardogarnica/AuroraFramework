@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace Aurora.Platform.Domain.Applications.Models
 {
-    public class RepositoryData : IDataEntity
+    public class ProfileData : IDataEntity
     {
-        public int RepositoryId { get; set; }
+        public int ProfileId { get; set; }
         public short ApplicationId { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
         public ApplicationData Application { get; set; }
-        public IList<RepositoryDetailData> Details { get; set; } = new List<RepositoryDetailData>();
+        public IList<ConnectionData> Connections { get; set; } = new List<ConnectionData>();
     }
 }
