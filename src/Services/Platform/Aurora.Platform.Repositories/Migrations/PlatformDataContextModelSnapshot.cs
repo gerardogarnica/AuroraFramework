@@ -17,7 +17,7 @@ namespace Aurora.Platform.Repositories.Migrations
             modelBuilder
                 .HasDefaultSchema("APP")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.ApplicationData", b =>
@@ -25,7 +25,7 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.Property<short>("ApplicationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smallint")
-                        .HasColumnName("IdAplicacion")
+                        .HasColumnName("ApplicationId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -33,32 +33,36 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("varchar(36)")
-                        .HasColumnName("Codigo");
+                        .HasColumnName("Code");
 
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion")
+                        .HasColumnName("CreatedDate")
                         .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("varchar(100)")
-                        .HasColumnName("Descripcion");
+                        .HasColumnName("Description");
+
+                    b.Property<bool>("HasCustomConfig")
+                        .HasColumnType("bit")
+                        .HasColumnName("HasCustomConfig");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("Nombre");
+                        .HasColumnName("Name");
 
                     b.HasKey("ApplicationId")
-                        .HasName("PK_Aplicacion");
+                        .HasName("PK_Application");
 
                     b.HasIndex("Code")
                         .IsUnique()
-                        .HasDatabaseName("UK_Aplicacion");
+                        .HasDatabaseName("UK_Application");
 
-                    b.ToTable("Aplicacion", "APP");
+                    b.ToTable("Application", "APP");
                 });
 
             modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.ComponentData", b =>
@@ -66,130 +70,134 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.Property<int>("ComponentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IdComponente")
+                        .HasColumnName("ComponentId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<short>("ApplicationId")
                         .HasColumnType("smallint")
-                        .HasColumnName("IdAplicacion");
+                        .HasColumnName("ApplicationId");
 
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("varchar(40)")
-                        .HasColumnName("Codigo");
+                        .HasColumnName("Code");
 
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion")
+                        .HasColumnName("CreatedDate")
                         .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("varchar(100)")
-                        .HasColumnName("Descripcion");
+                        .HasColumnName("Description");
 
                     b.HasKey("ComponentId")
-                        .HasName("PK_Componente");
+                        .HasName("PK_Component");
 
                     b.HasIndex("ApplicationId", "Code")
                         .IsUnique()
-                        .HasDatabaseName("UK_Componente");
+                        .HasDatabaseName("UK_Component");
 
-                    b.ToTable("Componente", "APP");
+                    b.ToTable("Component", "APP");
                 });
 
-            modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.RepositoryData", b =>
+            modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.ConnectionData", b =>
                 {
-                    b.Property<int>("RepositoryId")
+                    b.Property<int>("ConnectionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IdRepositorio")
-                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
-                        .HasAnnotation("SqlServer:IdentitySeed", 1)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<short>("ApplicationId")
-                        .HasColumnType("smallint")
-                        .HasColumnName("IdAplicacion");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("varchar(36)")
-                        .HasColumnName("Codigo");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion")
-                        .HasDefaultValueSql("GETDATE()");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)")
-                        .HasColumnName("Descripcion");
-
-                    b.HasKey("RepositoryId")
-                        .HasName("PK_Repositorio");
-
-                    b.HasIndex("ApplicationId", "Code")
-                        .IsUnique()
-                        .HasDatabaseName("UK_Repositorio");
-
-                    b.ToTable("Repositorio", "APP");
-                });
-
-            modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.RepositoryDetailData", b =>
-                {
-                    b.Property<int>("RepositoryDetailId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("IdRepositorioDetalle")
+                        .HasColumnName("ConnectionId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ComponentId")
                         .HasColumnType("int")
-                        .HasColumnName("IdComponente");
+                        .HasColumnName("ComponentId");
+
+                    b.Property<string>("ConnString")
+                        .IsRequired()
+                        .HasColumnType("varchar(1000)")
+                        .HasColumnName("ConnString");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioCreacion");
+                        .HasColumnName("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion");
+                        .HasColumnName("CreatedDate");
+
+                    b.Property<bool>("IsEncrypted")
+                        .HasColumnType("bit")
+                        .HasColumnName("IsEncrypted");
 
                     b.Property<string>("LastUpdatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioModificacion");
+                        .HasColumnName("LastUpdatedBy");
 
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaModificacion");
+                        .HasColumnName("LastUpdatedDate");
 
-                    b.Property<int>("RepositoryId")
+                    b.Property<int>("ProfileId")
                         .HasColumnType("int")
-                        .HasColumnName("IdRepositorio");
+                        .HasColumnName("ProfileId");
 
-                    b.Property<string>("StringData")
-                        .IsRequired()
-                        .HasColumnType("varchar(1000)")
-                        .HasColumnName("Cadena");
+                    b.HasKey("ConnectionId")
+                        .HasName("PK_Connection");
 
-                    b.HasKey("RepositoryDetailId")
-                        .HasName("PK_RepositorioDetalle");
-
-                    b.HasIndex("RepositoryId", "ComponentId")
+                    b.HasIndex("ProfileId", "ComponentId")
                         .IsUnique()
-                        .HasDatabaseName("UK_RepositorioDetalle");
+                        .HasDatabaseName("UK_Connection");
 
-                    b.ToTable("RepositorioDetalle", "APP");
+                    b.ToTable("Connection", "APP");
+                });
+
+            modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.ProfileData", b =>
+                {
+                    b.Property<int>("ProfileId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ProfileId")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<short>("ApplicationId")
+                        .HasColumnType("smallint")
+                        .HasColumnName("ApplicationId");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("varchar(36)")
+                        .HasColumnName("Code");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasColumnName("CreatedDate")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("Description");
+
+                    b.HasKey("ProfileId")
+                        .HasName("PK_Profile");
+
+                    b.HasIndex("ApplicationId", "Code")
+                        .IsUnique()
+                        .HasDatabaseName("UK_Profile");
+
+                    b.ToTable("Profile", "APP");
                 });
 
             modelBuilder.Entity("Aurora.Platform.Domain.Security.Models.RoleData", b =>
@@ -197,7 +205,7 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IdRol")
+                        .HasColumnName("RoleId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -205,99 +213,103 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioCreacion");
+                        .HasColumnName("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion");
+                        .HasColumnName("CreatedDate");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("varchar(100)")
-                        .HasColumnName("Descripcion");
+                        .HasColumnName("Description");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit")
-                        .HasColumnName("EsActivo");
+                        .HasColumnName("IsActive");
 
-                    b.Property<bool>("IsDefaultRole")
+                    b.Property<bool>("IsDefault")
                         .HasColumnType("bit")
-                        .HasColumnName("EsPredeterminado");
+                        .HasColumnName("IsDefault");
+
+                    b.Property<bool>("IsGlobal")
+                        .HasColumnType("bit")
+                        .HasColumnName("IsGlobal");
 
                     b.Property<string>("LastUpdatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioModificacion");
+                        .HasColumnName("LastUpdatedBy");
 
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaModificacion");
+                        .HasColumnName("LastUpdatedDate");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("Nombre");
+                        .HasColumnName("Name");
 
-                    b.Property<int>("RepositoryId")
+                    b.Property<int>("ProfileId")
                         .HasColumnType("int")
-                        .HasColumnName("IdRepositorio");
+                        .HasColumnName("ProfileId");
 
                     b.HasKey("RoleId")
-                        .HasName("PK_Rol");
+                        .HasName("PK_Role");
 
-                    b.HasIndex("RepositoryId", "Name")
+                    b.HasIndex("ProfileId", "Name")
                         .IsUnique()
-                        .HasDatabaseName("UK_Rol");
+                        .HasDatabaseName("UK_Role");
 
-                    b.ToTable("Rol", "SEG");
+                    b.ToTable("Role", "SEC");
                 });
 
             modelBuilder.Entity("Aurora.Platform.Domain.Security.Models.UserCredentialData", b =>
                 {
                     b.Property<int>("UserId")
                         .HasColumnType("int")
-                        .HasColumnName("IdUsuario");
+                        .HasColumnName("UserId");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioCreacion");
+                        .HasColumnName("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion");
+                        .HasColumnName("CreatedDate");
 
                     b.Property<DateTime?>("ExpirationDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaExpiracion");
+                        .HasColumnName("ExpirationDate");
 
                     b.Property<string>("LastUpdatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioModificacion");
+                        .HasColumnName("LastUpdatedBy");
 
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaModificacion");
+                        .HasColumnName("LastUpdatedDate");
 
                     b.Property<bool>("MustChange")
                         .HasColumnType("bit")
-                        .HasColumnName("DebeCambiar");
+                        .HasColumnName("MustChange");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("varchar(200)")
-                        .HasColumnName("Contrasena");
+                        .HasColumnName("Password");
 
                     b.Property<string>("PasswordControl")
                         .IsRequired()
                         .HasColumnType("varchar(500)")
-                        .HasColumnName("ContrasenaControl");
+                        .HasColumnName("PasswordControl");
 
                     b.HasKey("UserId")
-                        .HasName("PK_UsuarioCredencial");
+                        .HasName("PK_UserCredential");
 
-                    b.ToTable("UsuarioCredencial", "SEG");
+                    b.ToTable("UserCredential", "SEC");
                 });
 
             modelBuilder.Entity("Aurora.Platform.Domain.Security.Models.UserCredentialLogData", b =>
@@ -305,51 +317,51 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.Property<int>("LogId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IdHistorial")
+                        .HasColumnName("LogId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ChangeNumber")
                         .HasColumnType("int")
-                        .HasColumnName("NumeroCambio");
+                        .HasColumnName("ChangeNumber");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion");
+                        .HasColumnName("CreatedDate");
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaFinalizacion");
+                        .HasColumnName("EndDate");
 
                     b.Property<DateTime?>("ExpirationDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaExpiracion");
+                        .HasColumnName("ExpirationDate");
 
                     b.Property<bool>("MustChange")
                         .HasColumnType("bit")
-                        .HasColumnName("DebeCambiar");
+                        .HasColumnName("MustChange");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("varchar(200)")
-                        .HasColumnName("Contrasena");
+                        .HasColumnName("Password");
 
                     b.Property<string>("PasswordControl")
                         .IsRequired()
                         .HasColumnType("varchar(500)")
-                        .HasColumnName("ContrasenaControl");
+                        .HasColumnName("PasswordControl");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int")
-                        .HasColumnName("IdUsuario");
+                        .HasColumnName("UserId");
 
                     b.HasKey("LogId")
-                        .HasName("PK_UsuarioCredencialHistorial");
+                        .HasName("PK_UserCredentialLog");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UsuarioCredencialHistorial", "SEG");
+                    b.ToTable("UserCredentialLog", "SEC");
                 });
 
             modelBuilder.Entity("Aurora.Platform.Domain.Security.Models.UserData", b =>
@@ -357,7 +369,7 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IdUsuario")
+                        .HasColumnName("UserId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -365,52 +377,57 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioCreacion");
+                        .HasColumnName("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("Descripcion");
+                        .HasColumnName("CreatedDate");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("varchar(100)")
-                        .HasColumnName("CorreoElectronico");
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("Email");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("FirstName");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit")
-                        .HasColumnName("EsActivo");
+                        .HasColumnName("IsActive");
 
-                    b.Property<bool>("IsDefaultUser")
+                    b.Property<bool>("IsDefault")
                         .HasColumnType("bit")
-                        .HasColumnName("EsPredeterminado");
+                        .HasColumnName("IsDefault");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(40)")
+                        .HasColumnName("LastName");
 
                     b.Property<string>("LastUpdatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioModificacion");
+                        .HasColumnName("LastUpdatedBy");
 
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaModificacion");
+                        .HasColumnName("LastUpdatedDate");
 
                     b.Property<string>("LoginName")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("NombreUsuario");
+                        .HasColumnName("LoginName");
 
                     b.HasKey("UserId")
-                        .HasName("PK_Usuario");
+                        .HasName("PK_User");
 
                     b.HasIndex("LoginName")
                         .IsUnique()
-                        .HasDatabaseName("UK_Usuario");
+                        .HasDatabaseName("UK_User");
 
-                    b.ToTable("Usuario", "SEG");
+                    b.ToTable("User", "SEC");
                 });
 
             modelBuilder.Entity("Aurora.Platform.Domain.Security.Models.UserMembershipData", b =>
@@ -418,7 +435,7 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.Property<int>("MembershipId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IdPertenencia")
+                        .HasColumnName("MembershipId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -426,47 +443,47 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioCreacion");
+                        .HasColumnName("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion");
+                        .HasColumnName("CreatedDate");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit")
-                        .HasColumnName("EsActivo");
+                        .HasColumnName("IsActive");
 
-                    b.Property<bool>("IsDefaultMembership")
+                    b.Property<bool>("IsDefault")
                         .HasColumnType("bit")
-                        .HasColumnName("EsPredeterminado");
+                        .HasColumnName("IsDefault");
 
                     b.Property<string>("LastUpdatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioModificacion");
+                        .HasColumnName("LastUpdatedBy");
 
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaModificacion");
+                        .HasColumnName("LastUpdatedDate");
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int")
-                        .HasColumnName("IdRol");
+                        .HasColumnName("RoleId");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int")
-                        .HasColumnName("IdUsuario");
+                        .HasColumnName("UserId");
 
                     b.HasKey("MembershipId")
-                        .HasName("PK_UsuarioPertenencia");
+                        .HasName("PK_UserMembership");
 
                     b.HasIndex("RoleId");
 
                     b.HasIndex("UserId", "RoleId")
                         .IsUnique()
-                        .HasDatabaseName("UK_UsuarioPertenencia");
+                        .HasDatabaseName("UK_UserMembership");
 
-                    b.ToTable("UsuarioPertenencia", "SEG");
+                    b.ToTable("UserMembership", "SEC");
                 });
 
             modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.ComponentData", b =>
@@ -474,35 +491,35 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.HasOne("Aurora.Platform.Domain.Applications.Models.ApplicationData", "Application")
                         .WithMany("Components")
                         .HasForeignKey("ApplicationId")
-                        .HasConstraintName("FK_Componente_Aplicacion")
+                        .HasConstraintName("FK_Component_Application")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Application");
                 });
 
-            modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.RepositoryData", b =>
+            modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.ConnectionData", b =>
+                {
+                    b.HasOne("Aurora.Platform.Domain.Applications.Models.ProfileData", "Profile")
+                        .WithMany("Connections")
+                        .HasForeignKey("ProfileId")
+                        .HasConstraintName("FK_Connection_Profile")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.ProfileData", b =>
                 {
                     b.HasOne("Aurora.Platform.Domain.Applications.Models.ApplicationData", "Application")
-                        .WithMany("Repositories")
+                        .WithMany("Profiles")
                         .HasForeignKey("ApplicationId")
-                        .HasConstraintName("FK_Repositorio_Aplicacion")
+                        .HasConstraintName("FK_Profile_Application")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Application");
-                });
-
-            modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.RepositoryDetailData", b =>
-                {
-                    b.HasOne("Aurora.Platform.Domain.Applications.Models.RepositoryData", "Repository")
-                        .WithMany("Details")
-                        .HasForeignKey("RepositoryId")
-                        .HasConstraintName("FK_RepositorioDetalle_Repositorio")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Repository");
                 });
 
             modelBuilder.Entity("Aurora.Platform.Domain.Security.Models.UserCredentialData", b =>
@@ -510,7 +527,7 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.HasOne("Aurora.Platform.Domain.Security.Models.UserData", "User")
                         .WithOne("Credential")
                         .HasForeignKey("Aurora.Platform.Domain.Security.Models.UserCredentialData", "UserId")
-                        .HasConstraintName("FK_UsuarioCredencial_Usuario")
+                        .HasConstraintName("FK_UserCredential_User")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -522,7 +539,7 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.HasOne("Aurora.Platform.Domain.Security.Models.UserCredentialData", "Credential")
                         .WithMany("CredentialLogs")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("FK_UsuarioCredencialHistorial_UsuarioCredencial")
+                        .HasConstraintName("FK_UserCredentialLog_UserCredential")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -534,14 +551,14 @@ namespace Aurora.Platform.Repositories.Migrations
                     b.HasOne("Aurora.Platform.Domain.Security.Models.RoleData", "Role")
                         .WithMany("Memberships")
                         .HasForeignKey("RoleId")
-                        .HasConstraintName("FK_UsuarioPertenencia_Rol")
+                        .HasConstraintName("FK_UserMembership_Role")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Aurora.Platform.Domain.Security.Models.UserData", "User")
                         .WithMany("Memberships")
                         .HasForeignKey("UserId")
-                        .HasConstraintName("FK_UsuarioPertenencia_Usuario")
+                        .HasConstraintName("FK_UserMembership_User")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -554,12 +571,12 @@ namespace Aurora.Platform.Repositories.Migrations
                 {
                     b.Navigation("Components");
 
-                    b.Navigation("Repositories");
+                    b.Navigation("Profiles");
                 });
 
-            modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.RepositoryData", b =>
+            modelBuilder.Entity("Aurora.Platform.Domain.Applications.Models.ProfileData", b =>
                 {
-                    b.Navigation("Details");
+                    b.Navigation("Connections");
                 });
 
             modelBuilder.Entity("Aurora.Platform.Domain.Security.Models.RoleData", b =>

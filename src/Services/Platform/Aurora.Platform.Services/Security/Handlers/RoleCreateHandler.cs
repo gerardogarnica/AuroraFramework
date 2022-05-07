@@ -35,8 +35,8 @@ namespace Aurora.Platform.Services.Security.Handlers
         async Task<RoleResponse> IRequestHandler<RoleCreateCommand, RoleResponse>.Handle(
             RoleCreateCommand request, CancellationToken cancellationToken)
         {
-            // Se verifica si el nombre del rol de usuario ya se encuentra registrado en el repositorio indicado
-            await VerifyIfRoleDataExists(request.RepositoryId, request.Name);
+            // Se verifica si el nombre del rol de usuario ya se encuentra registrado en el perfil indicado
+            await VerifyIfRoleDataExists(request.Name, request.ProfileId);
 
             // Se crea el registro de rol de usuario
             var entry = CreateRoleData(request);
@@ -54,10 +54,10 @@ namespace Aurora.Platform.Services.Security.Handlers
             return _mapper.Map<RoleData>(request);
         }
 
-        private async Task VerifyIfRoleDataExists(int repositoryId, string name)
+        private async Task VerifyIfRoleDataExists(string name, int profileId)
         {
             var roleData = await _roleRepository.GetAsync(
-                x => x.RepositoryId.Equals(repositoryId) && x.Name.Equals(name));
+                x => x.Name.Equals(name) && x.ProfileId.Equals(profileId));
 
             if (roleData != null)
             {

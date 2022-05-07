@@ -7,21 +7,21 @@ namespace Aurora.Platform.Repositories.Security.Configurations
     {
         public void Configure(EntityTypeBuilder<Domain.Security.Models.UserCredentialLogData> builder)
         {
-            builder.ToTable("UsuarioCredencialHistorial", "SEG");
+            builder.ToTable("UserCredentialLog", "SEC");
 
-            builder.HasKey(e => e.LogId).HasName("PK_UsuarioCredencialHistorial");
+            builder.HasKey(e => e.LogId).HasName("PK_UserCredentialLog");
 
-            builder.Property(e => e.LogId).HasColumnName("IdHistorial").IsRequired().HasColumnType("int").UseIdentityColumn();
-            builder.Property(e => e.UserId).HasColumnName("IdUsuario").IsRequired().HasColumnType("int");
-            builder.Property(e => e.ChangeNumber).HasColumnName("NumeroCambio").IsRequired().HasColumnType("int");
-            builder.Property(e => e.Password).HasColumnName("Contrasena").IsRequired().HasColumnType("varchar(200)");
-            builder.Property(e => e.PasswordControl).HasColumnName("ContrasenaControl").IsRequired().HasColumnType("varchar(500)");
-            builder.Property(e => e.MustChange).HasColumnName("DebeCambiar").IsRequired().HasColumnType("bit");
-            builder.Property(e => e.ExpirationDate).HasColumnName("FechaExpiracion").HasColumnType("datetime");
-            builder.Property(e => e.CreatedDate).HasColumnName("FechaCreacion").IsRequired().HasColumnType("datetime");
-            builder.Property(e => e.EndDate).HasColumnName("FechaFinalizacion").HasColumnType("datetime");
+            builder.Property(e => e.LogId).HasColumnName("LogId").IsRequired().HasColumnType("int").UseIdentityColumn();
+            builder.Property(e => e.UserId).HasColumnName("UserId").IsRequired().HasColumnType("int");
+            builder.Property(e => e.ChangeNumber).HasColumnName("ChangeNumber").IsRequired().HasColumnType("int");
+            builder.Property(e => e.Password).HasColumnName("Password").IsRequired().HasColumnType("varchar(200)");
+            builder.Property(e => e.PasswordControl).HasColumnName("PasswordControl").IsRequired().HasColumnType("varchar(500)");
+            builder.Property(e => e.MustChange).HasColumnName("MustChange").IsRequired().HasColumnType("bit");
+            builder.Property(e => e.ExpirationDate).HasColumnName("ExpirationDate").HasColumnType("datetime");
+            builder.Property(e => e.CreatedDate).HasColumnName("CreatedDate").IsRequired().HasColumnType("datetime");
+            builder.Property(e => e.EndDate).HasColumnName("EndDate").HasColumnType("datetime");
 
-            builder.HasOne(e => e.Credential).WithMany(e => e.CredentialLogs).HasForeignKey(e => e.UserId).HasConstraintName("FK_UsuarioCredencialHistorial_UsuarioCredencial");
+            builder.HasOne(e => e.Credential).WithMany(e => e.CredentialLogs).HasForeignKey(e => e.UserId).HasConstraintName("FK_UserCredentialLog_UserCredential");
         }
     }
 }

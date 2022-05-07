@@ -7,7 +7,7 @@ namespace Aurora.Platform.Domain.Security.Models
         public int MembershipId { get; set; }
         public int UserId { get; set; }
         public int RoleId { get; set; }
-        public bool IsDefaultMembership { get; set; }
+        public bool IsDefault { get; set; }
         public bool IsActive { get; set; }
         public UserData User { get; set; }
         public RoleData Role { get; set; }

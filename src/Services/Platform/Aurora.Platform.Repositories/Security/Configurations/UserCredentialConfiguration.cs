@@ -7,21 +7,21 @@ namespace Aurora.Platform.Repositories.Security.Configurations
     {
         public void Configure(EntityTypeBuilder<Domain.Security.Models.UserCredentialData> builder)
         {
-            builder.ToTable("UsuarioCredencial", "SEG");
+            builder.ToTable("UserCredential", "SEC");
 
-            builder.HasKey(e => e.UserId).HasName("PK_UsuarioCredencial");
+            builder.HasKey(e => e.UserId).HasName("PK_UserCredential");
 
-            builder.Property(e => e.UserId).HasColumnName("IdUsuario").IsRequired().HasColumnType("int");
-            builder.Property(e => e.Password).HasColumnName("Contrasena").IsRequired().HasColumnType("varchar(200)");
-            builder.Property(e => e.PasswordControl).HasColumnName("ContrasenaControl").IsRequired().HasColumnType("varchar(500)");
-            builder.Property(e => e.MustChange).HasColumnName("DebeCambiar").IsRequired().HasColumnType("bit");
-            builder.Property(e => e.ExpirationDate).HasColumnName("FechaExpiracion").HasColumnType("datetime");
-            builder.Property(e => e.CreatedBy).HasColumnName("UsuarioCreacion").IsRequired().HasColumnType("varchar(35)");
-            builder.Property(e => e.CreatedDate).HasColumnName("FechaCreacion").IsRequired().HasColumnType("datetime");
-            builder.Property(e => e.LastUpdatedBy).HasColumnName("UsuarioModificacion").IsRequired().HasColumnType("varchar(35)");
-            builder.Property(e => e.LastUpdatedDate).HasColumnName("FechaModificacion").IsRequired().HasColumnType("datetime");
+            builder.Property(e => e.UserId).HasColumnName("UserId").IsRequired().HasColumnType("int");
+            builder.Property(e => e.Password).HasColumnName("Password").IsRequired().HasColumnType("varchar(200)");
+            builder.Property(e => e.PasswordControl).HasColumnName("PasswordControl").IsRequired().HasColumnType("varchar(500)");
+            builder.Property(e => e.MustChange).HasColumnName("MustChange").IsRequired().HasColumnType("bit");
+            builder.Property(e => e.ExpirationDate).HasColumnName("ExpirationDate").HasColumnType("datetime");
+            builder.Property(e => e.CreatedBy).HasColumnName("CreatedBy").IsRequired().HasColumnType("varchar(35)");
+            builder.Property(e => e.CreatedDate).HasColumnName("CreatedDate").IsRequired().HasColumnType("datetime");
+            builder.Property(e => e.LastUpdatedBy).HasColumnName("LastUpdatedBy").IsRequired().HasColumnType("varchar(35)");
+            builder.Property(e => e.LastUpdatedDate).HasColumnName("LastUpdatedDate").IsRequired().HasColumnType("datetime");
 
-            builder.HasOne(e => e.User).WithOne(e => e.Credential).HasConstraintName("FK_UsuarioCredencial_Usuario");
+            builder.HasOne(e => e.User).WithOne(e => e.Credential).HasConstraintName("FK_UserCredential_User");
         }
     }
 }

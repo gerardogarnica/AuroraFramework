@@ -93,7 +93,7 @@ namespace Aurora.Platform.Services.Security.Handlers
             var membershipData = new UserMembershipData()
             {
                 UserId = userId,
-                IsDefaultMembership = false,
+                IsDefault = false,
                 IsActive = true
             };
 

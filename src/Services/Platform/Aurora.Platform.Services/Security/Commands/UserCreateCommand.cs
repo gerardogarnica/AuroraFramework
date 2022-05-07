@@ -6,7 +6,9 @@ namespace Aurora.Platform.Services.Security.Commands
     {
         public string LoginName { get; set; }
 
-        public string Description { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public string Email { get; set; }
     }

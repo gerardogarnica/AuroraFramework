@@ -105,7 +105,9 @@ namespace Aurora.Platform.Services.Identity.Handlers
             {
                 new Claim(ClaimTypes.Sid, userData.UserId.ToString()),
                 new Claim(ClaimTypes.NameIdentifier, userData.LoginName),
-                new Claim(ClaimTypes.Name, userData.Description)
+                new Claim(ClaimTypes.GivenName, userData.FirstName),
+                new Claim(ClaimTypes.Surname, userData.LastName),
+                new Claim(ClaimTypes.Name, string.Format("{0} {1}", userData.FirstName, userData.LastName).Trim())
             };
 
             foreach (var membershipData in userData.Memberships)

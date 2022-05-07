@@ -11,6 +11,8 @@ namespace Aurora.Platform.Repositories
 {
     public static class MigrationManager
     {
+        private const string cBatchUser = "BATCH-USR";
+
         public static IHost MigrateDatabase(this IHost host)
         {
             using (var scope = host.Services.CreateScope())
@@ -24,7 +26,7 @@ namespace Aurora.Platform.Repositories
                         var applicationId = CreatePlatformApplication(context);
                         var userId = CreateAdminUser(context);
                         CreateAdminPassword(context, userId);
-                        //CreateAdminRole(context, repositoryId, userId);
+                        CreateAdminRole(context, userId);
                     }
                     catch { }
                 }
@@ -72,13 +74,14 @@ namespace Aurora.Platform.Repositories
                 user = new UserData()
                 {
                     LoginName = "admin",
-                    Description = "ADMINISTRADOR DE LA PLATAFORMA",
+                    FirstName = "Administrador",
+                    LastName = "",
                     Email = "admin@aurorasoft.ec",
-                    IsDefaultUser = true,
+                    IsDefault = true,
                     IsActive = true,
-                    CreatedBy = "BATCH-USR",
+                    CreatedBy = cBatchUser,
                     CreatedDate = DateTime.Now,
-                    LastUpdatedBy = "BATCH-USR",
+                    LastUpdatedBy = cBatchUser,
                     LastUpdatedDate = DateTime.Now
                 };
 
@@ -109,9 +112,9 @@ namespace Aurora.Platform.Repositories
                     Password = password,
                     PasswordControl = passwordControl,
                     MustChange = false,
-                    CreatedBy = "BATCH-USR",
+                    CreatedBy = cBatchUser,
                     CreatedDate = DateTime.Now,
-                    LastUpdatedBy = "BATCH-USR",
+                    LastUpdatedBy = cBatchUser,
                     LastUpdatedDate = DateTime.Now,
                     CredentialLogs = new List<UserCredentialLogData>
                     {
@@ -132,36 +135,37 @@ namespace Aurora.Platform.Repositories
             }
         }
 
-        private static void CreateAdminRole(PlatformDataContext context, int repositoryId, int userId)
+        private static void CreateAdminRole(PlatformDataContext context, int userId)
         {
             // Creación de rol ADMINISTRADORES
             var role = context
                 .Roles
-                .FirstOrDefault(x => x.RepositoryId.Equals(repositoryId) && x.Name.Equals("ADMINISTRADORES"));
+                .FirstOrDefault(x => x.IsGlobal && x.Name.Equals("Administradores"));
 
             if (role == null)
             {
                 role = new RoleData()
                 {
-                    RepositoryId = repositoryId,
-                    Name = "ADMINISTRADORES",
-                    Description = "GRUPO DE ADMINISTRADORES DE LA PLATAFORMA",
-                    IsDefaultRole = true,
+                    Name = "Administradores",
+                    Description = "Administradores de la Plataforma",
+                    IsDefault = true,
+                    IsGlobal = true,
+                    ProfileId = 0,
                     IsActive = true,
-                    CreatedBy = "BATCH-USR",
+                    CreatedBy = cBatchUser,
                     CreatedDate = DateTime.Now,
-                    LastUpdatedBy = "BATCH-USR",
+                    LastUpdatedBy = cBatchUser,
                     LastUpdatedDate = DateTime.Now,
                     Memberships = new List<UserMembershipData>
                     {
                         new UserMembershipData()
                         {
                             UserId = userId,
-                            IsDefaultMembership = true,
+                            IsDefault = true,
                             IsActive = true,
-                            CreatedBy = "BATCH-USR",
+                            CreatedBy = cBatchUser,
                             CreatedDate = DateTime.Now,
-                            LastUpdatedBy = "BATCH-USR",
+                            LastUpdatedBy = cBatchUser,
                             LastUpdatedDate = DateTime.Now
                         }
                     }

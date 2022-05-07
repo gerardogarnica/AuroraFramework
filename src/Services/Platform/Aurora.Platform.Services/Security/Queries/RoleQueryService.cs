@@ -52,7 +52,7 @@ namespace Aurora.Platform.Services.Security.Queries
         async Task<Role> IRoleQueryService.GetByNameAsync(int repositoryId, string name)
         {
             var roleData = await _roleRepository
-                .GetAsync(x => x.RepositoryId.Equals(repositoryId) && x.Name.Equals(name));
+                .GetAsync(x => x.ProfileId.Equals(repositoryId) && x.Name.Equals(name));
 
             if (roleData == null) return null;
 
@@ -62,7 +62,7 @@ namespace Aurora.Platform.Services.Security.Queries
         async Task<PagedCollection<Role>> IRoleQueryService.GetListAsync(PagedViewRequest viewRequest, int repositoryId, bool onlyActives)
         {
             // Adición de filtros
-            Expression<Func<Domain.Security.Models.RoleData, bool>> filter = x => x.RepositoryId.Equals(repositoryId);
+            Expression<Func<Domain.Security.Models.RoleData, bool>> filter = x => x.ProfileId.Equals(repositoryId);
 
             if (onlyActives)
                 filter = filter.And(x => x.IsActive.Equals(true));
