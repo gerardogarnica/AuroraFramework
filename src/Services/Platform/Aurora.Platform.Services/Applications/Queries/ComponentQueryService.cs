@@ -8,8 +8,8 @@ namespace Aurora.Platform.Services.Applications.Queries
 {
     public interface IComponentQueryService
     {
-        Task<Component> GetByCodeAsync(short applicationId, string code);
-        Task<IList<Component>> GetListAsync(short applicationId);
+        Task<Component> GetByCodeAsync(string applicationCode, string code);
+        Task<IList<Component>> GetListAsync(string applicationCode);
     }
 
     public class ComponentQueryService : IComponentQueryService
@@ -35,20 +35,20 @@ namespace Aurora.Platform.Services.Applications.Queries
 
         #region Implementación de la interface IComponentQueryService
 
-        async Task<Component> IComponentQueryService.GetByCodeAsync(short applicationId, string code)
+        async Task<Component> IComponentQueryService.GetByCodeAsync(string applicationCode, string code)
         {
             var componentData = await _componentRepository
-                .GetAsync(x => x.ApplicationId.Equals(applicationId) && x.Code.Equals(code));
+                .GetAsync(x => x.Application.Code.Equals(applicationCode) && x.Code.Equals(code));
 
             if (componentData == null) return null;
 
             return _mapper.Map<Component>(componentData);
         }
 
-        async Task<IList<Component>> IComponentQueryService.GetListAsync(short applicationId)
+        async Task<IList<Component>> IComponentQueryService.GetListAsync(string applicationCode)
         {
             var componentsData = await _componentRepository
-                .GetListAsync(x => x.ApplicationId.Equals(applicationId), x => x.Code);
+                .GetListAsync(x => x.Application.Code.Equals(applicationCode), x => x.Code);
 
             return _mapper.Map<IList<Component>>(componentsData);
         }

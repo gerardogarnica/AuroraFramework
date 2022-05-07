@@ -39,10 +39,10 @@ namespace Aurora.Platform.Services.Applications.Handlers
             ProfileCreateCommand request, CancellationToken cancellationToken)
         {
             // Se verifica que la aplicación se encuentre registrada
-            await VerifyIfApplicationExists(request.ApplicationId);
+            await VerifyIfApplicationExists(request.ApplicationCode);
 
             // Se verifica si el perfil de configuración ya se encuentra registrado
-            await VerifyIfProfileExists(request.ApplicationId, request.Description);
+            await VerifyIfProfileExists(request.ApplicationCode, request.Description);
 
             // Se crea el registro de perfil de configuración
             var entry = CreateProfileData(request);
@@ -60,13 +60,13 @@ namespace Aurora.Platform.Services.Applications.Handlers
             return _mapper.Map<ProfileData>(request);
         }
 
-        private async Task VerifyIfApplicationExists(short applicationId)
+        private async Task VerifyIfApplicationExists(string applicationCode)
         {
-            var applicationData = await _applicationRepository.GetAsync(applicationId);
+            var applicationData = await _applicationRepository.GetAsync(applicationCode);
 
             if (applicationData == null)
             {
-                throw new InvalidApplicationIdException(applicationId);
+                throw new InvalidApplicationCodeException(applicationCode);
             }
 
             if (!applicationData.HasCustomConfig)
@@ -75,9 +75,9 @@ namespace Aurora.Platform.Services.Applications.Handlers
             }
         }
 
-        private async Task VerifyIfProfileExists(short applicationId, string code)
+        private async Task VerifyIfProfileExists(string applicationCode, string code)
         {
-            var profileData = await _profileRepository.GetAsync(applicationId, code);
+            var profileData = await _profileRepository.GetAsync(applicationCode, code);
 
             if (profileData != null)
             {

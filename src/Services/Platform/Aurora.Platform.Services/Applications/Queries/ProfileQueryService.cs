@@ -7,8 +7,8 @@ namespace Aurora.Platform.Services.Applications.Queries
 {
     public interface IProfileQueryService
     {
-        Task<Domain.Applications.Profile> GetByCodeAsync(short applicationId, string code);
-        Task<IList<Domain.Applications.Profile>> GetListAsync(short applicationId);
+        Task<Domain.Applications.Profile> GetByCodeAsync(string applicationCode, string code);
+        Task<IList<Domain.Applications.Profile>> GetListAsync(string applicationCode);
     }
 
     public class ProfileQueryService : IProfileQueryService
@@ -34,20 +34,20 @@ namespace Aurora.Platform.Services.Applications.Queries
 
         #region Implementación de la interface IProfileQueryService
 
-        async Task<Domain.Applications.Profile> IProfileQueryService.GetByCodeAsync(short applicationId, string code)
+        async Task<Domain.Applications.Profile> IProfileQueryService.GetByCodeAsync(string applicationCode, string code)
         {
             var profileData = await _profileRepository
-                .GetAsync(applicationId, code);
+                .GetAsync(applicationCode, code);
 
             if (profileData == null) return null;
 
             return _mapper.Map<Domain.Applications.Profile>(profileData);
         }
 
-        async Task<IList<Domain.Applications.Profile>> IProfileQueryService.GetListAsync(short applicationId)
+        async Task<IList<Domain.Applications.Profile>> IProfileQueryService.GetListAsync(string applicationCode)
         {
             var profilesData = await _profileRepository
-                .GetListAsync(x => x.ApplicationId.Equals(applicationId), x => x.Description);
+                .GetListAsync(x => x.Application.Code.Equals(applicationCode), x => x.Description);
 
             return _mapper.Map<IList<Domain.Applications.Profile>>(profilesData);
         }

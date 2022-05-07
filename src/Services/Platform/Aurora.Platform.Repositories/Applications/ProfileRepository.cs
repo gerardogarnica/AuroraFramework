@@ -35,13 +35,13 @@ namespace Aurora.Platform.Repositories.Applications
                 .FirstOrDefaultAsync(x => x.ProfileId.Equals(profileId));
         }
 
-        async Task<ProfileData> IProfileRepository.GetAsync(short applicationId, string code)
+        async Task<ProfileData> IProfileRepository.GetAsync(string applicationCode, string code)
         {
             return await _dataContext
                 .Profiles
                 .AsNoTracking()
                 .Include(x => x.Connections)
-                .FirstOrDefaultAsync(x => x.ApplicationId.Equals(applicationId) && x.Code.Equals(code));
+                .FirstOrDefaultAsync(x => x.Application.Code.Equals(applicationCode) && x.Code.Equals(code));
         }
 
         #endregion

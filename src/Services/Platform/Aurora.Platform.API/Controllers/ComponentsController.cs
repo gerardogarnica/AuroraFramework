@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Aurora.Platform.API.Controllers
@@ -40,47 +39,32 @@ namespace Aurora.Platform.API.Controllers
 
         #region Operaciones del controlador
 
-        // GET aurora/api/platform/components/{applicationId},{code}
+        // GET aurora/api/platform/components/{applicationCode}/{code}
         /// <summary>
         /// Obtiene un registro de componente de la plataforma de acuerdo a su código.
         /// </summary>
-        /// <param name="applicationId">Identificador único de la aplicación de la plataforma.</param>
+        /// <param name="applicationCode">Código de la aplicación de la plataforma.</param>
         /// <param name="code">Código del componente de la aplicación.</param>
         /// <returns></returns>
-        [HttpGet("{applicationId},{code}")]
+        [HttpGet("{applicationCode}/{code}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Component>> Get(short applicationId, string code)
+        public async Task<ActionResult<Component>> Get(string applicationCode, string code)
         {
-            var component = await _componentQueryService.GetByCodeAsync(applicationId, code);
+            var component = await _componentQueryService.GetByCodeAsync(applicationCode, code);
             if (component == null) return NoContent();
 
             return Ok(component);
         }
 
-        // GET aurora/api/platform/components
-        /// <summary>
-        /// Obtiene la lista de componentes de una aplicación de la plataforma.
-        /// </summary>
-        /// <param name="applicationId">Identificador único de la aplicación de la plataforma.</param>
-        /// <returns></returns>
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<IList<Component>>> GetList(short applicationId)
-        {
-            var components = await _componentQueryService.GetListAsync(applicationId);
-            return Ok(components);
-        }
-
-        // POST aurora/api/platform/components/create
+        // POST aurora/api/platform/components
         /// <summary>
         /// Crea un nuevo registro de componente de la plataforma.
         /// </summary>
         /// <param name="command">Clase con la información requerida para la creación de un nuevo componente.</param>
         /// <returns></returns>
-        [HttpPost("create")]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

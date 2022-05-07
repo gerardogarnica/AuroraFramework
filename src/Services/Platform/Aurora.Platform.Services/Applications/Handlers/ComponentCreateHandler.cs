@@ -39,10 +39,10 @@ namespace Aurora.Platform.Services.Applications.Handlers
             ComponentCreateCommand request, CancellationToken cancellationToken)
         {
             // Se verifica que la aplicación se encuentre registrada
-            await VerifyIfApplicationExists(request.ApplicationId);
+            await VerifyIfApplicationExists(request.ApplicationCode);
 
             // Se verifica si el componente ya se encuentra registrado
-            await VerifyIfComponentExists(request.ApplicationId, request.Code);
+            await VerifyIfComponentExists(request.ApplicationCode, request.Code);
 
             // Se crea el registro de componente
             var entry = CreateComponentData(request);
@@ -60,13 +60,13 @@ namespace Aurora.Platform.Services.Applications.Handlers
             return _mapper.Map<ComponentData>(request);
         }
 
-        private async Task VerifyIfApplicationExists(short applicationId)
+        private async Task VerifyIfApplicationExists(string applicationCode)
         {
-            var applicationData = await _applicationRepository.GetAsync(applicationId);
+            var applicationData = await _applicationRepository.GetAsync(applicationCode);
 
             if (applicationData == null)
             {
-                throw new InvalidApplicationIdException(applicationId);
+                throw new InvalidApplicationCodeException(applicationCode);
             }
 
             if (!applicationData.HasCustomConfig)
@@ -75,10 +75,10 @@ namespace Aurora.Platform.Services.Applications.Handlers
             }
         }
 
-        private async Task VerifyIfComponentExists(short applicationId, string code)
+        private async Task VerifyIfComponentExists(string applicationCode, string code)
         {
             var componentData = await _componentRepository
-                .GetAsync(x => x.ApplicationId.Equals(applicationId) && x.Code.Equals(code));
+                .GetAsync(x => x.Application.Code.Equals(applicationCode) && x.Code.Equals(code));
 
             if (componentData != null)
             {

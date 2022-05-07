@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Aurora.Platform.API.Controllers
@@ -40,47 +39,32 @@ namespace Aurora.Platform.API.Controllers
 
         #region Operaciones del controlador
 
-        // GET aurora/api/platform/profiles/{applicationId},{code}
+        // GET aurora/api/platform/profiles/{applicationCode}/{code}
         /// <summary>
         /// Obtiene un registro de perfil de configuración de la plataforma de acuerdo a su código.
         /// </summary>
-        /// <param name="applicationId">ID de la aplicación de la plataforma.</param>
+        /// <param name="applicationCode">Código de la aplicación de la plataforma.</param>
         /// <param name="code">Código del perfil de configuración de la plataforma.</param>
         /// <returns></returns>
-        [HttpGet("{applicationId},{code}")]
+        [HttpGet("{applicationCode}/{code}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<Profile>> Get(short applicationId, string code)
+        public async Task<ActionResult<Profile>> Get(string applicationCode, string code)
         {
-            var profile = await _profileQueryService.GetByCodeAsync(applicationId, code);
+            var profile = await _profileQueryService.GetByCodeAsync(applicationCode, code);
             if (profile == null) return NoContent();
 
             return Ok(profile);
         }
 
-        // GET aurora/api/platform/profiles
-        /// <summary>
-        /// Obtiene la lista de perfiles de configuración de una aplicación de la plataforma.
-        /// </summary>
-        /// <param name="applicationId">ID de la aplicación de la plataforma.</param>
-        /// <returns></returns>
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<IList<Profile>>> GetList(short applicationId)
-        {
-            var profiles = await _profileQueryService.GetListAsync(applicationId);
-            return Ok(profiles);
-        }
-
-        // POST aurora/api/platform/profiles/create
+        // POST aurora/api/platform/profiles
         /// <summary>
         /// Crea un nuevo registro de perfil de configuración de la plataforma.
         /// </summary>
         /// <param name="command">Clase con la información requerida para la creación de un nuevo perfil de configuración.</param>
         /// <returns></returns>
-        [HttpPost("create")]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
