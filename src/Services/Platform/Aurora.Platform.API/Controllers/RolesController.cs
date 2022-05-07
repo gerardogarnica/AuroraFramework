@@ -40,6 +40,22 @@ namespace Aurora.Platform.API.Controllers
 
         #region Operaciones del controlador
 
+        // GET aurora/api/platform/roles
+        /// <summary>
+        /// Obtiene la lista de roles de usuarios.
+        /// </summary>
+        /// <param name="repositoryId">Identificador único del repositorio.</param>
+        /// <param name="onlyActives">Indica si solo se obtienen los roles de usuarios activos.</param>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<PagedCollection<Role>>> GetList(
+            [FromQuery] PagedViewRequest viewRequest, [FromQuery] int repositoryId, [FromQuery] bool onlyActives)
+        {
+            var roles = await _roleQueryService.GetListAsync(viewRequest, repositoryId, onlyActives);
+            return Ok(roles);
+        }
+
         // GET aurora/api/platform/roles/{roleId}
         /// <summary>
         /// Obtiene un rol de usuarios de acuerdo a su identificador único.
@@ -58,28 +74,12 @@ namespace Aurora.Platform.API.Controllers
             return Ok(role);
         }
 
-        // GET aurora/api/platform/roles
-        /// <summary>
-        /// Obtiene la lista de roles de usuarios.
-        /// </summary>
-        /// <param name="repositoryId">Identificador único del repositorio.</param>
-        /// <param name="onlyActives">Indica si solo se obtienen los roles de usuarios activos.</param>
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<PagedCollection<Role>>> GetList(
-            [FromQuery] PagedViewRequest viewRequest, [FromQuery] int repositoryId, [FromQuery] bool onlyActives)
-        {
-            var roles = await _roleQueryService.GetListAsync(viewRequest, repositoryId, onlyActives);
-            return Ok(roles);
-        }
-
-        // POST aurora/api/platform/roles/create
+        // POST aurora/api/platform/roles
         /// <summary>
         /// Crea un nuevo registro de rol de usuarios.
         /// </summary>
         /// <param name="command">Clase con la información requerida para la creación del nuevo rol de usuarios.</param>
-        [HttpPost("create")]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -89,27 +89,29 @@ namespace Aurora.Platform.API.Controllers
             return Created(string.Empty, response);
         }
 
-        // PUT aurora/api/platform/roles/update
+        // PUT aurora/api/platform/roles/{roleId}
         /// <summary>
         /// Actualiza un registro de rol de usuarios.
         /// </summary>
+        /// <param name="roleId">Identificador único del rol de usuarios.</param>
         /// <param name="command">Clase con la información requerida para la actualización del rol de usuarios.</param>
-        [HttpPut("update")]
+        [HttpPut("{roleId}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<RoleResponse>> Update([FromBody] RoleUpdateDescriptionCommand command)
+        public async Task<ActionResult<RoleResponse>> Update(int roleId, [FromBody] RoleUpdateDescriptionCommand command)
         {
+            command.RoleId = roleId;
             var response = await _mediator.Send(command);
             return Accepted(response);
         }
 
-        // PUT aurora/api/platform/roles/activate/{roleId}
+        // PUT aurora/api/platform/roles/{roleId}/activate
         /// <summary>
         /// Activa un registro de rol de usuarios existente.
         /// </summary>
         /// <param name="roleId">Identificador único del rol de usuarios.</param>
-        [HttpPut("activate/{roleId}")]
+        [HttpPut("{roleId}/activate")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -125,12 +127,12 @@ namespace Aurora.Platform.API.Controllers
             return Accepted(response);
         }
 
-        // PUT aurora/api/platform/roles/deactivate/{roleId}
+        // PUT aurora/api/platform/roles/{roleId}/deactivate
         /// <summary>
         /// Desactiva un registro de rol de usuarios existente.
         /// </summary>
         /// <param name="roleId">Identificador único del rol de usuarios.</param>
-        [HttpPut("deactivate/{roleId}")]
+        [HttpPut("{roleId}/deactivate")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
