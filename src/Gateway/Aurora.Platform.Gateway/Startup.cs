@@ -33,6 +33,7 @@ namespace Aurora.Platform.Gateway
             app.Run(async (context) =>
             {
                 var content = await router.RouteRequest(context.Request);
+                context.Response.StatusCode = (int)content.StatusCode;
                 await context.Response.WriteAsync(await content.Content.ReadAsStringAsync());
             });
         }
