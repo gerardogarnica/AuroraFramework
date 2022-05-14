@@ -7,10 +7,20 @@ namespace Aurora.Framework.Services
     /// </summary>
     public class ErrorDetailResponse
     {
+        private string _message;
+
         /// <summary>
         /// Código de respuesta del error.
         /// </summary>
         public int StatusCode { get; }
+
+        /// <summary>
+        /// Mensaje de respuesta del error.
+        /// </summary>
+        public string Message
+        {
+            get { return _message; }
+        }
 
         /// <summary>
         /// Categoría de los errores.
@@ -33,6 +43,7 @@ namespace Aurora.Framework.Services
             StatusCode = statusCode;
             ErrorCategory = category;
             Errors = new List<ErrorMessage>();
+            _message = string.Empty;
         }
 
         /// <summary>
@@ -42,6 +53,10 @@ namespace Aurora.Framework.Services
         /// <param name="message">Mensaje específico de error.</param>
         public void AddErrorMessage(string errorType, string message)
         {
+            _message = string.IsNullOrWhiteSpace(Message)
+                ? message
+                : string.Format("{0}\n{1}", Message, message);
+
             Errors.Add(
                 new ErrorMessage()
                 {

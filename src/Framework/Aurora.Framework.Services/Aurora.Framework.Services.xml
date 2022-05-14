@@ -70,6 +70,11 @@
             Código de respuesta del error.
             </summary>
         </member>
+        <member name="P:Aurora.Framework.Services.ErrorDetailResponse.Message">
+            <summary>
+            Mensaje de respuesta del error.
+            </summary>
+        </member>
         <member name="P:Aurora.Framework.Services.ErrorDetailResponse.ErrorCategory">
             <summary>
             Categoría de los errores.
