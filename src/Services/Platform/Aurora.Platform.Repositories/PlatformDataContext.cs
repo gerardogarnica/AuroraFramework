@@ -39,13 +39,13 @@ namespace Aurora.Platform.Repositories
             base.OnModelCreating(builder);
 
             // Security model
-            ModelSecurityConfig(builder);
+            ConfigSecurityModel(builder);
 
             // Applications model
-            ModelApplicationsConfig(builder);
+            ConfigApplicationsModel(builder);
         }
 
-        private void ModelSecurityConfig(ModelBuilder builder)
+        private void ConfigSecurityModel(ModelBuilder builder)
         {
             // Database schema
             builder.HasDefaultSchema("SEC");
@@ -61,7 +61,7 @@ namespace Aurora.Platform.Repositories
             builder.ApplyConfiguration(new UserMembershipConfiguration());
         }
 
-        private void ModelApplicationsConfig(ModelBuilder builder)
+        private void ConfigApplicationsModel(ModelBuilder builder)
         {
             // Database schema
             builder.HasDefaultSchema("APP");
