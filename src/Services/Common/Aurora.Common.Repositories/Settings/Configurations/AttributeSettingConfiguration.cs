@@ -7,22 +7,22 @@ namespace Aurora.Common.Repositories.Settings.Configurations
     {
         public void Configure(EntityTypeBuilder<Domain.Settings.Models.AttributeSettingData> builder)
         {
-            builder.ToTable("Atributo", "COM");
+            builder.ToTable("AttributeSetting", "COM");
 
-            builder.HasKey(e => e.AttributeId).HasName("PK_Atributo");
+            builder.HasKey(e => e.AttributeId).HasName("PK_AttributeSetting");
 
-            builder.Property(e => e.AttributeId).HasColumnName("IdAtributo").IsRequired().HasColumnType("int").UseIdentityColumn();
-            builder.Property(e => e.Code).HasColumnName("Codigo").IsRequired().HasColumnType("varchar(40)");
-            builder.Property(e => e.Name).HasColumnName("Nombre").IsRequired().HasColumnType("varchar(50)");
-            builder.Property(e => e.Description).HasColumnName("Descripcion").IsRequired().HasColumnType("nvarchar(200)");
-            builder.Property(e => e.ScopeType).HasColumnName("TipoAmbito").IsRequired().HasColumnType("varchar(20)");
-            builder.Property(e => e.DataType).HasColumnName("TipoDato").IsRequired().HasColumnType("varchar(10)");
-            builder.Property(e => e.Configuration).HasColumnName("Configuracion").IsRequired().HasColumnType("xml");
-            builder.Property(e => e.IsVisible).HasColumnName("EsVisible").IsRequired().HasColumnType("bit");
-            builder.Property(e => e.IsEditable).HasColumnName("EsEditable").IsRequired().HasColumnType("bit");
-            builder.Property(e => e.IsActive).HasColumnName("EsActivo").IsRequired().HasColumnType("bit");
+            builder.Property(e => e.AttributeId).HasColumnName("AttributeId").IsRequired().HasColumnType("int").UseIdentityColumn();
+            builder.Property(e => e.Code).HasColumnName("Code").IsRequired().HasColumnType("varchar(40)");
+            builder.Property(e => e.Name).HasColumnName("Name").IsRequired().HasColumnType("varchar(50)");
+            builder.Property(e => e.Description).HasColumnName("Description").IsRequired().HasColumnType("nvarchar(200)");
+            builder.Property(e => e.ScopeType).HasColumnName("ScopeType").IsRequired().HasColumnType("varchar(20)");
+            builder.Property(e => e.DataType).HasColumnName("DataType").IsRequired().HasColumnType("varchar(10)");
+            builder.Property(e => e.Configuration).HasColumnName("Configuration").IsRequired().HasColumnType("xml");
+            builder.Property(e => e.IsVisible).HasColumnName("IsVisible").IsRequired().HasColumnType("bit");
+            builder.Property(e => e.IsEditable).HasColumnName("IsEditable").IsRequired().HasColumnType("bit");
+            builder.Property(e => e.IsActive).HasColumnName("IsActive").IsRequired().HasColumnType("bit");
 
-            builder.HasIndex(e => new { e.Code, e.ScopeType }).IsUnique().HasDatabaseName("UK_Atributo");
+            builder.HasIndex(e => new { e.Code, e.ScopeType }).IsUnique().HasDatabaseName("UK_AttributeSetting");
         }
     }
 }

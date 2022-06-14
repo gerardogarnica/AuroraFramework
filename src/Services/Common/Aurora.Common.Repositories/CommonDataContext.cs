@@ -42,16 +42,16 @@ namespace Aurora.Common.Repositories
             builder.HasDefaultSchema("COM");
 
             // Modelo de catálogos
-            ModelCatalogsConfig(builder);
+            ConfigCatalogsModel(builder);
 
             // Modelo de localidades
-            ModelLocationsConfig(builder);
+            ConfigLocationsModel(builder);
 
             // Modelo de configuraciones
-            ModelSettingsConfig(builder);
+            ConfigSettingsModel(builder);
         }
 
-        private void ModelCatalogsConfig(ModelBuilder builder)
+        private void ConfigCatalogsModel(ModelBuilder builder)
         {
             // Secuencias
 
@@ -60,7 +60,7 @@ namespace Aurora.Common.Repositories
             builder.ApplyConfiguration(new CatalogItemConfiguration());
         }
 
-        private void ModelLocationsConfig(ModelBuilder builder)
+        private void ConfigLocationsModel(ModelBuilder builder)
         {
             // Secuencias
 
@@ -70,7 +70,7 @@ namespace Aurora.Common.Repositories
             builder.ApplyConfiguration(new LocationConfiguration());
         }
 
-        private void ModelSettingsConfig(ModelBuilder builder)
+        private void ConfigSettingsModel(ModelBuilder builder)
         {
             // Secuencias
 

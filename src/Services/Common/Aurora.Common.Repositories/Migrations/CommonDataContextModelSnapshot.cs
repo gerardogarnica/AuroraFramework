@@ -25,7 +25,7 @@ namespace Aurora.Common.Repositories.Migrations
                     b.Property<int>("CatalogId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IdCatalogo")
+                        .HasColumnName("CatalogId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -33,34 +33,34 @@ namespace Aurora.Common.Repositories.Migrations
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("varchar(40)")
-                        .HasColumnName("Codigo");
+                        .HasColumnName("Code");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Descripcion");
+                        .HasColumnName("Description");
 
                     b.Property<bool>("IsEditable")
                         .HasColumnType("bit")
-                        .HasColumnName("EsEditable");
+                        .HasColumnName("IsEditable");
 
                     b.Property<bool>("IsVisible")
                         .HasColumnType("bit")
-                        .HasColumnName("EsVisible");
+                        .HasColumnName("IsVisible");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("Nombre");
+                        .HasColumnName("Name");
 
                     b.HasKey("CatalogId")
-                        .HasName("PK_Catalogo");
+                        .HasName("PK_Catalog");
 
                     b.HasIndex("Code")
                         .IsUnique()
-                        .HasDatabaseName("UK_Catalogo");
+                        .HasDatabaseName("UK_Catalog");
 
-                    b.ToTable("Catalogo", "COM");
+                    b.ToTable("Catalog", "COM");
                 });
 
             modelBuilder.Entity("Aurora.Common.Domain.Catalogs.Models.CatalogItemData", b =>
@@ -68,59 +68,59 @@ namespace Aurora.Common.Repositories.Migrations
                     b.Property<int>("CatalogItemId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IdCatalogoItem")
+                        .HasColumnName("CatalogItemId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CatalogId")
                         .HasColumnType("int")
-                        .HasColumnName("IdCatalogo");
+                        .HasColumnName("CatalogId");
 
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("varchar(40)")
-                        .HasColumnName("Codigo");
+                        .HasColumnName("Code");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioCreacion");
+                        .HasColumnName("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion");
+                        .HasColumnName("CreatedDate");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)")
-                        .HasColumnName("Descripcion");
+                        .HasColumnName("Description");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit")
-                        .HasColumnName("EsActivo");
+                        .HasColumnName("IsActive");
 
                     b.Property<bool>("IsEditable")
                         .HasColumnType("bit")
-                        .HasColumnName("EsEditable");
+                        .HasColumnName("IsEditable");
 
                     b.Property<string>("LastUpdatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioModificacion");
+                        .HasColumnName("LastUpdatedBy");
 
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaModificacion");
+                        .HasColumnName("LastUpdatedDate");
 
                     b.HasKey("CatalogItemId")
-                        .HasName("PK_CatalogoItem");
+                        .HasName("PK_CatalogItem");
 
                     b.HasIndex("CatalogId", "Code")
                         .IsUnique()
-                        .HasDatabaseName("UK_CatalogoItem");
+                        .HasDatabaseName("UK_CatalogItem");
 
-                    b.ToTable("CatalogoItem", "COM");
+                    b.ToTable("CatalogItem", "COM");
                 });
 
             modelBuilder.Entity("Aurora.Common.Domain.Locations.Models.CountryData", b =>
@@ -128,52 +128,52 @@ namespace Aurora.Common.Repositories.Migrations
                     b.Property<short>("CountryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smallint")
-                        .HasColumnName("IdPais")
+                        .HasColumnName("CountryId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("InternetPrefix")
                         .HasColumnType("char(3)")
-                        .HasColumnName("PrefijoInternet");
+                        .HasColumnName("InternetPrefix");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit")
-                        .HasColumnName("EsActivo");
+                        .HasColumnName("IsActive");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("Nombre");
+                        .HasColumnName("Name");
 
                     b.Property<string>("OfficialName")
                         .IsRequired()
                         .HasColumnType("varchar(100)")
-                        .HasColumnName("NombreOficial");
+                        .HasColumnName("OfficialName");
 
                     b.Property<string>("ThreeDigitsCode")
                         .IsRequired()
                         .HasColumnType("char(3)")
-                        .HasColumnName("CodigoTresDigitos");
+                        .HasColumnName("ThreeDigitsCode");
 
                     b.Property<string>("ThreeLettersCode")
                         .IsRequired()
                         .HasColumnType("char(3)")
-                        .HasColumnName("CodigoTresLetras");
+                        .HasColumnName("ThreeLettersCode");
 
                     b.Property<string>("TwoLettersCode")
                         .IsRequired()
                         .HasColumnType("char(2)")
-                        .HasColumnName("CodigoDosLetras");
+                        .HasColumnName("TwoLettersCode");
 
                     b.HasKey("CountryId")
-                        .HasName("PK_Pais");
+                        .HasName("PK_Country");
 
                     b.HasIndex("ThreeLettersCode")
                         .IsUnique()
-                        .HasDatabaseName("UK_Pais");
+                        .HasDatabaseName("UK_Country");
 
-                    b.ToTable("Pais", "COM");
+                    b.ToTable("Country", "COM");
                 });
 
             modelBuilder.Entity("Aurora.Common.Domain.Locations.Models.CountryDivisionData", b =>
@@ -181,56 +181,56 @@ namespace Aurora.Common.Repositories.Migrations
                     b.Property<short>("DivisionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("smallint")
-                        .HasColumnName("IdPaisDivision")
+                        .HasColumnName("DivisionId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<short>("CountryId")
                         .HasColumnType("smallint")
-                        .HasColumnName("IdPais");
+                        .HasColumnName("CountryId");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioCreacion");
+                        .HasColumnName("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion");
+                        .HasColumnName("CreatedDate");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit")
-                        .HasColumnName("EsActivo");
+                        .HasColumnName("IsActive");
 
                     b.Property<bool>("IsCityLevel")
                         .HasColumnType("bit")
-                        .HasColumnName("EsNivelCiudad");
+                        .HasColumnName("IsCityLevel");
 
                     b.Property<string>("LastUpdatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioModificacion");
+                        .HasColumnName("LastUpdatedBy");
 
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaModificacion");
+                        .HasColumnName("LastUpdatedDate");
 
                     b.Property<int>("LevelNumber")
                         .HasColumnType("int")
-                        .HasColumnName("Nivel");
+                        .HasColumnName("LevelNumber");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("Nombre");
+                        .HasColumnName("Name");
 
                     b.HasKey("DivisionId")
-                        .HasName("PK_PaisDivision");
+                        .HasName("PK_CountryDivision");
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("PaisDivision", "COM");
+                    b.ToTable("CountryDivision", "COM");
                 });
 
             modelBuilder.Entity("Aurora.Common.Domain.Locations.Models.LocationData", b =>
@@ -238,60 +238,60 @@ namespace Aurora.Common.Repositories.Migrations
                     b.Property<int>("LocationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IdLocalidad")
+                        .HasColumnName("LocationId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AlternativeCode")
                         .HasColumnType("varchar(10)")
-                        .HasColumnName("CodigoAlterno");
+                        .HasColumnName("AlternativeCode");
 
                     b.Property<string>("Code")
                         .HasColumnType("varchar(5)")
-                        .HasColumnName("Codigo");
+                        .HasColumnName("Code");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioCreacion");
+                        .HasColumnName("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion");
+                        .HasColumnName("CreatedDate");
 
                     b.Property<short>("DivisionId")
                         .HasColumnType("smallint")
-                        .HasColumnName("IdPaisDivision");
+                        .HasColumnName("DivisionId");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit")
-                        .HasColumnName("EsActivo");
+                        .HasColumnName("IsActive");
 
                     b.Property<string>("LastUpdatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioModificacion");
+                        .HasColumnName("LastUpdatedBy");
 
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaModificacion");
+                        .HasColumnName("LastUpdatedDate");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("Nombre");
+                        .HasColumnName("Name");
 
                     b.Property<int>("ParentLocationId")
                         .HasColumnType("int")
-                        .HasColumnName("IdLocalidadPadre");
+                        .HasColumnName("ParentLocationId");
 
                     b.HasKey("LocationId")
-                        .HasName("PK_Localidad");
+                        .HasName("PK_Location");
 
                     b.HasIndex("DivisionId");
 
-                    b.ToTable("Localidad", "COM");
+                    b.ToTable("Location", "COM");
                 });
 
             modelBuilder.Entity("Aurora.Common.Domain.Settings.Models.AttributeSettingData", b =>
@@ -299,7 +299,7 @@ namespace Aurora.Common.Repositories.Migrations
                     b.Property<int>("AttributeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("IdAtributo")
+                        .HasColumnName("AttributeId")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -307,96 +307,96 @@ namespace Aurora.Common.Repositories.Migrations
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("varchar(40)")
-                        .HasColumnName("Codigo");
+                        .HasColumnName("Code");
 
                     b.Property<string>("Configuration")
                         .IsRequired()
                         .HasColumnType("xml")
-                        .HasColumnName("Configuracion");
+                        .HasColumnName("Configuration");
 
                     b.Property<string>("DataType")
                         .IsRequired()
                         .HasColumnType("varchar(10)")
-                        .HasColumnName("TipoDato");
+                        .HasColumnName("DataType");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(200)")
-                        .HasColumnName("Descripcion");
+                        .HasColumnName("Description");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit")
-                        .HasColumnName("EsActivo");
+                        .HasColumnName("IsActive");
 
                     b.Property<bool>("IsEditable")
                         .HasColumnType("bit")
-                        .HasColumnName("EsEditable");
+                        .HasColumnName("IsEditable");
 
                     b.Property<bool>("IsVisible")
                         .HasColumnType("bit")
-                        .HasColumnName("EsVisible");
+                        .HasColumnName("IsVisible");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("Nombre");
+                        .HasColumnName("Name");
 
                     b.Property<string>("ScopeType")
                         .IsRequired()
                         .HasColumnType("varchar(20)")
-                        .HasColumnName("TipoAmbito");
+                        .HasColumnName("ScopeType");
 
                     b.HasKey("AttributeId")
-                        .HasName("PK_Atributo");
+                        .HasName("PK_AttributeSetting");
 
                     b.HasIndex("Code", "ScopeType")
                         .IsUnique()
-                        .HasDatabaseName("UK_Atributo");
+                        .HasDatabaseName("UK_AttributeSetting");
 
-                    b.ToTable("Atributo", "COM");
+                    b.ToTable("AttributeSetting", "COM");
                 });
 
             modelBuilder.Entity("Aurora.Common.Domain.Settings.Models.AttributeValueData", b =>
                 {
                     b.Property<int>("AttributeId")
                         .HasColumnType("int")
-                        .HasColumnName("IdAtributo");
+                        .HasColumnName("AttributeId");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioCreacion");
+                        .HasColumnName("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaCreacion");
+                        .HasColumnName("CreatedDate");
 
                     b.Property<string>("LastUpdatedBy")
                         .IsRequired()
                         .HasColumnType("varchar(35)")
-                        .HasColumnName("UsuarioModificacion");
+                        .HasColumnName("LastUpdatedBy");
 
                     b.Property<DateTime>("LastUpdatedDate")
                         .HasColumnType("datetime")
-                        .HasColumnName("FechaModificacion");
+                        .HasColumnName("LastUpdatedDate");
 
                     b.Property<int>("RelationshipId")
                         .HasColumnType("int")
-                        .HasColumnName("IdRelacion");
+                        .HasColumnName("RelationshipId");
 
                     b.Property<string>("Value")
                         .IsRequired()
                         .HasColumnType("xml")
-                        .HasColumnName("Valor");
+                        .HasColumnName("Value");
 
                     b.HasKey("AttributeId")
-                        .HasName("PK_ValorAtributo");
+                        .HasName("PK_AttributeValue");
 
                     b.HasIndex("AttributeId", "RelationshipId")
                         .IsUnique()
-                        .HasDatabaseName("UK_ValorAtributo");
+                        .HasDatabaseName("UK_AttributeValue");
 
-                    b.ToTable("ValorAtributo", "COM");
+                    b.ToTable("AttributeValue", "COM");
                 });
 
             modelBuilder.Entity("Aurora.Common.Domain.Catalogs.Models.CatalogItemData", b =>
@@ -404,7 +404,7 @@ namespace Aurora.Common.Repositories.Migrations
                     b.HasOne("Aurora.Common.Domain.Catalogs.Models.CatalogData", "Catalog")
                         .WithMany("Items")
                         .HasForeignKey("CatalogId")
-                        .HasConstraintName("FK_CatalogoItem_Catalogo")
+                        .HasConstraintName("FK_CatalogItem_Catalog")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -416,7 +416,7 @@ namespace Aurora.Common.Repositories.Migrations
                     b.HasOne("Aurora.Common.Domain.Locations.Models.CountryData", "Country")
                         .WithMany("Divisions")
                         .HasForeignKey("CountryId")
-                        .HasConstraintName("FK_PaisDivision_Pais")
+                        .HasConstraintName("FK_CountryDivision_Country")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -428,7 +428,7 @@ namespace Aurora.Common.Repositories.Migrations
                     b.HasOne("Aurora.Common.Domain.Locations.Models.CountryDivisionData", "Division")
                         .WithMany("Locations")
                         .HasForeignKey("DivisionId")
-                        .HasConstraintName("FK_Localidad_PaisDivision")
+                        .HasConstraintName("FK_Location_CountryDivision")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -440,7 +440,7 @@ namespace Aurora.Common.Repositories.Migrations
                     b.HasOne("Aurora.Common.Domain.Settings.Models.AttributeSettingData", "AttributeSetting")
                         .WithMany("Values")
                         .HasForeignKey("AttributeId")
-                        .HasConstraintName("FK_ValorAtributo_Atributo")
+                        .HasConstraintName("FK_AttributeValue_AttributeSetting")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
