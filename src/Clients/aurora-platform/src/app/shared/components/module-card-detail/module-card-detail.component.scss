@@ -1,0 +1,27 @@
+.module-option {
+    a {
+        text-decoration: none;
+    }
+    :hover{
+        background-color: #5C7AEA;
+        color: #E6E6E6;
+        .mat-card-header,
+        .mat-card-subtitle,
+        .mat-card-content {
+            background-color: #5C7AEA;
+            color: #E6E6E6;
+        }
+    }
+}
+
+.options-card {
+    border-radius: 10px;
+    max-width: 400px;
+    padding: 12px;
+}
+
+mat-icon.mat-card-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 40px;
+}

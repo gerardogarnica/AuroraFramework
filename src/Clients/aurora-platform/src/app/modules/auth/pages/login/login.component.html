@@ -1,0 +1,36 @@
+<section class="login">
+    <div class="login-container">
+        <div class="login-left">
+            <p><span class="title">Aurora Platform</span></p>
+            <p>Welcome to administration site of Aurora products.</p>
+            <p>Please, enter your username and password to log in to.</p>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="login($event)" class="login-right">
+            <div class="login-row">
+                <div class="input-control">
+                    <label class="login-label" for="username">
+                        <mat-icon aria-hidden="false" aria-label="user icon" class="icon">person</mat-icon>
+                    </label>
+                    <input type="text" id="username" formControlName="username" class="login-input" placeholder="Username" maxlength="50">
+                </div>
+                <span *ngIf="form.controls['username'].touched && form.controls['username'].hasError('required')">Username is required.</span>
+                <span *ngIf="form.controls['username'].touched && form.controls['username'].hasError('minlength')">Username must contain at least 3 characters.</span>
+            </div>
+            <div class="login-row">
+                <div class="input-control">
+                    <label class="login-label" for="password">
+                        <mat-icon aria-hidden="false" aria-label="password icon" class="icon">lock</mat-icon>
+                    </label>
+                    <input type="password" id="password" formControlName="password" class="login-input" placeholder="Password" maxlength="30">
+                    </div>
+                <span *ngIf="form.controls['password'].touched && form.controls['password'].hasError('required')">Password is required.</span>
+                <span *ngIf="form.controls['password'].touched && form.controls['password'].hasError('minlength')">Password must contain at least 3 characters.</span>
+            </div>
+            <div class="login-row">
+                <button type="submit" class="login-submit" [disabled]="form.invalid">LOGIN</button>
+                <span *ngIf="errorMessage$ | async as errorMessage">{{ errorMessage }}</span>
+            </div>
+            <a class="login-link" href="#">Forgot your password?</a>
+        </form>
+    </div>
+</section>

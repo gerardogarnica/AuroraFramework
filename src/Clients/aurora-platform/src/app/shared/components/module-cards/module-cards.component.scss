@@ -1,0 +1,8 @@
+.module-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    @media screen and (min-width: 48em) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

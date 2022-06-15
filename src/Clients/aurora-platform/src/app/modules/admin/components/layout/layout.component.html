@@ -1,0 +1,64 @@
+<header>
+    <mat-toolbar>
+        <button mat-icon-button aria-label="toggle sidenav" (click)="sidenav.toggle()">
+            <mat-icon aria-hidden="false" aria-label="openmenu icon" *ngIf="!sidenav.opened">
+                menu
+            </mat-icon>
+            <mat-icon aria-hidden="false" aria-label="closemenu icon" *ngIf="sidenav.opened">
+                close
+            </mat-icon>
+        </button>
+        <a class="brand" routerLink="/home">Aurora Platform</a>
+        <button (click)="logout()">Logout</button>
+    </mat-toolbar>
+</header>
+
+<nav>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav="matSidenav">
+            <mat-nav-list>
+                <a mat-list-item class="menu-item" routerLinkActive="active" routerLink="/home">
+                    <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>
+                    <span>Home</span>
+                </a>
+                <a mat-list-item class="menu-item" routerLinkActive="active" routerLink="/security">
+                    <mat-icon aria-hidden="false" aria-label="security icon">lock</mat-icon>
+                    <span>Security</span>
+                </a>
+                <a mat-list-item class="menu-item" routerLinkActive="active" routerLink="/applications">
+                    <mat-icon aria-hidden="false" aria-label="apps icon">apps</mat-icon>
+                    <span>Applications</span>
+                </a>
+                <a mat-list-item class="menu-item" routerLinkActive="active" routerLink="/settings">
+                    <mat-icon aria-hidden="false" aria-label="settings icon">settings</mat-icon>
+                    <span>Settings</span>
+                </a>
+
+                <mat-divider></mat-divider>
+
+                <a mat-list-item class="menu-item" routerLinkActive="active" routerLink="/help">
+                    <mat-icon aria-hidden="false" aria-label="help icon">help</mat-icon>
+                    <span>Help</span>
+                </a>
+
+                <mat-divider></mat-divider>
+
+                <a mat-list-item class="menu-item" routerLinkActive="active" routerLink="/changepassword">
+                    <mat-icon aria-hidden="false" aria-label="change password icon">password</mat-icon>
+                    <span>Change Password</span>
+                </a>
+                <a mat-list-item class="menu-item" (click)="logout()">
+                    <mat-icon aria-hidden="false" aria-label="logout icon">logout</mat-icon>
+                    <span>Logout</span>
+                </a>
+            </mat-nav-list>
+       </mat-sidenav>
+
+        <mat-sidenav-content>
+            <main class="content">
+                <router-outlet></router-outlet>
+            </main>
+            <app-footer></app-footer>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</nav>
