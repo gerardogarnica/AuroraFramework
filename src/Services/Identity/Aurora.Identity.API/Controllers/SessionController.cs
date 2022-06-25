@@ -42,7 +42,6 @@ namespace Aurora.Identity.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IdentityAccess>> Login([FromBody] UserLoginCommand command)
         {
-            _logger.LogInformation("Inicio de Login.");
             var response = await _mediator.Send(command);
             return Created(string.Empty, response);
         }
